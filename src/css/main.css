@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Regular.ttf') format('truetype'),
+       url('fonts/Roboto-Italic.ttf') format('truetype'),
+       url('fonts/Roboto-BoldItalic.ttf') format('truetype'),
+       url('fonts/Roboto-Bold.ttf') format('truetype')
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+/*	font-family: 'Arial', sans-serif; */
+	font-family: 'Roboto', sans-serif;
+	color: #333;
+}
+
+body {
+	margin: 4em;
+}
+
+article, p, h1, h2, h3, h4, ul, ol {
+	margin-bottom: 1em;
+}
+
+li {
+	margin-left: 1em;
+}
+
+a {
+	color: #0090c0;
+}
+
+a:hover {
+	color: #000000;
+}
+
+h1, h2, h3, h4 {
+	font-weight: normal;
+	margin: 2em 0 1em 0;
+}
+
+h1 {
+	color: #0090c0;
+}
+
+h1 a {
+	text-decoration: none;
+}
+
+h2 {
+	padding: .3em;
+	background-color: #cceeff;
+}
+
+h3 {
+	padding: .3em;
+	background-color: #dfdfdf;
+}
+
+code, pre {
+	 font-family: monospace;
+}
+
+.tableofcontents ul {
+	margin-bottom: 0;
+}
+
+.codeexample {
+	display: block;
+	padding: 1em 1em 0 1em;
+	color: #ffffff;
+	background: #3c3933;
+	margin: 1em 0;
+	font-size: 1.3em;
+	border-radius: 5px;
+}
+
+.tag, .var, .path {
+	font-weight: normal;
+	color: #aa0000;
+}
+
+.path {
+	font-style: italic;
+}

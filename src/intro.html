@@ -1,0 +1,51 @@
+{% set title = 'Intro' %}
+{% extends '_includes/_layout.html' %}
+{% block content %}
+	<section>
+		<h2>Intros to Eleventy and This Guide</h2>
+		<article>
+			<h3 id="introeleventy">Intro to Eleventy</h2>
+			<p>
+				Eleventy is what is known as a Static Site Generator. It can use various files to assemble
+				finished web pages utilizing templates, data, markdown, etc. You then post these pages to your web hosting.
+			</p>
+			<p>Eleventy can use various template languages:
+				<ul>
+				<li>HTML *.html</li>
+				<li>Markdown *.md</li>
+				<li>JavaScript *.11ty.js</li>
+				<li>Liquid *.liquid</li>
+				<li>Nunjucks *.njk</li>
+				<li>Mustache *.mustache</li>
+				<li>EJS *.ejs</li>
+				<li>Haml *.haml</li>
+				<li>Pug *.pug</li>
+				<li>JavaScript Template Literals *.jstl</li>
+				</ul>
+			</p>
+			<p>
+				Eleventy will cycle through all your source files and assemble them into a static web site, automatically creating the structure (and even links) based on how the source files are organized.
+			</p>
+		</article>
+		<article>
+			<h3 id="introguide">Intro to This Guide</h3>
+			<p>
+				This guide is meant to provide some step by step instructions for using Eleventy, and
+				provide additional reference information. It is not meant as a reference, though it might work as one to some extent. It does not build a project, but goes through steps to demonstrate various features. It is not meant to cover all options in all template languages, it is recommended that you <a href="https://www.11ty.io/docs/" target="_blank">refer to the official documentation</a> for more details.
+			</p>
+			<p>
+				This guide is based on Eleventy version 0.9.0. Version 0.10.0 seems to change certain variables that haven't been tested for this guide yet.
+			</p>
+			<p>
+				For this guide we are using Linux, NodeJS, and NPM. It's assumed you have some experience in HTML, CSS, and Javascript (including JSON, NodeJS and NPM). It is not assumed that you are familiar
+				with template languages or other Static Site Generators. What is presented here isn't the only way to use Eleventy; if you want to do things differently, go for it.
+			</p>
+			<p>
+				Beyond this sentence, The words &quot;simple&quot; and &quot;simply&quot; will not be used in this guide.
+			</p>
+		</article>
+	</section>
+	<nav class="nex">
+		<a href="start.html">Start &gt;&gt;</a>
+	</nav>
+{% endblock %}

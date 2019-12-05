@@ -1,0 +1,43 @@
+json data **
+pagination **
+mention YAML **
+includes **
+--serve **
+template languages liquid, nunjucks, ejs. **
+filters
+date formatting
+config file
+data contained in collections
+
+
+{{
+
+/{{/
+
+}}
+
+/}}/
+
+{%
+
+/{%/
+
+%}
+
+/%}/
+
+
+{% raw %}{{
+
+}}{% endraw %}
+
+{% raw %}{%
+
+%}{% endraw %}
+
+
+{% set title = 'Intro' %}
+{% extends '_layout.html' %}}
+{% block content %}
+
+{% endblock %}

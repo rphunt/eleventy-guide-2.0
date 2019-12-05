@@ -1,0 +1,88 @@
+{% set title = 'Start' %}
+{% extends '_includes/_layout.html' %}
+{% block content %}
+{% raw %}
+	<section>
+		<article>
+			<h2>Start</h2>
+
+			<p>
+				Start a project by creating a project folder, installing Eleventy locally using NPM, then creating an HTML file.
+			</p>
+			<p>
+				This is using the Linux command line. Create your project folder (the project root).
+
+				<pre class="codeexample">
+mkdir eleventy-test
+cd eleventy-test
+				</pre class="codeexample">
+			</p>
+
+			<p>
+				Setup Node and Eleventy locally
+
+				<pre class="codeexample">
+npm init -y
+npm install --save-dev @11ty/eleventy
+				</pre class="codeexample">
+			</p>
+
+			<p>
+				Do a quick test.
+
+				<pre class="codeexample">
+npx eleventy
+				</pre class="codeexample">
+
+				A simple message like this should be returned.
+
+				<pre class="codeexample">
+Processed 0 files in 0.02 seconds (v0.9.0)
+				</pre>
+
+			</p>
+
+			<p>
+				Create an <span class="path">index.html</span> file. At this point it can just be standard HTML.
+
+				<pre class="codeexample">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Eleventy Test&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Eleventy Test&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+				</pre class="codeexample">
+			</p>
+
+			<p>
+				Run Eleventy again.
+
+				<pre class="codeexample">
+npx eleventy
+				</pre class="codeexample">
+
+				It should return a message like this
+
+				<pre class="codeexample">
+Writing _site/index.html from ./index.html.
+Processed 1 file in 0.03 seconds (v0.9.0)
+				</pre>
+
+				There should now be a new folder, <span class="path">_site</span>, in the project folder. Inside <span class="path">_site</span> you should find a new <span class="path">index.html</span>, the HTML should match the HTML inside the <span class="path">index.html</span> you created. <span class="path">_site</span> is the default output folder for Eleventy.
+
+			</p>
+			<p>
+				You should check this new file in your web browser by loading the <span class="path">/eleventy-test/_site</span> folder, e.g. <span class="path">http://localhost/eleventy-test/_site/</span> if you are using a local web server.
+			</p>
+		</article>
+	</section>
+		<nav class="nex">
+		<a href="local-server.html">Local Server &gt;&gt;</a>
+	</nav>
+{% endraw %}
+{% endblock %}
