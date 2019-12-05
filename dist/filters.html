@@ -87,7 +87,7 @@
 					Filters in Eleventy are added to the <span class="path">.eleventy.js</span> config file. They are JavaScript functions that accept content, modify it, then return it to be display in place of the original.
 				</p>
 				<p>
-					Eleventy does lack certain formatting features that cna be found in other templating platforms, date formatting for example. A JavaScript function can be added as a filter to provide that formatting.
+					Eleventy does lack certain formatting features that can be found in other templating platforms, date formatting for example. A JavaScript function can be added as a filter to provide that formatting.
 				</p>
 		</article>
 
@@ -101,11 +101,95 @@ module.exports = (function(eleventyConfig) {
 
 }
 					</pre>
+					But to keep the previously entered configuration values, they can be returned as an object :
+	
+					<pre class="codeexample">
+module.exports = (function(eleventyConfig) {
+
+    return {
+
+        dir: {
+            output: "dist",
+            input: "src",
+            data: "jsondata",
+            includes: "partials_layouts"
+        },
+
+        templateFormats: ["liquid", "njk", "css", "js"]
+    }; 
+
+});
+					</pre>
 				</p>
+		</article>
 
+		<article>
+			<h3 id="createfilter">Create a Filter</h3>
+			<p>
+				There is an Eleventy method <span class="var">addFilter</span> you can use. Edit the config file to create a filter named <span class="var">decorate</span>. This will add asterixes to the start and end of the filtered content :
 
+					<pre class="codeexample">
+module.exports = (function(eleventyConfig) {
 
+    eleventyConfig.addFilter("decorate", function(text) {
+        return "***"+text+"***";
+    });
 
+    return {
+
+        dir: {
+            output: "dist",
+            input: "src",
+            data: "jsondata",
+            includes: "partials_layouts"
+        },
+
+        templateFormats: ["liquid", "njk", "css", "js"]
+    }; 
+
+});
+					</pre>
+			</p>
+			<p>
+				Edit the <span class="path">src/index.html</span> file to use the filter (using a pipe <span class="tag">&lt;li&gt;{{ bird | decorate }}&lt;/li&gt;</span>) :
+
+				<pre class="codeexample">
+---
+title: Birds
+birds:
+  - robin
+  - finch
+  - sparrow
+---
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;{{ title }}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;{{ title }}&lt;/h1&gt;
+
+    &lt;ul&gt;
+         {% for bird in birds %}
+         &lt;li&gt;{{ bird | decorate }}&lt;/li&gt;
+         {% endfor %}
+    &lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;				
+				</pre>
+				The <span class="path">dist/index.html</span> should now have asterixes in the list items.
+				<pre class="codeexample">
+&lt;ul&gt;
+    &lt;li&gt;***robin***&lt;/li&gt;
+    &lt;li&gt;***finch***&lt;/li&gt;
+    &lt;li&gt;***sparrow***&lt;/li&gt;
+&lt;/ul&gt;
+				</pre>
+
+				Any number of filters can be added to the config file.
+			</p>
 		</article>
 
 	</section>
