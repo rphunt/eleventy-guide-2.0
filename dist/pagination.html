@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Eleventy Notes</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<h1><a href=".">Eleventy Walk Through</a></h1>
+
+	<section class="tableofcontents">
+		<ul>
+			<li><a href="intro.html">Intros to Eleventy and This Guide</a>
+				<ul>
+					<li><a href="intro.html#introeleventy">Intro to Eleventy</a></li>
+					<li><a href="intro.html#introguide">Intro to This Guide</a></li>
+				</ul>
+			</li>
+ 			<li><a href="start.html">Start</a></li>
+			<li><a href="local-server.html">Local Server</a>
+			</li>
+			<li><a href="basic-data-and-templating-using-liquid.html">Basic Data and Templating Using Liquid</a>
+				<ul>
+					<li><a href="basic-data-and-templating-using-liquid.html#whitespace">Whitespace (Line Breaks)</a></li>
+				</ul>
+			</li>
+			<li><a href="templates-and-external-markdown-files.html">Templates and External Markdown Files</a>
+				<ul>
+					<li><a href="templates-and-external-markdown-files.html#layouts">Layouts</a></li>
+					<li><a href="templates-and-external-markdown-files.html#folderstructure">Folder Structure</a></li>
+					<li><a href="templates-and-external-markdown-files.html#layoutsmarkdownfrontmatter">Layouts and Markdown With Front Matter</a></li>
+					<li><a href="templates-and-external-markdown-files.html#collections">Collections</a></li>
+					<li><a href="templates-and-external-markdown-files.html#eleventydates">Eleventy and Date Values</a></li>
+				</ul>
+			</li>
+			<li><a href="partials-and-include.html">Partials and Include</a>
+				<ul>
+					<li><a href="partials-and-include.html#usinginclude">Using Include</a></li>
+					<li><a href="partials-and-include.html#frontmatterpartials">Using Front Matter With Partials</a></li>
+				</ul>
+			</li>
+			<li><a href="global-data-files.html">Global Data Files</a>
+				<ul>
+					<li><a href="global-data-files.html#globaldatainpage">Using Global Data in a Page</a></li>
+					<li><a href="global-data-files.html#globaldatasubfolder">Global Data in a Subfolder</a></li>
+					<li><a href="global-data-files.html#accessingnormaljsondata">Accessing normal JSON data</a></li>
+				</ul>
+			</li>
+			<li><a href="pagination.html">Pagination</a>
+				<ul>
+					<li><a href="pagination.html#basicpaginationjsonarray">Basic Pagination of JSON Array</a></li>
+					<li><a href="pagination.html#paginationjsonobject">Pagination of JSON object</a></li>
+					<li><a href="pagination.html#customizingpermalinks">Customizing the Permalinks</a></li>
+					<li><a href="pagination.html#pagenavigation">Page Navigation</a></li>
+				</ul>
+			</li>
+			<li><a href="template-languages.html">Eleventy and Template Languages</a>
+				<ul>
+					<li><a href="template-languages.html#fileextensions">File Extensions</a></li>
+					<li><a href="template-languages.html#liquidandnunjucks">Liquid and Nunjucks</a></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+	
+
+	<section>
+		<h2>Pagination</h2>
+		<article>
+			<h3 id="basicpaginationjsonarray">Basic Pagination of JSON Array</h3>
+			<p>
+				Pagination can be automatically handled by Eleventy. Front matter in a template is used to indicate what data is paginated, and how many items per page there should be.
+			</p>
+			<p>
+				Create a new <span class="path">_site/fishList.json</span> file containing an array (this one has 13 items) :
+
+				<pre class="codeexample">
+[
+    "perch",
+    "bass",
+    "bream",
+    "flounder",
+    "salmon",
+    "mackerel",
+    "trout",
+    "sardine",
+    "anchovy",
+    "swordfish",
+    "tuna",
+    "carp",
+    "guppy"
+]
+				</pre>
+			</p>
+			<p>
+				Create the file <span class="path">fishpaged.html</span>. In the front matter there will be a pagination variable which contains what data to paginate (<span class="var">data: fishList</span>) and how many items per page (<span class="var">size: 2</span>). The following <em>for loop</em> iterates through the resulting <span class="var">pagination</span> items.
+
+				<pre class="codeexample">
+---
+title: Fish Paged
+pagination:
+    data: fishList
+    size: 2
+---
+{% include _head.html %}
+&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;ul&gt;
+    {% for fish in pagination.items -%}
+    &lt;li>{{ fish }}&lt;/li&gt;
+    {% endfor -%}
+&lt;/ul&gt;
+{% include _foot.html %}
+				</pre>
+			</p>
+
+			<p>
+				You should now find a <span class="path">_site/fishpaged</span> folder, containing an <span class="path">index.html</span> and 6 numbered folders, each containing an <span class="path">index.html</span>. The <span class="path">_site/fishpaged/index.html</span> should contain :
+				<pre class="codeexample">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;Animals Paged&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1>Animals Paged&lt;/h1&gt;
+&lt;ul&gt;
+	&lt;li&gt;perch&lt;/li&gt;
+	&lt;li&gt;bass&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;p>Footer text&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+				</pre>
+			</p>
+			<p>
+				Each subfolder's index file (e.g. <span class="path">_site/fishpaged/1/index.html</span>) should have two more of the animals from the JSON file, with the 6th one only having &quot;guppy&quot;. Again, the idea is to result in a clean URL structure, e.g. <span class="path">http://localhost/eleventy/eleventy-test/_site/fishpaged/1/</span>, then <span class="path">http://localhost/eleventy/eleventy-test/_site/fishpaged/2/</span>, etc.
+			</p>
+
+
+		</article>
+		<article>
+			<h3 id="paginationjsonobject">Pagination of JSON object</h3>
+			<p>
+				Pagination of a JSON object is only slightly different.
+				Edit <span class="path">_site/fishList.json</span> to contain :
+
+				<pre class="codeexample">
+{
+    "fish":
+    [
+        "perch",
+        "bass",
+        "bream",
+        "flounder",
+        "salmon",
+        "mackerel",
+        "trout",
+        "sardine",
+        "anchovy",
+        "swordfish",
+        "tuna",
+        "carp",
+        "guppy"
+    ]
+}
+				</pre>
+			</p>
+
+			<p>
+				Edit <span class="path">fishpaged.html</span> so the front matter is :
+				<pre class="codeexample">
+---
+title: Fish Paged
+pagination:
+    data: fishList.fish
+    size: 2
+---
+			</pre>
+				</p>
+
+		</article>
+		<article>
+			<h3 id="customizingpermalinks">Customizing the Permalinks</h3>
+			<p>
+				The Eleventy default for the pagination folder structure can be overriden in the front matter. The syntax uses template tags, the only time they can be used in front matter.
+			</p>
+			<p>
+				Edit <span class="path">fishpaged.html</span> so the front matter is :
+				<pre class="codeexample">
+---
+title: Fish Paged
+pagination:
+    data: fishList.fish
+    size: 2
+permalink: "fishes/page-{{ pagination.pageNumber }}/index.html"
+---
+			</pre>
+
+			Instead of a <span class="path">_site/fishpaged</span> folder, there should now be a <span class="path">_site/fishes</span> folder, with subfolders like <span class="path">_site/fishes/page-0/</span>, then <span class="path">_site/fishes/page-0/</span>, etc.
+
+			</p>
+			<p>
+				Note how this time, there is no <span class="path">index.html</span> in <span class="path">_site/fishes</span>, instead there is a <span class="path">_site/fishes/page-0/</span> which has the page for the first two items (<em>perch</em> and <em>bass</em>).
+			</p>
+			<p>
+				So that the folders start with <span class="path">page-1</span>, change the <span class="var">permalink</span> value to :
+
+				<pre class="codeexample">
+permalink: "fishes/page-{{ pagination.pageNumber | plus: 1 }}/index.html"
+			</pre>
+			</p>
+
+			<p>
+				As previously seen, by default, Eleventy structured the pagination so that we got :
+
+				<pre class="codeexample">
+_site/fishpaged/index.html
+_site/fishpaged/1/index.html
+_site/fishpaged/2/index.html
+...
+				</pre>
+			</p>
+			<p>
+				Then we were able to customize it to be structured as :
+				<pre class="codeexample">
+_site/fishes/page-1/index.html
+_site/fishes/page-2/index.html
+_site/fishes/page-3/index.html
+...
+				</pre>
+				With no <span class="path">fishes/index.html</span>.
+			</p>
+			<p>
+				But what might be preferred is a main page with no number, then the second page is numbered &quot;2&quot; :
+
+				<pre class="codeexample">
+_site/fishes/index.html
+_site/fishes/page-2/index.html
+_site/fishes/page-3/index.html
+...
+				</pre>
+				This way the URL for the main <span class="path">fishes</span> page is a little cleaner. This can be done by adding a conditional to the permalink front matter:
+
+				<pre class="codeexample">
+permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber | plus: 1 }}{% endif %}/index.html"
+				</pre>
+
+				In all cases, it uses the <span class="var">fishes/</span> folder. It then checks if the page number is above 0, and if true, creates <span class="var">page-*/index.html</span> (adding 1 to the page number). For page 0 it just creates the <span class="var">index.html</span>.
+			</p>
+
+			<p>
+				This is the Liquid syntax, Nunjucks will be different. A lot of things can be done with pagination, <a href="https://www.11ty.io/docs/pagination/" target="_blank">refer to the Eleventy documentation</a> for more details.
+			</p>
+
+		</article>
+
+		<article>
+			<h3 id="pagenavigation">Page Navigation</h3>
+			<p>
+				Eleventy provides the needed variables to set up paging links. Using <span class="var">pagination.previousPageHref</span> and <span class="var">pagination.nextPageHref</span>, Previous and Next links can be created using conditionals to decide if links should be created.
+			</p>
+			<p>
+				Eleventy thinks of the site root as being <span class="path">_site</span>, which works for a posted web site, but for local dev working in subfolders, the urls have to point to the true root, e.g. <span class="path">localhost</span>. One way to do that is add a variable like <span class="var">localpath</span> to the front matter, with the appropriate path. Then insert <span class="tag">{{ localpath }}</span> as part of the pagination link urls. This is not a great workflow, there are other ways to deal with this, but for this guide it should be functional.
+			</p>
+			<p>
+				Edit <span class="path">fishpaged.html</span> to add the needed tags and front matter :
+
+				<pre class="codeexample">
+---
+title: Fish Paged
+pagination:
+    data: fishList
+    size: 2
+permalink: "fishes/page-{{ pagination.pageNumber | plus: 1 }}/index.html"
+localpath: "eleventy-test/_site"
+---
+{% include _head.html %}
+&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;ul&gt;
+    {% for fish in pagination.items -%}
+    &lt;li>{{ fish }}&lt;/li&gt;
+    {% endfor -%}
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+    &lt;li&gt;{% if pagination.previousPageHref %}&lt;a href="{{ localpath }}{{ pagination.previousPageHref }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
+
+    &lt;li&gt;{% if pagination.nextPageHref %}&lt;a href="{{ localpath }}{{ pagination.nextPageHref }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
+&lt;/ul>
+{% include _foot.html %}
+				</pre>
+
+			</p>
+
+			<p>
+				Load the first page in your browser, e.g. <span class="path">http://localhost/eleventy-test/_site/fishes/page-1/</span> and there should be list items for <em>Previous</em> and <em>Next</em>. <em>Next</em> should be a link. Navigation across the paginated content with these list items should be possible.
+			</p>
+			<p>
+				To add links for the first and last pages, there are respective values for those as well (<span class="var">pagination.firstPageHref</span> and <span class="var">pagination.lastPageHref</span>):
+
+				<pre class="codeexample">
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="{{ pagination.firstPageHref }}"&gt;First&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;{% if pagination.previousPageHref %}&lt;a href="{{ localpath }}{{ pagination.previousPageHref }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
+
+    &lt;li&gt;{% if pagination.nextPageHref %}&lt;a href="{{ localpath }}{{ pagination.nextPageHref }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
+    &lt;li&gt;&lt;a href="{{ pagination.lastPageHref }}"&gt;Last&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+				</pre>
+
+			</p>
+
+			<p>
+				To add a page number to the navigation area, loop through the pages' hrefs, and when one matches, insert the loop count (index) into the HTML. Edit <span class="path">fishpaged.html</span> to add the needed tags :
+
+				<pre class="codeexample">
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="{{ pagination.firstPageHref }}"&gt;First&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;{% if pagination.previousPageHref %}&lt;a href="{{ localpath }}{{ pagination.previousPageHref }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
+
+    &lt;li&gt;
+    {%- for href in pagination.hrefs -%}
+        {% if page.url == href %}Page {{ forloop.index }}{% endif %}
+    {%- endfor -%}
+    &lt;/li&gt;
+
+    &lt;li&gt;{% if pagination.nextPageHref %}&lt;a href="{{ localpath }}{{ pagination.nextPageHref }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
+    &lt;li&gt;&lt;a href="{{ pagination.lastPageHref }}"&gt;Last&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+				</pre>
+			</p>
+			<p>
+				Load the first page in your browser, e.g. <span class="path">http://localhost/eleventy-test/_site/fishes/page-1/</span> and there should now be a <em>Page 1</em> in between the <em>Previous</em> and <em>Next</em> list items. Navigating through the pages should be reflected in that number's value.
+			</p>
+
+			<p>
+				Again, this is for Liquid in Eleventy 0.9.0. Apparently version 0.10.0 has different variables for some of these operations. Also, some of these tags would be written differently in another template language, e.g. Nunjucks.
+			</p>
+		</article>
+	</section>
+	<nav class="nex">
+		<a href="template-languages.html">Eleventy and Template Languages &gt;&gt;</a>
+	</nav>
+
+
+	<section class="references">
+		<article>
+			<h2>References</h2>
+			<ul>
+
+				<li><a href="https://www.11ty.io/docs/" target="_blank">Eleventy Documentation</a></li>
+
+				<li><a href="https://www.zachleat.com/web/eleventy-tutorial-level-1/" target="_blank">Making a
+				Simple Web Site with the Simplest Static Site Generator, Level 1</a></li>
+
+				<li><a href="https://www.filamentgroup.com/lab/build-a-blog/" target="_blank">Build your own Blog from Scratch using Eleventy</a></li>
+
+				<li><a href="https://keepinguptodate.com/pages/2019/06/creating-blog-with-eleventy/" target="_blank">Creating A Blog With Eleventy</a></li>
+
+				<li><a href="https://learnxinyminutes.com/docs/yaml/" target="_blank">Learn YAML in Y minutes</a></li>
+
+				<li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Basic Syntax</a></li>
+
+				<li><a href="https://shopify.github.io/liquid/basics/introduction/" target="_blank">Liquid Syntax</a></li>
+
+				<li><a href="https://www.w3schools.com/whatis/whatis_json.asp" target="_blank">What is JSON?</a></li>
+
+
+			</ul>
+		</article>
+	</section>
+</body>
+</html>

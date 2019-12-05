@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Eleventy Notes</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<h1><a href=".">Eleventy Walk Through</a></h1>
+
+	<section class="tableofcontents">
+		<ul>
+			<li><a href="intro.html">Intros to Eleventy and This Guide</a>
+				<ul>
+					<li><a href="intro.html#introeleventy">Intro to Eleventy</a></li>
+					<li><a href="intro.html#introguide">Intro to This Guide</a></li>
+				</ul>
+			</li>
+ 			<li><a href="start.html">Start</a></li>
+			<li><a href="local-server.html">Local Server</a>
+			</li>
+			<li><a href="basic-data-and-templating-using-liquid.html">Basic Data and Templating Using Liquid</a>
+				<ul>
+					<li><a href="basic-data-and-templating-using-liquid.html#whitespace">Whitespace (Line Breaks)</a></li>
+				</ul>
+			</li>
+			<li><a href="templates-and-external-markdown-files.html">Templates and External Markdown Files</a>
+				<ul>
+					<li><a href="templates-and-external-markdown-files.html#layouts">Layouts</a></li>
+					<li><a href="templates-and-external-markdown-files.html#folderstructure">Folder Structure</a></li>
+					<li><a href="templates-and-external-markdown-files.html#layoutsmarkdownfrontmatter">Layouts and Markdown With Front Matter</a></li>
+					<li><a href="templates-and-external-markdown-files.html#collections">Collections</a></li>
+					<li><a href="templates-and-external-markdown-files.html#eleventydates">Eleventy and Date Values</a></li>
+				</ul>
+			</li>
+			<li><a href="partials-and-include.html">Partials and Include</a>
+				<ul>
+					<li><a href="partials-and-include.html#usinginclude">Using Include</a></li>
+					<li><a href="partials-and-include.html#frontmatterpartials">Using Front Matter With Partials</a></li>
+				</ul>
+			</li>
+			<li><a href="global-data-files.html">Global Data Files</a>
+				<ul>
+					<li><a href="global-data-files.html#globaldatainpage">Using Global Data in a Page</a></li>
+					<li><a href="global-data-files.html#globaldatasubfolder">Global Data in a Subfolder</a></li>
+					<li><a href="global-data-files.html#accessingnormaljsondata">Accessing normal JSON data</a></li>
+				</ul>
+			</li>
+			<li><a href="pagination.html">Pagination</a>
+				<ul>
+					<li><a href="pagination.html#basicpaginationjsonarray">Basic Pagination of JSON Array</a></li>
+					<li><a href="pagination.html#paginationjsonobject">Pagination of JSON object</a></li>
+					<li><a href="pagination.html#customizingpermalinks">Customizing the Permalinks</a></li>
+					<li><a href="pagination.html#pagenavigation">Page Navigation</a></li>
+				</ul>
+			</li>
+			<li><a href="template-languages.html">Eleventy and Template Languages</a>
+				<ul>
+					<li><a href="template-languages.html#fileextensions">File Extensions</a></li>
+					<li><a href="template-languages.html#liquidandnunjucks">Liquid and Nunjucks</a></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+	
+
+<section>
+		<h2>Global Data Files</h2>
+		<article>
+			<p>
+				Front matter and Markdown are ways to provide data and content for Eleventy to process into web pages, but to centralize and more tightly organize the data being used in a web site, Eleventy can use <em>global data files</em>. These are files located in a central location that can be used across all templates. These data files can be either JSON or JavaScript. Eleventy defaults to the <span class="path">_data</span> folder for data files.
+			</p>
+
+			<h3 id="globaldatainpage">Using Global Data in a Page</h3>
+			<p>
+				Create the <span class="path">_data</span> folder, then create the file <span class="path">_data/animalList.json</span> containing an array :
+
+				<pre class="codeexample">
+[
+    "lion",
+    "zebra",
+    "cat",
+    "wolf",
+    "dog",
+    "gorilla",
+    "tapir"
+]
+				</pre>
+			</p>
+			<p>
+				Create the file <span class="path">animals.html</span> in the project root. The data contained in <span class="path">_data/animalList.json</span> will automatically be made available by Eleventy as <span class="var">animalList</span> (matching the data file name).
+
+				<pre class="codeexample">
+---
+title: Animals
+---
+{% include _head %}
+&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;ul&gt;
+    {% for animal in animalList -%}
+    &lt;li&gt;{{ animal }}&lt;/li&gt;
+    {% endfor -%}
+&lt;/ul&gt;
+{% include _foot %}
+				</pre>
+			</p>
+			<p>
+				A new folder <span class="path">_site/animals</span> should appear, with an <span class="path">index.html file</span>. Inside the body tag should be seen:
+
+				<pre class="codeexample">
+&lt;h1&gt;Animals&lt;/h1&gt;
+&lt;ul&gt;
+    &lt;li&gt;lion&lt;/li&gt;
+    &lt;li&gt;zebra&lt;/li&gt;
+    &lt;li&gt;cat&lt;/li>
+    &lt;li&gt;wolf&lt;/li&gt;
+    &lt;li&gt;dog&lt;/li&gt;
+    &lt;li&gt;gorilla&lt;/li&gt;
+    &lt;li&gt;tapir&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;p&gt;Footer text&lt;/p&gt;
+				</pre>
+			</p>
+		</article>
+
+		<article>
+
+			<h3 id="globaldatasubfolder">Global Data in a Subfolder</h3>
+
+			<p>
+				Create the folder <span class="path">_data/mammals</span>. Move <span class="path">_data/animalList.json</span> into this folder. This data will now be available as <span class="var">mammals.animalList</span>.
+
+				<pre class="codeexample">
+---
+title: Animals
+---
+{% include _head %}
+&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;h2&gt;Mammals&lt;/h2&gt;
+&lt;ul&gt;
+    {% for animal in mammmals.animalList -%}
+    &lt;li&gt;{{ animal }}&lt;/li&gt;
+    {% endfor -%}
+&lt;/ul&gt;
+{% include _foot %}
+				</pre>
+
+				After the site is rebuilt, the <span class="path">_site/animals/index.html</span> file shoud still contain the same animal list.
+			</p>
+		</article>
+
+		<article>
+			<h3 id="accessingnormaljsondata">Accessing standard JSON data</h3>
+
+			<p>
+				Using JSON is not limited to an array, accessing object properties is pretty straightforward.
+
+				Edit the file <span class="path">_data/mammals/animalList.json</span> :
+
+				<pre class="codeexample">
+{
+    "big": [
+        "lion",
+        "zebra",
+        "wolf",
+        "dog",
+        "gorilla",
+        "tapir"
+    ],
+    "small": [
+        "cat",
+        "rabbit",
+        "mouse"
+    ]
+}
+				</pre>
+
+			</p>
+			<p>
+				Edit the <span class="path">index.html file</span> to add a new list, and to drill down into the data a little more:
+
+				<pre class="codeexample">
+---
+title: Animals
+---
+{% include _head %}
+&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;h2&gt;Mammals&lt;/h2&gt;
+&lt;ul&gt;
+    {% for animal in mammmals.animalList.big -%}
+    &lt;li&gt;{{ animal }}&lt;/li&gt;
+    {% endfor -%}
+&lt;/ul&gt;
+&lt;ul&gt;
+    {% for animal in mammmals.animalList.small -%}
+    &lt;li&gt;{{ animal }}&lt;/li&gt;
+    {% endfor -%}
+&lt;/ul&gt;
+{% include _foot %}
+				</pre>
+			</p>
+			<p>
+				Inside <span class="path">_site/animals/index.html</span>, inside the body tag should now be seen:
+
+				<pre class="codeexample">
+&lt;h1&gt;Animals&lt;/h1&gt;
+&lt;h2&gt;Big&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;lion&lt;/li&gt;
+    &lt;li&gt;zebra&lt;/li&gt;
+    &lt;li&gt;wolf&lt;/li&gt;
+    &lt;li&gt;dog&lt;/li&gt;
+    &lt;li&gt;gorilla&lt;/li&gt;
+    &lt;li&gt;tapir&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;h2&gt;Small&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;cat&lt;/li>
+    &lt;li&gt;rabbit&lt;/li&gt;
+    &lt;li&gt;mouse&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;p&gt;Footer text&lt;/p&gt;
+				</pre>
+			</p>
+
+		</article>
+	</section>
+<nav>
+	<a href="pagination.html">Pagination &gt;&gt;</a>
+</nav>
+
+
+	<section class="references">
+		<article>
+			<h2>References</h2>
+			<ul>
+
+				<li><a href="https://www.11ty.io/docs/" target="_blank">Eleventy Documentation</a></li>
+
+				<li><a href="https://www.zachleat.com/web/eleventy-tutorial-level-1/" target="_blank">Making a
+				Simple Web Site with the Simplest Static Site Generator, Level 1</a></li>
+
+				<li><a href="https://www.filamentgroup.com/lab/build-a-blog/" target="_blank">Build your own Blog from Scratch using Eleventy</a></li>
+
+				<li><a href="https://keepinguptodate.com/pages/2019/06/creating-blog-with-eleventy/" target="_blank">Creating A Blog With Eleventy</a></li>
+
+				<li><a href="https://learnxinyminutes.com/docs/yaml/" target="_blank">Learn YAML in Y minutes</a></li>
+
+				<li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Basic Syntax</a></li>
+
+				<li><a href="https://shopify.github.io/liquid/basics/introduction/" target="_blank">Liquid Syntax</a></li>
+
+				<li><a href="https://www.w3schools.com/whatis/whatis_json.asp" target="_blank">What is JSON?</a></li>
+
+
+			</ul>
+		</article>
+	</section>
+</body>
+</html>

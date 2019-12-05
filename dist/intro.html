@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Eleventy Notes</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<h1><a href=".">Eleventy Walk Through</a></h1>
+
+	<section class="tableofcontents">
+		<ul>
+			<li><a href="intro.html">Intros to Eleventy and This Guide</a>
+				<ul>
+					<li><a href="intro.html#introeleventy">Intro to Eleventy</a></li>
+					<li><a href="intro.html#introguide">Intro to This Guide</a></li>
+				</ul>
+			</li>
+ 			<li><a href="start.html">Start</a></li>
+			<li><a href="local-server.html">Local Server</a>
+			</li>
+			<li><a href="basic-data-and-templating-using-liquid.html">Basic Data and Templating Using Liquid</a>
+				<ul>
+					<li><a href="basic-data-and-templating-using-liquid.html#whitespace">Whitespace (Line Breaks)</a></li>
+				</ul>
+			</li>
+			<li><a href="templates-and-external-markdown-files.html">Templates and External Markdown Files</a>
+				<ul>
+					<li><a href="templates-and-external-markdown-files.html#layouts">Layouts</a></li>
+					<li><a href="templates-and-external-markdown-files.html#folderstructure">Folder Structure</a></li>
+					<li><a href="templates-and-external-markdown-files.html#layoutsmarkdownfrontmatter">Layouts and Markdown With Front Matter</a></li>
+					<li><a href="templates-and-external-markdown-files.html#collections">Collections</a></li>
+					<li><a href="templates-and-external-markdown-files.html#eleventydates">Eleventy and Date Values</a></li>
+				</ul>
+			</li>
+			<li><a href="partials-and-include.html">Partials and Include</a>
+				<ul>
+					<li><a href="partials-and-include.html#usinginclude">Using Include</a></li>
+					<li><a href="partials-and-include.html#frontmatterpartials">Using Front Matter With Partials</a></li>
+				</ul>
+			</li>
+			<li><a href="global-data-files.html">Global Data Files</a>
+				<ul>
+					<li><a href="global-data-files.html#globaldatainpage">Using Global Data in a Page</a></li>
+					<li><a href="global-data-files.html#globaldatasubfolder">Global Data in a Subfolder</a></li>
+					<li><a href="global-data-files.html#accessingnormaljsondata">Accessing normal JSON data</a></li>
+				</ul>
+			</li>
+			<li><a href="pagination.html">Pagination</a>
+				<ul>
+					<li><a href="pagination.html#basicpaginationjsonarray">Basic Pagination of JSON Array</a></li>
+					<li><a href="pagination.html#paginationjsonobject">Pagination of JSON object</a></li>
+					<li><a href="pagination.html#customizingpermalinks">Customizing the Permalinks</a></li>
+					<li><a href="pagination.html#pagenavigation">Page Navigation</a></li>
+				</ul>
+			</li>
+			<li><a href="template-languages.html">Eleventy and Template Languages</a>
+				<ul>
+					<li><a href="template-languages.html#fileextensions">File Extensions</a></li>
+					<li><a href="template-languages.html#liquidandnunjucks">Liquid and Nunjucks</a></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+	
+	<section>
+		<h2>Intros to Eleventy and This Guide</h2>
+		<article>
+			<h3 id="introeleventy">Intro to Eleventy</h2>
+			<p>
+				Eleventy is what is known as a Static Site Generator. It can use various files to assemble
+				finished web pages utilizing templates, data, markdown, etc. You then post these pages to your web hosting.
+			</p>
+			<p>Eleventy can use various template languages:
+				<ul>
+				<li>HTML *.html</li>
+				<li>Markdown *.md</li>
+				<li>JavaScript *.11ty.js</li>
+				<li>Liquid *.liquid</li>
+				<li>Nunjucks *.njk</li>
+				<li>Mustache *.mustache</li>
+				<li>EJS *.ejs</li>
+				<li>Haml *.haml</li>
+				<li>Pug *.pug</li>
+				<li>JavaScript Template Literals *.jstl</li>
+				</ul>
+			</p>
+			<p>
+				Eleventy will cycle through all your source files and assemble them into a static web site, automatically creating the structure (and even links) based on how the source files are organized.
+			</p>
+		</article>
+		<article>
+			<h3 id="introguide">Intro to This Guide</h3>
+			<p>
+				This guide is meant to provide some step by step instructions for using Eleventy, and
+				provide additional reference information. It is not meant as a reference, though it might work as one to some extent. It does not build a project, but goes through steps to demonstrate various features. It is not meant to cover all options in all template languages, it is recommended that you <a href="https://www.11ty.io/docs/" target="_blank">refer to the official documentation</a> for more details.
+			</p>
+			<p>
+				This guide is based on Eleventy version 0.9.0. Version 0.10.0 seems to change certain variables that haven't been tested for this guide yet.
+			</p>
+			<p>
+				For this guide we are using Linux, NodeJS, and NPM. It's assumed you have some experience in HTML, CSS, and Javascript (including JSON, NodeJS and NPM). It is not assumed that you are familiar
+				with template languages or other Static Site Generators. What is presented here isn't the only way to use Eleventy; if you want to do things differently, go for it.
+			</p>
+			<p>
+				Beyond this sentence, The words &quot;simple&quot; and &quot;simply&quot; will not be used in this guide.
+			</p>
+		</article>
+	</section>
+	<nav class="nex">
+		<a href="start.html">Start &gt;&gt;</a>
+	</nav>
+
+	<section class="references">
+		<article>
+			<h2>References</h2>
+			<ul>
+
+				<li><a href="https://www.11ty.io/docs/" target="_blank">Eleventy Documentation</a></li>
+
+				<li><a href="https://www.zachleat.com/web/eleventy-tutorial-level-1/" target="_blank">Making a
+				Simple Web Site with the Simplest Static Site Generator, Level 1</a></li>
+
+				<li><a href="https://www.filamentgroup.com/lab/build-a-blog/" target="_blank">Build your own Blog from Scratch using Eleventy</a></li>
+
+				<li><a href="https://keepinguptodate.com/pages/2019/06/creating-blog-with-eleventy/" target="_blank">Creating A Blog With Eleventy</a></li>
+
+				<li><a href="https://learnxinyminutes.com/docs/yaml/" target="_blank">Learn YAML in Y minutes</a></li>
+
+				<li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Basic Syntax</a></li>
+
+				<li><a href="https://shopify.github.io/liquid/basics/introduction/" target="_blank">Liquid Syntax</a></li>
+
+				<li><a href="https://www.w3schools.com/whatis/whatis_json.asp" target="_blank">What is JSON?</a></li>
+
+
+			</ul>
+		</article>
+	</section>
+</body>
+</html>
