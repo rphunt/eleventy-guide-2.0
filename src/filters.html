@@ -1,0 +1,39 @@
+{% set title = 'Filters' %}
+{% extends '_includes/_layout.html' %}
+{% block content %}
+{% raw %}
+	<section>
+		<h2>Filters</h2>
+		<article>
+			<h3 id="introeleventy">Filters in Eleventy</h2>
+				<p>
+					Filters in Eleventy are added to the <span class="path">.eleventy.js</span> config file. They are JavaScript functions that accept content, modify it, then return it to be display in place of the original.
+				</p>
+				<p>
+					Eleventy does lack certain formatting features that cna be found in other templating platforms, date formatting for example. A JavaScript function can be added as a filter to provide that formatting.
+				</p>
+		</article>
+
+		<article>
+			<h3 id="introeleventy">Eleventy Config Object</h2>
+				<p>
+					To make Eleventy content available to the config file, the <span class="var">module.exports</span> must be changed into a function. It can then accept an Eleventy config object, in this manner :
+
+					<pre class="codeexample">
+module.exports = (function(eleventyConfig) {
+
+}
+					</pre>
+				</p>
+
+
+
+
+		</article>
+
+	</section>
+	<nav class="nex">
+		<a href="start.html">Start &gt;&gt;</a>
+	</nav>
+{% endraw %}
+{% endblock %}

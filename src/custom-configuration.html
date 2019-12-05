@@ -108,34 +108,7 @@ module.exports = {
 			</p>
 
 			<p>
-				There are more configuration options available, <a href="https://www.11ty.dev/docs/config/" target="_blank">check out the Eleventy documentation</a> for more details.
-			</p>
-    </article>
-
-
-
-		<article>
-			<h3 id="addingfilters">Adding Filters</h3>
-			<p>
-				There should currently be both <span class="path">*.liquid</span> and  <span class="path">*.njk</span> templates in the <span class="path">eleventy-test</span> project folder. To tell Eleventy to only process <span class="path">*.liquid</span> templates, edit <span class="path">.eleventy.js</span> :
-
-				<pre class="codeexample">
-module.exports = {
-  
-    dir: {
-        output: "dist"
-        input: "src"
-    },
-
-    templateFormats: ["liquid"]
-
-};					
-				</pre>
-				Delete the <span class="path">dist</span> folder, re-run Eleventy, and in the new <span class="path">dist</span> folder there should no longer be a <span class="path">jsontest</span> folder.
-			</p>
-
-			<p>
-				Add &quot;njk&quot; to the <span class="var">templateFormats</span> :
+				This can also be used to insure that non-template files are sent to the target folder. Create a <span class="path">css/main.css</span> folder and file, and create a <span class="path">js/main.js</span> folder and file. Add their extensions into the <span class="var">templateFormats</span> :
 
 				<pre class="codeexample">
 module.exports = {
@@ -145,18 +118,19 @@ module.exports = {
         input: "src"
     },
 
-    templateFormats: ["liquid", "njk"]
+    templateFormats: ["liquid", "njk", "css", "js"]
 
 };					
 				</pre>
-				The <span class="path">jsontest</span> folder should re-appear inside <span class="path">dist</span>.
+				Those folders should now appear in <span class="path">dist</span>. Note that this is due to the file extensions, not the folder names. If the folder was empty, it would not end up in <span class="path">dist</span>.
+
+
 			</p>
 
 			<p>
 				There are more configuration options available, <a href="https://www.11ty.dev/docs/config/" target="_blank">check out the Eleventy documentation</a> for more details.
 			</p>
-    </article>
-
+    	</article>
 	</section>
 	<nav class="nex">
 		<a href="filters.html">Filters &gt;&gt;</a>
