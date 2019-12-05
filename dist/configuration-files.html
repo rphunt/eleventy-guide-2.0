@@ -63,7 +63,8 @@
 			<li><a href="configuration-files.html">Configuration Files</a>
 				<ul>
 					<li><a href="configuration-files.html#targetpath">Target Path</a></li>
-					<li><a href="configuration-files.html#sourcepath">Sopurce Path</a></li>
+					<li><a href="configuration-files.html#sourcepath">Source Path</a></li>
+					<li><a href="configuration-files.html#globaldatapath">Global Data Path</a></li>
 					<li><a href="configuration-files.html#templateformats">Template Formats</a></li>
 				</ul>
 			</li>
@@ -97,6 +98,24 @@ module.exports = {
     dir: {
         output: "dist",
         input: "src"
+    }
+};
+				</pre>
+
+				Move the <span class="path">*.liquid</span>, <span class="path">*.njk</span>, and <span class="path">*.md</span> files, and <span class="path">posts</span>, <span class="path">_includes</span> and <span class="path">_data</span> folders all into <span class="path">src</span>. Delete the target folder, re-run Eleventy, and <span class="path">dist</span> should re-appear with the same structure as before.
+			</p>
+		</article>
+
+		<article>
+			<h3 id="globaldatapath">Global Data Path</h3>
+			<p>
+       			To change the older for global data file to <span class="path">jsondata</span>,  edit <span class="path">.eleventy.js</span> :
+				<pre class="codeexample">
+module.exports = {
+    dir: {
+        output: "dist",
+        input: "src",
+        data: "jsondata"
     }
 };
 				</pre>

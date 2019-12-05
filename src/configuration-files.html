@@ -37,6 +37,24 @@ module.exports = {
 		</article>
 
 		<article>
+			<h3 id="globaldatapath">Global Data Path</h3>
+			<p>
+       			To change the older for global data file to <span class="path">jsondata</span>,  edit <span class="path">.eleventy.js</span> :
+				<pre class="codeexample">
+module.exports = {
+    dir: {
+        output: "dist",
+        input: "src",
+        data: "jsondata"
+    }
+};
+				</pre>
+
+				Move the <span class="path">*.liquid</span>, <span class="path">*.njk</span>, and <span class="path">*.md</span> files, and <span class="path">posts</span>, <span class="path">_includes</span> and <span class="path">_data</span> folders all into <span class="path">src</span>. Delete the target folder, re-run Eleventy, and <span class="path">dist</span> should re-appear with the same structure as before.
+			</p>
+		</article>
+
+		<article>
 			<h3 id="templateformats">Template Formats</h3>
 			<p>
 				There should currently be both <span class="path">*.liquid</span> and  <span class="path">*.njk</span> templates in the <span class="path">eleventy-test</span> project folder. To tell Eleventy to only process <span class="path">*.liquid</span> templates, edit <span class="path">.eleventy.js</span> :
