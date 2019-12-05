@@ -5,8 +5,9 @@
 	<section>
 		<h2>Configuration Files</h2>
 		<article>
-      <p>
-        Eleventy can be customized to match the way you prefer to work. For example, you can change the target folder from <span class="path">_site</span> to <span class="path">dist</span>. Configuration is done by editing an <span class="path">.eleventy.js</span> file (note the dot at the beginning) :
+			<h3 id="targetpath">Target Path</h3>
+			<p>
+       			Eleventy can be customized to match the way you prefer to work. For example, you can change the target folder from <span class="path">_site</span> to <span class="path">dist</span>. Configuration is done by creating the <span class="path">.eleventy.js</span> file (note the dot at the beginning) :
 				<pre class="codeexample">
 module.exports = {
     dir: {
@@ -14,16 +15,50 @@ module.exports = {
     }
 };
 				</pre>
-      </p>
-			<h3 id="introeleventy">Intro to Eleventy</h2>
-			<p>
-				Eleventy is what is known as a Static Site Generator. It can use various files to assemble
-				finished web pages utilizing templates, data, markdown, etc. You then post these pages to your web hosting.
 			</p>
+		</article>
+		<article>
+			<h3 id="templateformats">Template Formats</h3>
+			<p>
+				There should currently be both <span class="path">*.liquid</span> and  <span class="path">*.njk</span> templates in the <span class="path">eleventy-test</span> project folder. To tell Eleventy to only process <span class="path">*.liquid</span> templates, edit <span class="path">.eleventy.js</span> :
+
+				<pre class="codeexample">
+module.exports = {
+  
+  dir: {
+    output: "dist"
+  },
+
+  templateFormats: ["liquid"]
+
+};					
+				</pre>
+				Delete the target folder, re-run Eleventy, and in the <span class="path">dist</span> folder, there should no longer be a <span class="path">jsontest</span> folder.
+			</p>
+			<p>
+				Add &quot;njk&quot; to the <span class="var">templateFormats</span> :
+
+				<pre class="codeexample">
+module.exports = {
+  
+  dir: {
+    output: "dist"
+  },
+
+  templateFormats: ["liquid", "njk"]
+
+};					
+				</pre>
+				The <span class="path">dist/jsontest</span> folder should now be seen again.
+			</p>
+
+
+
+
     </article>
 	</section>
 	<nav class="nex">
-		<a href="configuration-files.html">Configuration Files &gt;&gt;</a>
+		<a href="aaa.html">aaa &gt;&gt;</a>
 	</nav>
 {% endraw %}
 {% endblock %}
