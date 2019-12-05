@@ -60,7 +60,7 @@
 					<li><a href="template-languages.html#liquidandnunjucks">Liquid and Nunjucks</a></li>
 				</ul>
 			</li>
-			<li><a href="configuration-files.html">Configuration Files</a>
+			<li><a href="custom-configuration.html">Custom Configuration</a>
 				<ul>
 					<li><a href="configuration-files.html#targetpath">Target Path</a></li>
 					<li><a href="configuration-files.html#sourcepath">Source Path</a></li>
@@ -74,7 +74,7 @@
 	
 
 	<section>
-		<h2>Configuration Files</h2>
+		<h2>Custom Configuration</h2>
 		<article>
 			<h3 id="targetpath">Target Path</h3>
 			<p>
@@ -183,9 +183,54 @@ module.exports = {
 			</p>
     </article>
 
+
+
+		<article>
+			<h3 id="addingfilters">Adding Filters</h3>
+			<p>
+				There should currently be both <span class="path">*.liquid</span> and  <span class="path">*.njk</span> templates in the <span class="path">eleventy-test</span> project folder. To tell Eleventy to only process <span class="path">*.liquid</span> templates, edit <span class="path">.eleventy.js</span> :
+
+				<pre class="codeexample">
+module.exports = {
+  
+    dir: {
+        output: "dist"
+        input: "src"
+    },
+
+    templateFormats: ["liquid"]
+
+};					
+				</pre>
+				Delete the <span class="path">dist</span> folder, re-run Eleventy, and in the new <span class="path">dist</span> folder there should no longer be a <span class="path">jsontest</span> folder.
+			</p>
+
+			<p>
+				Add &quot;njk&quot; to the <span class="var">templateFormats</span> :
+
+				<pre class="codeexample">
+module.exports = {
+  
+    dir: {
+        output: "dist",
+        input: "src"
+    },
+
+    templateFormats: ["liquid", "njk"]
+
+};					
+				</pre>
+				The <span class="path">jsontest</span> folder should re-appear inside <span class="path">dist</span>.
+			</p>
+
+			<p>
+				There are more configuration options available, <a href="https://www.11ty.dev/docs/config/" target="_blank">check out the Eleventy documentation</a> for more details.
+			</p>
+    </article>
+
 	</section>
 	<nav class="nex">
-		<a href="aaa.html">aaa &gt;&gt;</a>
+		<a href="filters.html">Filters &gt;&gt;</a>
 	</nav>
 
 
