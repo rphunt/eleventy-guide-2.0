@@ -8,36 +8,3 @@ filters
 date formatting
 config file
 data contained in collections
-
-
-{{
-
-/{{/
-
-}}
-
-/}}/
-
-{%
-
-/{%/
-
-%}
-
-/%}/
-
-
-{% raw %}{{
-
-}}{% endraw %}
-
-{% raw %}{%
-
-%}{% endraw %}
-
-
-{% set title = 'Intro' %}
-{% extends '_layout.html' %}}
-{% block content %}
-
-{% endblock %}

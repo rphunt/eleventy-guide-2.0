@@ -1,0 +1,29 @@
+{% set title = 'Configuration Files' %}
+{% extends '_includes/_layout.html' %}
+{% block content %}
+{% raw %}
+	<section>
+		<h2>Configuration Files</h2>
+		<article>
+      <p>
+        Eleventy can be customized to match the way you prefer to work. For example, you can change the target folder from <span class="path">_site</span> to <span class="path">dist</span>. Configuration is done by editing an <span class="path">.eleventy.js</span> file (note the dot at the beginning) :
+				<pre class="codeexample">
+module.exports = {
+    dir: {
+        output: "dist"
+    }
+};
+				</pre>
+      </p>
+			<h3 id="introeleventy">Intro to Eleventy</h2>
+			<p>
+				Eleventy is what is known as a Static Site Generator. It can use various files to assemble
+				finished web pages utilizing templates, data, markdown, etc. You then post these pages to your web hosting.
+			</p>
+    </article>
+	</section>
+	<nav class="nex">
+		<a href="configuration-files.html">Configuration Files &gt;&gt;</a>
+	</nav>
+{% endraw %}
+{% endblock %}
