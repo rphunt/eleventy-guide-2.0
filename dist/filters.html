@@ -94,7 +94,7 @@
 		<article>
 			<h3 id="introeleventy">Eleventy Config Object</h2>
 				<p>
-					To make Eleventy content available to the config file, the <span class="var">module.exports</span> must be changed into a function. It can then accept an Eleventy config object, in this manner :
+					To make Eleventy content available to the config file, the <span class="var">module.exports</span> must be changed into a function. It can then accept the Eleventy config object, in this manner :
 
 					<pre class="codeexample">
 module.exports = (function(eleventyConfig) {
@@ -126,7 +126,10 @@ module.exports = (function(eleventyConfig) {
 		<article>
 			<h3 id="createfilter">Create a Filter</h3>
 			<p>
-				There is an Eleventy method <span class="var">addFilter</span> you can use. Edit the config file to create a filter named <span class="var">decorate</span>. This will add asterixes to the start and end of the filtered content :
+				There is an Eleventy method <span class="var">addFilter</span> you can use. <span class="var">addFilter</span> is a <em>universal filter</em> and will work with <em>Liquid, Nunjucks, JavaScript,</em> and <em>Handlebars</em>. Eleventy also has specific methods for each of those languages.
+			</p>
+			<p>
+				Edit the config file to create a filter named <span class="var">decorate</span>. This will add asterixes to the start and end of the filtered content :
 
 					<pre class="codeexample">
 module.exports = (function(eleventyConfig) {
@@ -190,7 +193,13 @@ birds:
 
 				Any number of filters can be added to the config file.
 			</p>
+
+
 		</article>
+
+			<p>
+				There is more information on filters, <a href="https://www.11ty.dev/docs/filters/" target="_blank">check out the Eleventy documentation</a> for more details.
+			</p>
 
 	</section>
 	<nav class="nex">

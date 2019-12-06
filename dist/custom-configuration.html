@@ -149,7 +149,7 @@ module.exports = {
 		<article>
 			<h3 id="templateformats">Template Formats</h3>
 			<p>
-				There should currently be both <span class="path">*.liquid</span> and  <span class="path">*.njk</span> templates in the <span class="path">eleventy-test</span> project folder. To tell Eleventy to only process <span class="path">*.liquid</span> templates, edit <span class="path">.eleventy.js</span> :
+				There should currently be <span class="path">*.liquid</span>, <span class="path">*.md</span>, and  <span class="path">*.njk</span> files in the <span class="path">eleventy-test</span> project folder. To tell Eleventy to only process <span class="path">*.liquid</span> and <span class="path">*.md</span> files, edit <span class="path">.eleventy.js</span> :
 
 				<pre class="codeexample">
 module.exports = {
@@ -159,7 +159,7 @@ module.exports = {
         input: "src"
     },
 
-    templateFormats: ["liquid"]
+    templateFormats: ["liquid", "md"]
 
 };					
 				</pre>

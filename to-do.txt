@@ -4,7 +4,7 @@ mention YAML **
 includes **
 --serve **
 template languages liquid, nunjucks, ejs. **
-filters
+filters **
+config file **
 date formatting
-config file
 data contained in collections
