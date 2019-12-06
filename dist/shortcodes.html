@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Eleventy Walk Through - Intro</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<h1><a href=".">Eleventy Walk Through</a></h1>
+
+	<section class="tableofcontents">
+		<ul>
+			<li><a href="intro.html">Intros to Eleventy and This Guide</a>
+				<ul>
+					<li><a href="intro.html#introeleventy">Intro to Eleventy</a></li>
+					<li><a href="intro.html#introguide">Intro to This Guide</a></li>
+				</ul>
+			</li>
+ 			<li><a href="start.html">Start</a></li>
+			<li><a href="local-server.html">Local Server</a>
+			</li>
+			<li><a href="basic-data-and-templating-using-liquid.html">Basic Data and Templating Using Liquid</a>
+				<ul>
+					<li><a href="basic-data-and-templating-using-liquid.html#whitespace">Whitespace (Line Breaks)</a></li>
+				</ul>
+			</li>
+			<li><a href="templates-and-external-markdown-files.html">Templates and External Markdown Files</a>
+				<ul>
+					<li><a href="templates-and-external-markdown-files.html#layouts">Layouts</a></li>
+					<li><a href="templates-and-external-markdown-files.html#folderstructure">Folder Structure</a></li>
+					<li><a href="templates-and-external-markdown-files.html#layoutsmarkdownfrontmatter">Layouts and Markdown With Front Matter</a></li>
+					<li><a href="templates-and-external-markdown-files.html#collections">Collections</a></li>
+					<li><a href="templates-and-external-markdown-files.html#eleventydates">Eleventy and Date Values</a></li>
+				</ul>
+			</li>
+			<li><a href="partials-and-include.html">Partials and Include</a>
+				<ul>
+					<li><a href="partials-and-include.html#usinginclude">Using Include</a></li>
+					<li><a href="partials-and-include.html#frontmatterpartials">Using Front Matter With Partials</a></li>
+				</ul>
+			</li>
+			<li><a href="global-data-files.html">Global Data Files</a>
+				<ul>
+					<li><a href="global-data-files.html#globaldatainpage">Using Global Data in a Page</a></li>
+					<li><a href="global-data-files.html#globaldatasubfolder">Global Data in a Subfolder</a></li>
+					<li><a href="global-data-files.html#accessingnormaljsondata">Accessing normal JSON data</a></li>
+				</ul>
+			</li>
+			<li><a href="pagination.html">Pagination</a>
+				<ul>
+					<li><a href="pagination.html#basicpaginationjsonarray">Basic Pagination of JSON Array</a></li>
+					<li><a href="pagination.html#paginationjsonobject">Pagination of JSON object</a></li>
+					<li><a href="pagination.html#customizingpermalinks">Customizing the Permalinks</a></li>
+					<li><a href="pagination.html#pagenavigation">Page Navigation</a></li>
+				</ul>
+			</li>
+			<li><a href="template-languages.html">Eleventy and Template Languages</a>
+				<ul>
+					<li><a href="template-languages.html#fileextensions">File Extensions</a></li>
+					<li><a href="template-languages.html#liquidandnunjucks">Liquid and Nunjucks</a></li>
+				</ul>
+			</li>
+			<li><a href="custom-configuration.html">Custom Configuration</a>
+				<ul>
+					<li><a href="custom-configuration.html#targetpath">Target Path</a></li>
+					<li><a href="custom-configuration.html#sourcepath">Source Path</a></li>
+					<li><a href="custom-configuration.html#globaldatapath">Global Data Path</a></li>
+					<li><a href="custom-configuration.html#includespath">Includes Path</a></li>
+					<li><a href="custom-configuration.html#templateformats">Template Formats</a></li>
+				</ul>
+			</li>
+			<li><a href="filters.html">Filters</a>
+				<ul>
+					<li><a href="filters.html#filterseleventy">Filters in Eleventy</a></li>
+					<li><a href="filters.html#configobject">Eleventy Config Object</a></li>
+					<li><a href="filters.html#createfilter">Create a Filter</a></li>
+					<li><a href="filters.html#formatdate">Format A Date</a></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+	
+
+	<section>
+		<h2>Shortcodes</h2>
+		<article>
+			<h3 id="introeleventy">Intro to Eleventy</h2>
+			<p>
+				Shortcodes have some similarities to filters, but can provide some extra flexibility. FiltersAllow piping a variable into a function, which then returns a modified form of that variable. <e>Shortcodes</e> are called with mutliple parameters in a very function-like manner. The idea then being that the variables are used to assemble content to be returned. A type of automated layout. There are also <em>Paired Shortcodes</em> with include and end tag. Between the beginning and end tags there can be content which the shortcode can also process.
+			</p>
+		</article>
+	</section>
+	<nav class="nex">
+		<a href="start.html">Start &gt;&gt;</a>
+	</nav>
+
+
+	<section class="references">
+		<article>
+			<h2>References</h2>
+			<ul>
+
+				<li><a href="https://www.11ty.io/docs/" target="_blank">Eleventy Documentation</a></li>
+
+				<li><a href="https://www.zachleat.com/web/eleventy-tutorial-level-1/" target="_blank">Making a
+				Simple Web Site with the Simplest Static Site Generator, Level 1</a></li>
+
+				<li><a href="https://www.filamentgroup.com/lab/build-a-blog/" target="_blank">Build your own Blog from Scratch using Eleventy</a></li>
+
+				<li><a href="https://keepinguptodate.com/pages/2019/06/creating-blog-with-eleventy/" target="_blank">Creating A Blog With Eleventy</a></li>
+
+				<li><a href="https://learnxinyminutes.com/docs/yaml/" target="_blank">Learn YAML in Y minutes</a></li>
+
+				<li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Basic Syntax</a></li>
+
+				<li><a href="https://shopify.github.io/liquid/basics/introduction/" target="_blank">Liquid Syntax</a></li>
+
+				<li><a href="https://www.w3schools.com/whatis/whatis_json.asp" target="_blank">What is JSON?</a></li>
+
+
+			</ul>
+		</article>
+	</section>
+</body>
+</html>
