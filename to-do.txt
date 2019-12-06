@@ -8,3 +8,26 @@ filters **
 config file **
 date formatting
 data contained in collections
+
+
+========
+https://momentjs.com/docs/
+
+npm i -D moment
+
+var moment = require('moment');
+moment().format();
+
+
+		// var dateTmp = new Date(dateIn);
+		// var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+		// var yearOut = dateTmp.getFullYear().toString();
+		// var monthOut = months[dateTmp.getMonth()];
+		// var dayOut = ((dateTmp.getDate() < 10) ? '0' : '') + dateTmp.getDate();
+		// var hourOut = ((dateTmp.getHours() < 10) ? '0' : '') + dateTmp.getHours();
+		// var minOut = ((dateTmp.getMinutes() < 10) ? '0' : '') + dateTmp.getMinutes();
+
+
+		// var dateOut = monthOut + ' ' +  dayOut + ', ' + yearOut + ' - ' + hourOut + ':' + minOut;
+		// return dateOut;
