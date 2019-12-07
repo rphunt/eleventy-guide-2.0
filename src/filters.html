@@ -121,16 +121,16 @@ birds:
 		<article>
 			<h3 id="formatdate">Format a Date</h3>
 			<p>
-				Using Eleventy in the NPM ecosystem makes NodeJS modules available for use. There is a module called <em>Moment</em> which is very popular for formatting Dates. Install MomentJS:
+				Using Eleventy in the NPM ecosystem makes NodeJS modules available for use. There is a module called <em>Moment</em> which is very popular for formatting dates. However, because Eleventy renders dates to the local timezone, adjusting back to UTC might be desired. For that, <em>Moment-Timezone</em> can be used. First, install moment-timezone :
 
 					<pre class="codeexample">
-npm i -D moment
+npm i -D moment-timezone
 					</pre>
 
-				Edit <span class="path">.eleventy,js</span> to require <em>Moment</em> and add a filter <span class="var">dateformat</span> : 
+				Edit <span class="path">.eleventy,js</span> to require <em>moment-timezone</em> and add a filter <span class="var">dateformat</span> : 
 
 					<pre class="codeexample">
-var moment = require('moment');
+var moment = require('moment-timezone');
 
 module.exports = (function(eleventyConfig) {
 
@@ -139,7 +139,7 @@ module.exports = (function(eleventyConfig) {
     });
 
     eleventyConfig.addFilter("dateformat", function(dateIn) {
-        return moment(dateIn).format('YYYY MMMM DD, dddd, HH:MM:SS');
+        return moment(dateIn).tz('GMT').format('YYYY MMMM DD, dddd, HH:MM:SS z');
     });
 
 
@@ -158,7 +158,7 @@ module.exports = (function(eleventyConfig) {
 });
 					</pre>
 
-					More information on using Moment can be found <a href="https://momentjs.com/" target="_blank">in the MomentJS official documentation</a>.
+					More information on using Moment-Timezone can be found <a href="https://momentjs.com/timezone/docs/" target="_blank">in the Moment-Timezone official documentation</a>.
 			</p>
 
 			<p>
