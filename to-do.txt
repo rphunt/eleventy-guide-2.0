@@ -7,9 +7,9 @@ template languages liquid, nunjucks, ejs. **
 filters **
 config file **
 date formatting **
+shortcodes **
 data contained in collections and objects
-shortcodes
-
+moment timezone
 
 
 
