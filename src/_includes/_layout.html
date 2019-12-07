@@ -6,9 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-	<h1><a href=".">Eleventy Walk Through</a></h1>
+<div class="main">
 
 	<section class="tableofcontents">
+		<h1><a href=".">Eleventy Walk Through</a></h1>
 		<ul>
 			<li><a href="intro.html">Intros to Eleventy and This Guide</a>
 				<ul>
@@ -85,34 +86,37 @@
 				</ul>
 			</li>
 		</ul>
-	</section>
-	{% block content %}
-	{% endblock %}
-	<section class="references">
-		<article>
-			<h2>References</h2>
-			<ul>
+	</section><!-- .toc end -->
+	<section class="content">
+		{% block content %}
+		{% endblock %}
+		<section class="references">
+			<article>
+				<h2>References</h2>
+				<ul>
 
-				<li><a href="https://www.11ty.io/docs/" target="_blank">Eleventy Documentation</a></li>
+					<li><a href="https://www.11ty.io/docs/" target="_blank">Eleventy Documentation</a></li>
 
-				<li><a href="https://www.zachleat.com/web/eleventy-tutorial-level-1/" target="_blank">Making a
-				Simple Web Site with the Simplest Static Site Generator, Level 1</a></li>
+					<li><a href="https://www.zachleat.com/web/eleventy-tutorial-level-1/" target="_blank">Making a
+					Simple Web Site with the Simplest Static Site Generator, Level 1</a></li>
 
-				<li><a href="https://www.filamentgroup.com/lab/build-a-blog/" target="_blank">Build your own Blog from Scratch using Eleventy</a></li>
+					<li><a href="https://www.filamentgroup.com/lab/build-a-blog/" target="_blank">Build your own Blog from Scratch using Eleventy</a></li>
 
-				<li><a href="https://keepinguptodate.com/pages/2019/06/creating-blog-with-eleventy/" target="_blank">Creating A Blog With Eleventy</a></li>
+					<li><a href="https://keepinguptodate.com/pages/2019/06/creating-blog-with-eleventy/" target="_blank">Creating A Blog With Eleventy</a></li>
 
-				<li><a href="https://learnxinyminutes.com/docs/yaml/" target="_blank">Learn YAML in Y minutes</a></li>
+					<li><a href="https://learnxinyminutes.com/docs/yaml/" target="_blank">Learn YAML in Y minutes</a></li>
 
-				<li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Basic Syntax</a></li>
+					<li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Basic Syntax</a></li>
 
-				<li><a href="https://shopify.github.io/liquid/basics/introduction/" target="_blank">Liquid Syntax</a></li>
+					<li><a href="https://shopify.github.io/liquid/basics/introduction/" target="_blank">Liquid Syntax</a></li>
 
-				<li><a href="https://www.w3schools.com/whatis/whatis_json.asp" target="_blank">What is JSON?</a></li>
+					<li><a href="https://www.w3schools.com/whatis/whatis_json.asp" target="_blank">What is JSON?</a></li>
 
 
-			</ul>
-		</article>
-	</section>
+				</ul>
+			</article>
+		</section>
+	</section><!-- .content end -->
+</div><!-- .main end -->
 </body>
 </html>

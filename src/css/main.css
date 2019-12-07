@@ -1,3 +1,12 @@
+:root {
+	--clrlink: #0060a0;
+	--clrh2: #cceeff;
+	--clrh3: ;
+	--clrh3bg: #dfdfdf;
+	--clrcode: #333333;
+	--clrcodebg: #dddddd;
+}
+
 @font-face {
   font-family: 'Roboto';
   src: url('fonts/Roboto-Regular.ttf') format('truetype'),
@@ -16,7 +25,6 @@
 }
 
 body {
-	margin: 4em;
 }
 
 article, p, h1, h2, h3, h4, ul, ol {
@@ -28,7 +36,7 @@ li {
 }
 
 a {
-	color: #0090c0;
+	color: var(--clrlink);
 }
 
 a:hover {
@@ -37,11 +45,10 @@ a:hover {
 
 h1, h2, h3, h4 {
 	font-weight: normal;
-	margin: 2em 0 1em 0;
 }
 
 h1 {
-	color: #0090c0;
+	color: var(--clrlink);
 }
 
 h1 a {
@@ -50,16 +57,32 @@ h1 a {
 
 h2 {
 	padding: .3em;
-	background-color: #cceeff;
+	background-color: var(--clrh2);
 }
 
 h3 {
 	padding: .3em;
-	background-color: #dfdfdf;
+	background-color: var(--clrh3bg);
 }
 
 code, pre {
 	 font-family: monospace;
+}
+
+.main {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+}
+
+.content {
+	padding: 1em;
+}
+
+.tableofcontents {
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	padding: 1em;
 }
 
 .tableofcontents ul {
@@ -69,8 +92,8 @@ code, pre {
 .codeexample {
 	display: block;
 	padding: 1em 1em 0 1em;
-	color: #ffffff;
-	background: #3c3933;
+	color: var(--clrcode);
+	background: var(--clrcodebg);
 	margin: 1em 0;
 	font-size: 1.3em;
 	border-radius: 5px;
