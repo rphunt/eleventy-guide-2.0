@@ -428,6 +428,38 @@ Even more news today.
 				</p>
 
 		</article>
+
+		<article>
+			<h3 id="linkingcollectionitem">Linking to a Collection Item</h3>
+			<p>
+				To turn the list items in <span class="path">postlist/index.html</span> into links, edit <span class="path">postlist.html</span> to add <span class="var">{{ post.url }}</span> with a link :
+
+				<pre class="codeexample">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Blog Posts&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul&gt;
+        {% for post in collections.post -%}
+        &lt;li&gt;&lt;a href="{{ post.url }}" &gt;{{ post.data.title }}, {{ post.data.date }}&lt;/a&gt;&lt;/li&gt;
+        {% endfor -%}
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+				</pre>
+
+				The resulting list items should all now look similar to this :
+
+				<pre class="codeexample">
+&lt;li>&gt;&lt;a href="/posts/post-01/" &gt;Blog Post 01, Mon Dec 31 2018 19:00:00 GMT-0500 (Eastern Standard Time)&lt;/li&gt;&lt;/a&gt;
+				</pre>
+
+
+			</p>
+		</article>
+
 		<article>
 			<h3 id="eleventydates">Eleventy and Date Values</h3>
 				<p>
