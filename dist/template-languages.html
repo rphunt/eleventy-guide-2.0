@@ -100,7 +100,7 @@
 				Eleventy can process around ten different template languages (<a href="http://localhost/eleventy/guide/intro.html#introeleventy">See Intro for the list</a>). Eleventy defaults to Liquid for pages with an HTML extension. Eleventy relies on the file extension to know what language is to be used, so to tell it to use Nunjucks, use the extension <span class="path">*.njk</span>. This can also affect certain defaults, so it's useful just to indicate what language is intended, so even when using Liquid, the extension <span class="path">*.liquid</span> is a good idea.
 			</p>
 			<p>
-				Different languages have different features and syntax. Nunjucks, for example, can use JavaScript in front matter and data, while Liquid can't. The pages created so far have defaulted to Liquid, but to continue from here, they will converted to Nunjucks.
+				Different languages have different features and syntax. Nunjucks, for example, can use JavaScript in front matter and data, while Liquid can't. The pages created so far have defaulted to Liquid because their extension was *.html, but to continue from here, they will be converted to Nunjucks.
 			</p>
 
 			<p>
@@ -132,9 +132,12 @@ posts/post-02.md (change the extensions in the front matter to &quot;.njk&quot;)
 posts/post-03.md (change the extensions in the front matter to &quot;.njk&quot;)
 
 _includes/layout.njk (change the extensions in the front matter to &quot;.njk&quot;)
+
+fishpages.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.pageNumber + 1 }})"
+
 				</pre>
 
-				Confirm everything processed correctly. Basically, everything in <span class="path">_site</span> should look the same as before. Note how, even though the templates are now <span class="path">*.liquid</span>, the output files are still <span class="path">*.html</span>.
+				Confirm everything processed correctly. Basically, everything in <span class="path">_site</span> should look the same as before. Note how, even though the templates are now <span class="path">*.njk</span>, the output files are still <span class="path">*.html</span>.
 
 			</p>
 		</article>
@@ -148,7 +151,7 @@ _includes/layout.njk (change the extensions in the front matter to &quot;.njk&qu
 ---js
 {
     title: "JS test page",
-    body: "body text from JSON",
+    body: "body text from JS",
     arctics : function() {
         var arctics = ["walrus", "penguin", "puffin", "polar bear"];
         return arctics.sort();
@@ -175,11 +178,11 @@ _includes/layout.njk (change the extensions in the front matter to &quot;.njk&qu
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;JSON test page&lt;/title&gt;
+    &lt;title&gt;JS test page&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;h1&gt;JSON test page&lt;/h1&gt;
-    body text from JSON
+    &lt;h1&gt;JS test page&lt;/h1&gt;
+    body text from JS
     1. penguin
     2. polar bear
     3. puffin

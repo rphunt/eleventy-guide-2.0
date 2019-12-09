@@ -32,7 +32,7 @@ module.exports = {
 };
 				</pre>
 
-				Move the <span class="path">*.liquid</span>, <span class="path">*.njk</span>, and <span class="path">*.md</span> files, and <span class="path">posts</span>, <span class="path">_includes</span> and <span class="path">_data</span> folders all into <span class="path">src</span>. Delete the target folder, re-run Eleventy, and <span class="path">dist</span> should re-appear with the same structure as before.
+				Move the <span class="path">*.njk</span> and <span class="path">*.md</span> files, and <span class="path">posts</span>, <span class="path">_includes</span> and <span class="path">_data</span> folders all into <span class="path">src</span>. Delete the target folder, re-run Eleventy, and <span class="path">dist</span> should re-appear with the same structure as before.
 			</p>
 		</article>
 
@@ -72,7 +72,7 @@ module.exports = {
 		<article>
 			<h3 id="templateformats">Template Formats</h3>
 			<p>
-				There should currently be <span class="path">*.liquid</span>, <span class="path">*.md</span>, and  <span class="path">*.njk</span> files in the <span class="path">eleventy-test</span> project folder. To tell Eleventy to only process <span class="path">*.liquid</span> and <span class="path">*.md</span> files, edit <span class="path">.eleventy.js</span> :
+				There should currently be <span class="path">*.md</span> and  <span class="path">*.njk</span> files in the <span class="path">eleventy-test</span> project folder. To tell Eleventy to only process <span class="path">*.njk</span> and <span class="path">*.md</span> files, edit <span class="path">.eleventy.js</span> :
 
 				<pre class="codeexample">
 module.exports = {
@@ -82,29 +82,11 @@ module.exports = {
         input: "src"
     },
 
-    templateFormats: ["liquid", "md"]
+    templateFormats: ["njk", "md"]
 
 };					
 				</pre>
-				Delete the <span class="path">dist</span> folder, re-run Eleventy, and in the new <span class="path">dist</span> folder there should no longer be a <span class="path">jsontest</span> folder.
-			</p>
 
-			<p>
-				Add &quot;njk&quot; to the <span class="var">templateFormats</span> :
-
-				<pre class="codeexample">
-module.exports = {
-  
-    dir: {
-        output: "dist",
-        input: "src"
-    },
-
-    templateFormats: ["liquid", "njk"]
-
-};					
-				</pre>
-				The <span class="path">jsontest</span> folder should re-appear inside <span class="path">dist</span>.
 			</p>
 
 			<p>
@@ -118,7 +100,7 @@ module.exports = {
         input: "src"
     },
 
-    templateFormats: ["liquid", "njk", "css", "js"]
+    templateFormats: ["njk", "css", "js"]
 
 };					
 				</pre>
