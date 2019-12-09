@@ -38,7 +38,7 @@ module.exports = (function(eleventyConfig) {
             includes: "partials_layouts"
         },
 
-        templateFormats: ["liquid", "njk", "css", "js"]
+        templateFormats: ["njk", "css", "js"]
     }; 
 
 });
@@ -77,7 +77,7 @@ module.exports = (function(eleventyConfig) {
 					</pre>
 			</p>
 			<p>
-				Edit the <span class="path">src/index.html</span> file to use the filter (using a pipe <span class="tag">&lt;li&gt;{{ bird | decorate }}&lt;/li&gt;</span>) :
+				Edit the <span class="path">src/index.njk</span> file to use the filter (using a pipe <span class="tag">&lt;li&gt;{{ bird | decorate }}&lt;/li&gt;</span>) :
 
 				<pre class="codeexample">
 ---
@@ -162,7 +162,7 @@ module.exports = (function(eleventyConfig) {
 			</p>
 
 			<p>
-				Edit <span class="path">src/postlist.html</span> so that it includes <span class="tag">{{ post.data.date | dateformat }}</span> :
+				Edit <span class="path">src/postlist.njk</span> so that it includes <span class="tag">{{ post.data.date | dateformat }}</span> :
 
 				<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
@@ -201,7 +201,7 @@ module.exports = (function(eleventyConfig) {
 
 	</section>
 	<nav class="next">
-		<a href="start.html">Start &gt;&gt;</a>
+		<a href="shortcodes.html">Shortcodes &gt;&gt;</a>
 	</nav>
 {% endraw %}
 {% endblock %}
