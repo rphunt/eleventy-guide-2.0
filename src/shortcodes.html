@@ -13,7 +13,7 @@
 		<article>
 			<h3 id="shortcode">Shortcode</h3>
 			<p>
-				Edit <span class="path">src/index.html</span> to add some new front matter and a tag for a shortcode called <span class="tag">shorttest</span>. As can be seen, there is no pipe, and there are two variables being supplied :
+				Edit <span class="path">src/index.njk</span> to add some new front matter and a tag for a shortcode called <span class="tag">shorttest</span>. As can be seen, there is no pipe, and there are two variables being supplied :
 
 				<pre class="codeexample">
 ---
@@ -26,7 +26,7 @@ flowers:
   - finch
   - sparrow
 ---
-{% include _head.html %}
+{% include "_head.njk" %}
     &lt;h1&gt;{{ title }}&lt;/h1&gt;
     &lt;h2&gt;{% shorttest subtitle, greeting %}&lt;/h2&gt;
     &lt;ul&gt;
@@ -34,7 +34,7 @@ flowers:
         &lt;li&gt;{{ flower }}&lt;/li&gt;
         {% endfor -%}
     &lt;/ul&gt;
-{% include _foot.html %}
+{% include "_foot.njk %}
 			</pre class="codeexample">
 
 			</p>
@@ -61,7 +61,7 @@ eleventyConfig.addShortcode("shorttest", function(subtitle, greeting){
 		<article>
 			<h3 id="pairedshortcode">Paired Shortcode</h3>
 			<p>
-				Edit <span class="path">src/index.html</span> again to add a tag for a paired shortcode called <span class="tag">pairedtest</span>. Note both the <span class="tag">{% pairedtest %}</span> and the <span class="tag">{% endpairedtest %}</span> tags, and note there is text between them :
+				Edit <span class="path">src/index.njk</span> again to add a tag for a paired shortcode called <span class="tag">pairedtest</span>. Note both the <span class="tag">{% pairedtest %}</span> and the <span class="tag">{% endpairedtest %}</span> tags, and note there is text between them :
 
 				<pre class="codeexample">
 ---
@@ -74,7 +74,7 @@ flowers:
   - finch
   - sparrow
 ---
-{% include _head.html %}
+{% include "_head.njk" %}
     &lt;h1&gt;{{ title }}&lt;/h1&gt;
     &lt;h2&gt;{% shorttest subtitle, greeting %}&lt;/h2&gt;
     {% pairedtest subtitle, greeting %}Paired Shortcode Content{% endpairedtest %}
@@ -83,7 +83,7 @@ flowers:
         &lt;li&gt;{{ flower }}&lt;/li&gt;
         {% endfor -%}
     &lt;/ul&gt;
-{% include _foot.html %}
+{% include "_foot.njk" %}
 			</pre class="codeexample">
 
 			</p>
