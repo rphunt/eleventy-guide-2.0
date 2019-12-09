@@ -8,37 +8,41 @@
 			<h3 id="fileextensions">File Extensions</h3>
 
 			<p>
-				Eleventy can process around ten different template languages (<a href="http://localhost/eleventy/guide/intro.html#introeleventy">See Intro for the list</a>). Eleventy defaults to Liquid for pages with an HTML extension. Eleventy relies on the file extension to know what language is to be used, so to tell it to use Nunjucks, use the extension <span class="path">*.njk</span>. This can also affect certain defaults, so it's useful just to indicate what language is intended, so even when using Liquid, the extension <span class="path">*.liquid</span> can be used.
+				Eleventy can process around ten different template languages (<a href="http://localhost/eleventy/guide/intro.html#introeleventy">See Intro for the list</a>). Eleventy defaults to Liquid for pages with an HTML extension. Eleventy relies on the file extension to know what language is to be used, so to tell it to use Nunjucks, use the extension <span class="path">*.njk</span>. This can also affect certain defaults, so it's useful just to indicate what language is intended, so even when using Liquid, the extension <span class="path">*.liquid</span> is a good idea.
+			</p>
+			<p>
+				Different languages have different features and syntax. Nunjucks, for example, can use JavaScript in front matter and data, while Liquid can't. The pages created so far have defaulted to Liquid, but to continue from here, they will converted to Nunjucks.
 			</p>
 
 			<p>
-				Change these filenames to the <span class="path">*.liquid</span> extension.
+				Change these filenames to the <span class="path">*.njk</span> extension.
 
 				<pre class="codeexample">
-animals.html
-fishpaged.html
-index.html
-postlist.html
+animals.html => animals.njk
+fishpaged.html => fishpaged.njk
+index.html => index.njk
+postlist.html => postlist.njk
 
-_includes/foot.html
-_includes/head.html
-_includes/layout.html
+_includes/_foot.html => _includes/_foot.njk
+_includes/_head.html => _includes/_head.njk
+_includes/layout.html => _includes/layout.njk
 				</pre>
 			</p>
 			<p>
 				Changing these filenames will affect includes and layouts, so some content will need to changed. For includes, the &quot;.html&quot; extension part can now be removed, since the template will default to &quot;.liquid&quot;. And front matter pointing to layouts needs extensions to be changed to &quot;.liquid&quot;.
 
 				<pre class="codeexample">
-animals.liquid (include head and foot tags can have the &quot;.html&quot; removed)
-fishpaged.liquid (include head and foot tags can have the &quot;.html&quot; removed)
-index.liquid (include head and foot tags can have the &quot;.html&quot; removed)
-about.md (change the extensions in the front matter to &quot;.liquid&quot;)
+animals.njk (include head and foot tags need double quotes and &quot;.html&quot; changed to &quot;njk&quot;)
+fishpaged.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
+index.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
 
-posts/post-01.md (change the extensions in the front matter to &quot;.liquid&quot;)
-posts/post-02.md (change the extensions in the front matter to &quot;.liquid&quot;)
-posts/post-03.md (change the extensions in the front matter to &quot;.liquid&quot;)
+about.md (change the extensions in the front matter to &quot;.njk&quot;)
 
-_includes/layout.liquid (change the extensions in the front matter to &quot;.liquid&quot;)
+posts/post-01.md (change the extensions in the front matter to &quot;.njk&quot;)
+posts/post-02.md (change the extensions in the front matter to &quot;.njk&quot;)
+posts/post-03.md (change the extensions in the front matter to &quot;.njk&quot;)
+
+_includes/layout.njk (change the extensions in the front matter to &quot;.njk&quot;)
 				</pre>
 
 				Confirm everything processed correctly. Basically, everything in <span class="path">_site</span> should look the same as before. Note how, even though the templates are now <span class="path">*.liquid</span>, the output files are still <span class="path">*.html</span>.
@@ -47,14 +51,14 @@ _includes/layout.liquid (change the extensions in the front matter to &quot;.liq
 		</article>
 
 		<article>
-			<h3 id="liquidandnunjucks">Liquid and Nunjucks</h3>
+			<h3 id="nunjucksjavascript">Nunjucks and JavaScript</h3>
 			<p>
-				Different template languages have different advantages. Liquid is simple to use. However, a language like Nunjucks (which seems more popular) allows using JavaScript in front matter, for example. Create the file <span class="path">jsontest.njk</span>. Note how the front matter starts with <span class="var">---js</span>. Note also the slightly different syntax in the template where there is a <span class="var">{{ loop.index }}</span> tag instead of the <span class="var">{{ forloop.index }}</span> tag used in Liquid.
+				Create the file <span class="path">jsontest.njk</span>. Note how the front matter starts with <span class="var">---js</span> : 
 
 				<pre class="codeexample">
 ---js
 {
-    title: "JSON test page",
+    title: "JS test page",
     body: "body text from JSON",
     arctics : function() {
         var arctics = ["walrus", "penguin", "puffin", "polar bear"];

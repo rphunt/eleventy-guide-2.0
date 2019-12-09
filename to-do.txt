@@ -9,9 +9,9 @@ config file **
 date formatting **
 shortcodes **
 postlist urls **
+moment timezone **
 data contained in collections and objects
-moment timezone
-
+switch to nunjucks
 
 
 ==================================================
@@ -28,3 +28,13 @@ var minOut = ((dateTmp.getMinutes() < 10) ? '0' : '') + dateTmp.getMinutes();
 
 var dateOut = monthOut + ' ' +  dayOut + ', ' + yearOut + ' - ' + hourOut + ':' + minOut;
 return dateOut;
+
+
+for njk
+
+permalink - pagination +1
+
+
+{% include "foot.njk" %}
+
+

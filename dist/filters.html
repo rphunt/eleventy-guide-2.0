@@ -59,7 +59,7 @@
 			<li><a href="template-languages.html">Eleventy and Template Languages</a>
 				<ul>
 					<li><a href="template-languages.html#fileextensions">File Extensions</a></li>
-					<li><a href="template-languages.html#liquidandnunjucks">Liquid and Nunjucks</a></li>
+					<li><a href="template-languages.html#nunjucksjavascript">Nunjucks and Javascript</a></li>
 				</ul>
 			</li>
 			<li><a href="custom-configuration.html">Custom Configuration</a>
@@ -96,7 +96,7 @@
 		<article>
 			<h3 id="filterseleventy">Filters in Eleventy</h2>
 				<p>
-					Filters in Eleventy are added to the <span class="path">.eleventy.js</span> config file. They are JavaScript functions that accept content, modify it, then return it to be display in place of the original.
+					Filters in Eleventy are JavaScript functions that accept content, modify it, then return it to be display in place of the original. They are added to the <span class="path">.eleventy.js</span> config file.
 				</p>
 				<p>
 					Some filters are built-in via the template languages, e.g. Liquid makes <span class="tag">url_encode</span> available. But Eleventy does lack certain formatting features that can be found in other templating platforms, date formatting for example. A JavaScript function can be added as a filter to provide that formatting.
