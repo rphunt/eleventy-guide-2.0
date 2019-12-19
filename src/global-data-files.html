@@ -32,14 +32,14 @@
 ---
 title: Animals
 ---
-{% include _head %}
+{% include _head.html %}
 &lt;h1&gt;{{ title }}&lt;/h1&gt;
 &lt;ul&gt;
     {% for animal in animalList -%}
     &lt;li&gt;{{ animal }}&lt;/li&gt;
     {% endfor -%}
 &lt;/ul&gt;
-{% include _foot %}
+{% include _foot.html %}
 				</pre>
 			</p>
 			<p>
@@ -72,15 +72,15 @@ title: Animals
 ---
 title: Animals
 ---
-{% include _head %}
+{% include _head.html %}
 &lt;h1&gt;{{ title }}&lt;/h1&gt;
 &lt;h2&gt;Mammals&lt;/h2&gt;
 &lt;ul&gt;
-    {% for animal in mammmals.animalList -%}
+    {% for animal in mammals.animalList -%}
     &lt;li&gt;{{ animal }}&lt;/li&gt;
     {% endfor -%}
 &lt;/ul&gt;
-{% include _foot %}
+{% include _foot.html %}
 				</pre>
 
 				After the site is rebuilt, the <span class="path">_site/animals/index.html</span> file shoud still contain the same animal list.
@@ -115,17 +115,17 @@ title: Animals
 
 			</p>
 			<p>
-				Edit the <span class="path">index.html file</span> to add a new list, and to drill down into the data a little more:
+				Edit the <span class="path">animals.html file</span> to add a new list, and to drill down into the data a little more:
 
 				<pre class="codeexample">
 ---
 title: Animals
 ---
-{% include _head %}
+{% include _head.html %}
 &lt;h1&gt;{{ title }}&lt;/h1&gt;
 &lt;h2&gt;Mammals&lt;/h2&gt;
 &lt;ul&gt;
-    {% for animal in mammmals.animalList.big -%}
+    {% for animal in mammals.animalList.big -%}
     &lt;li&gt;{{ animal }}&lt;/li&gt;
     {% endfor -%}
 &lt;/ul&gt;
@@ -134,7 +134,7 @@ title: Animals
     &lt;li&gt;{{ animal }}&lt;/li&gt;
     {% endfor -%}
 &lt;/ul&gt;
-{% include _foot %}
+{% include _foot.html %}
 				</pre>
 			</p>
 			<p>

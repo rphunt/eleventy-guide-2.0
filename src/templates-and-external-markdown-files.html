@@ -355,7 +355,7 @@ Even more news today.
 &lt;body&gt;
     &lt;ul&gt;
         {% for post in collections.post -%}
-        &lt;li&gt;&lt;a href="{{ post.url }}" &gt;{{ post.data.title }}, {{ post.data.date }}&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="{{ post.url }}"&gt;{{ post.data.title }}, {{ post.data.date }}&lt;/a&gt;&lt;/li&gt;
         {% endfor -%}
     &lt;/ul&gt;
 &lt;/body&gt;
@@ -365,7 +365,7 @@ Even more news today.
 				The resulting list items should all now look similar to this :
 
 				<pre class="codeexample">
-&lt;li&gt;&lt;a href="/posts/post-01/" &gt;Blog Post 01, Mon Dec 31 2018 19:00:00 GMT-0500 (Eastern Standard Time)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/posts/post-01/"&gt;Blog Post 01, Mon Dec 31 2018 19:00:00 GMT-0500 (Eastern Standard Time)&lt;/a&gt;&lt;/li&gt;
 				</pre>
 
 

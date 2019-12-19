@@ -99,7 +99,7 @@
 				Pagination can be automatically handled by Eleventy. Front matter in a template is used to indicate what data is paginated, and how many items per page there should be.
 			</p>
 			<p>
-				Create a new <span class="path">_site/fishList.json</span> file containing an array (this one has 13 items) :
+				Create a new <span class="path">_data/fishList.json</span> file containing an array (this one has 13 items) :
 
 				<pre class="codeexample">
 [
@@ -231,7 +231,7 @@ permalink: "fishes/page-{{ pagination.pageNumber }}/index.html"
 				Note how this time, there is no <span class="path">index.html</span> in <span class="path">_site/fishes</span>, instead there is a <span class="path">_site/fishes/page-0/</span> which has the page for the first two items (<em>perch</em> and <em>bass</em>).
 			</p>
 			<p>
-				So that the folders start with <span class="path">page-1</span>, change the <span class="var">permalink</span> value to :
+				To have the folders start with <span class="path">page-1</span>, change the <span class="var">permalink</span> value to :
 
 				<pre class="codeexample">
 permalink: "fishes/page-{{ pagination.pageNumber | plus: 1 }}/index.html"
@@ -288,7 +288,7 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
 				Eleventy provides the needed variables to set up paging links. Using <span class="var">pagination.previousPageHref</span> and <span class="var">pagination.nextPageHref</span>, Previous and Next links can be created using conditionals to decide if links should be created.
 			</p>
 			<p>
-				Eleventy thinks of the site root as being <span class="path">_site</span>, which works for a posted web site, but for local dev working in subfolders, the urls have to point to the true root, e.g. <span class="path">localhost</span>. One way to do that is add a variable like <span class="var">localpath</span> to the front matter, with the appropriate path. Then insert <span class="tag">{{ localpath }}</span> as part of the pagination link urls. This is not a great workflow, there are other ways to deal with this, but for this guide it should be functional.
+				<strong>Note:</strong> Eleventy thinks of the site root as being <span class="path">_site</span>, especially when generating its own URLs. This is where runnning Eleventy's server (or some other server) makes working on pagination much easier.
 			</p>
 			<p>
 				Edit <span class="path">fishpaged.html</span> to add the needed tags and front matter :
@@ -299,8 +299,7 @@ title: Fish Paged
 pagination:
     data: fishList
     size: 2
-permalink: "fishes/page-{{ pagination.pageNumber | plus: 1 }}/index.html"
-localpath: "eleventy-test/_site"
+permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber | plus: 1 }}{% endif %}/index.html"
 ---
 {% include _head.html %}
 &lt;h1&gt;{{ title }}&lt;/h1&gt;
@@ -311,9 +310,9 @@ localpath: "eleventy-test/_site"
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;ul&gt;
-    &lt;li&gt;{% if pagination.previousPageHref %}&lt;a href="{{ localpath }}{{ pagination.previousPageHref }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
+    &lt;li&gt;{% if pagination.previousPageHref %}&lt;a href="{{ pagination.previousPageHref }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
 
-    &lt;li&gt;{% if pagination.nextPageHref %}&lt;a href="{{ localpath }}{{ pagination.nextPageHref }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
+    &lt;li&gt;{% if pagination.nextPageHref %}&lt;a href="{{ pagination.nextPageHref }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
 &lt;/ul>
 {% include _foot.html %}
 				</pre>
@@ -329,9 +328,9 @@ localpath: "eleventy-test/_site"
 				<pre class="codeexample">
 &lt;ul&gt;
     &lt;li&gt;&lt;a href="{{ pagination.firstPageHref }}"&gt;First&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;{% if pagination.previousPageHref %}&lt;a href="{{ localpath }}{{ pagination.previousPageHref }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
+    &lt;li&gt;{% if pagination.previousPageHref %}&lt;a href="{{ pagination.previousPageHref }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
 
-    &lt;li&gt;{% if pagination.nextPageHref %}&lt;a href="{{ localpath }}{{ pagination.nextPageHref }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
+    &lt;li&gt;{% if pagination.nextPageHref %}&lt;a href="{{ pagination.nextPageHref }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
     &lt;li&gt;&lt;a href="{{ pagination.lastPageHref }}"&gt;Last&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 				</pre>
@@ -344,7 +343,7 @@ localpath: "eleventy-test/_site"
 				<pre class="codeexample">
 &lt;ul&gt;
     &lt;li&gt;&lt;a href="{{ pagination.firstPageHref }}"&gt;First&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;{% if pagination.previousPageHref %}&lt;a href="{{ localpath }}{{ pagination.previousPageHref }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
+    &lt;li&gt;{% if pagination.previousPageHref %}&lt;a href="{{ pagination.previousPageHref }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
 
     &lt;li&gt;
     {%- for href in pagination.hrefs -%}
@@ -352,7 +351,7 @@ localpath: "eleventy-test/_site"
     {%- endfor -%}
     &lt;/li&gt;
 
-    &lt;li&gt;{% if pagination.nextPageHref %}&lt;a href="{{ localpath }}{{ pagination.nextPageHref }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
+    &lt;li&gt;{% if pagination.nextPageHref %}&lt;a href="{{ pagination.nextPageHref }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
     &lt;li&gt;&lt;a href="{{ pagination.lastPageHref }}"&gt;Last&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 				</pre>

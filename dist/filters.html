@@ -127,7 +127,7 @@ module.exports = (function(eleventyConfig) {
             includes: "partials_layouts"
         },
 
-        templateFormats: ["njk", "css", "js"]
+        templateFormats: ["njk", "md", "css", "js"]
     }; 
 
 });
@@ -159,7 +159,7 @@ module.exports = (function(eleventyConfig) {
             includes: "partials_layouts"
         },
 
-        templateFormats: ["liquid", "njk", "css", "js"]
+        templateFormats: ["njk", "md", "css", "js"]
     }; 
 
 });
@@ -176,23 +176,16 @@ birds:
   - finch
   - sparrow
 ---
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset="utf-8"&gt;
-    &lt;title&gt;{{ title }}&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
+{% include &quot;_head.njk&quot; %}
     &lt;h1&gt;{{ title }}&lt;/h1&gt;
 
     &lt;ul&gt;
-         {% for bird in birds %}
-         &lt;li&gt;{{ bird | decorate }}&lt;/li&gt;
-         {% endfor %}
+        {% for bird in birds %}
+        &lt;li&gt;{{ bird | decorate }}&lt;/li&gt;
+        {% endfor %}
     &lt;/ul&gt;
 
-&lt;/body&gt;
-&lt;/html&gt;				
+{% include &quot;_foot.njk&quot; %}				
 				</pre>
 				The <span class="path">dist/index.html</span> should now have asterixes in the list items.
 				<pre class="codeexample">
@@ -241,7 +234,7 @@ module.exports = (function(eleventyConfig) {
             includes: "partials_layouts"
         },
 
-        templateFormats: ["liquid", "njk", "css", "js"]
+        templateFormats: ["njk", "md", "css", "js"]
     }; 
 
 });
@@ -262,7 +255,7 @@ module.exports = (function(eleventyConfig) {
 &lt;body&gt;
     &lt;ul&gt;
         {% for post in collections.post -%}
-        &lt;li&gt;{{ post.data.title }}, {{ post.data.date | dateformat }}&lt;/li&gt;
+        &lt;li&gt;&lt;a href="{{ post.url }}" &gt;{{ post.data.title }}, {{ post.data.date }}&lt;/a&gt;&lt;/li&gt;
         {% endfor -%}
     &lt;/ul&gt;
 &lt;/body&gt;
@@ -273,10 +266,9 @@ module.exports = (function(eleventyConfig) {
 
 				<pre class="codeexample">
 &lt;ul&gt;
-    &lt;li>&gt;Blog Post 01, 2018 December 31, Monday, 19:12:00&lt;/li&gt;
-    &lt;li>&gt;Blog Post 02, 2019 January 01, Tuesday, 19:01:00&lt;/li&gt;
-    &lt;li>&gt;Blog Post 03, 2019 January 02, Wednesday, 19:01:00&lt;/li&gt;
-&lt;/ul&gt;
+    &lt;li&gt;&lt;a href="/posts/post-01/"&gt;Blog Post 01, 2018 December 31, Monday, 19:12:00&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/posts/post-02/"&gt;Blog Post 02, 2019 January 01, Tuesday, 19:01:00&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/posts/post-03/"&gt;Blog Post 03, 2019 January 02, Wednesday, 19:01:00&lt;/a&gt;&lt;/li&gt;
 				</pre>					
 
 			</p>

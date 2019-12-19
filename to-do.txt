@@ -10,8 +10,12 @@ date formatting **
 shortcodes **
 postlist urls **
 moment timezone **
+switch to nunjucks **
+
+
+
 data contained in collections and objects
-switch to nunjucks
+
 
 
 ==================================================

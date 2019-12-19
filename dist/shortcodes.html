@@ -106,11 +106,11 @@
 
 				<pre class="codeexample">
 ---
-title: Eleventy Title from Data
+title: Birds
 subtitle: Eleventy subtitle
 greeting: Welcome
 
-flowers:
+birds:
   - robin
   - finch
   - sparrow
@@ -119,8 +119,8 @@ flowers:
     &lt;h1&gt;{{ title }}&lt;/h1&gt;
     &lt;h2&gt;{% shorttest subtitle, greeting %}&lt;/h2&gt;
     &lt;ul&gt;
-        {% for flower in flowers -%}
-        &lt;li&gt;{{ flower }}&lt;/li&gt;
+        {% for bird in birds -%}
+        &lt;li&gt;{{ bird }}&lt;/li&gt;
         {% endfor -%}
     &lt;/ul&gt;
 {% include "_foot.njk %}
@@ -133,7 +133,7 @@ flowers:
 
 				<pre class="codeexample">
 eleventyConfig.addShortcode("shorttest", function(subtitle, greeting){
-    return '===='+subtitle+', '+greeting+'====';
+    return "===="+subtitle+", "+greeting+"====";
 });
 				</pre>
 
@@ -182,7 +182,7 @@ flowers:
 
 				<pre class="codeexample">
 eleventyConfig.addPairedShortcode("pairedtest", function(data, subtitle, greeting) {
-    return '&lt;h3&gt;'+subtitle+'&lt;/h3&gt;&lt;h4&gt;'+greeting+'&lt;/h4&gt;'+'&lt;p&gt;&lt;em&gt;'+data+'&lt;/em&gt;&lt;/p&gt;';
+    return "&lt;h3&gt;"+subtitle+"&lt;/h3&gt;&lt;h4&gt;"+greeting+"&lt;/h4&gt;"+"&lt;p&gt;&lt;em&gt;"+data+"&lt;/em&gt;&lt;/p&gt;";
 });
 				</pre>
 

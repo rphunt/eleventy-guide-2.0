@@ -138,11 +138,13 @@ flowers:
 ---
 {% include _head.html %}
     &lt;h1&gt;{{ title }}&lt;/h1&gt;
+    
     &lt;ul&gt;
-        {% for flower in flowers -%}
-        &lt;li&gt;{{ flower }}&lt;/li&gt;
-        {% endfor -%}
+        {% for bird in birds %}
+        &lt;li&gt;{{ bird }}&lt;/li&gt;
+        {% endfor %}
     &lt;/ul&gt;
+
 {% include _foot.html %}
 			</pre class="codeexample">
 

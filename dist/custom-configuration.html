@@ -167,8 +167,10 @@ module.exports = {
 module.exports = {
   
     dir: {
-        output: "dist"
-        input: "src"
+        output: "dist",
+        input: "src",
+        data: "jsondata",
+        includes: "partials_layouts"
     },
 
     templateFormats: ["njk", "md"]
@@ -186,10 +188,12 @@ module.exports = {
   
     dir: {
         output: "dist",
-        input: "src"
+        input: "src",
+        data: "jsondata",
+        includes: "partials_layouts"
     },
 
-    templateFormats: ["njk", "css", "js"]
+    templateFormats: ["njk", "md", css", "js"]
 
 };					
 				</pre>
@@ -202,10 +206,11 @@ module.exports = {
 				There are more configuration options available, <a href="https://www.11ty.dev/docs/config/" target="_blank">check out the Eleventy documentation</a> for more details.
 			</p>
     	</article>
-	</section>
 	<nav class="next">
 		<a href="filters.html">Filters &gt;&gt;</a>
 	</nav>
+	</section>
+
 
 
 		<section class="references">
