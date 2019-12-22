@@ -12,7 +12,8 @@ postlist urls **
 moment timezone **
 switch to nunjucks **
 pass thru files?
-v 10 pagination
+v 10 pagination **
+v 10 pagination with njk and js
 
 
 data contained in collections and objects
