@@ -109,7 +109,7 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
     <article>
 			<h3 id="nunjucksjavascriptpagination">Nunjucks and JavaScript and Pagination</h3>
 			<p>
-        Front matter in JavaScript gives an extra feature to pagination, the <span class="var">before</span> key. This allows insertion of a JS function into the pagination process. Create a  <span class="path">src/fishpaged2.njk</span> file, noting the change in the syntax :
+        Front matter in JavaScript gives an extra feature to pagination, the <span class="var">before</span> key. This allows insertion of a JS function to process the data before pagination. Create a  <span class="path">src/fishpaged2.njk</span> file, noting the change in the syntax from YAML to JavaScript :
       </p>
 
       <pre class="codeexample">
@@ -120,15 +120,15 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
     data: "fishList.fish",
     size: 3,
     before: function(data) {
-      return data.map(entry => 'Fish of the day '+ entry);
+      return data.map(item => 'Fish of the day: '+ item);
     }
   }
 }
-        ---
+---
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-     &lt;title&gt;{{ title }}&lt;/title>&gt;
+     &lt;title&gt;{{ title }}&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;h1&gt;{{ title }}&lt;/h1&gt;
@@ -136,6 +136,26 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
         {% for fish in pagination.items -%}
         &lt;li>{{ fish }}&lt;/li&gt;
         {% endfor -%}
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </pre>
+
+      <p>
+				A new folder and file <span class="path">_site/pagedfish2/index.html</span>	should be generated. You should see &quot;Fish of the day:&quot; preceding each list item :
+      </p>
+      <pre class="codeexample">
+        <!DOCTYPE html>
+&lt;html>
+&lt;head>
+     <title>Fish Paged 2</title>
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Fish Paged 2&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Fish of the day: perch&lt;/li&gt;
+        &lt;li&gt;Fish of the day: bass&lt;/li&gt;
+        &lt;li&gt;Fish of the day: bream&lt;/li&gt;
     &lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;
