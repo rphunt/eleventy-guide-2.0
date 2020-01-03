@@ -1,0 +1,73 @@
+{% set title = 'Intro' %}
+{% extends '_includes/_layout.html' %}
+{% block content %}
+{% raw %}
+	<section>
+		<h2>Gulp with Eleventy as a Task</h2>
+		<article>
+			<h3 id="usinggulp">Using Gulp</h3>
+			<p>
+				<em>Gulp</em> is a task runner used to automate various processes of building a coding project such as a website. Eleventy can render static
+				pages from markdown and data, and does offer some features for handling CSS and such, but Gulp offers a lot more power and flexibility for
+				transpiling CSS and JS, minifying them, moving files around, and much more. This section assumes experience using Gulp.
+			</p>
+			<p>
+				The idea here is to utilize an NPM module <em class="tag">child_process</em> and its method <em class="tag">spawn</em>. This allows running
+				Eleventy as a task from within <em class="path">gulpfile.js</em> :
+			</p>
+			<p>
+				In the project folder, install gulp globally and locally (if you haven't already) :
+			</p>
+			<pre class="codeexample">
+npm i -D gulp
+npm i -D -g gulp
+			</pre>
+			<p>
+				Create <em class="path">gulpfile.js</em> in the project root :
+			</p>
+			<pre class="codeexample">
+const { src, dest, series, parallel, watch } = require('gulp');
+const cp = require("child_process");
+
+const render = () => {
+    return cp.spawn("npx", ["eleventy", "--quiet"], { stdio: "inherit" });
+};
+
+exports.default = render;
+			</pre>
+			<h3 id="eleventyothergulptasks">Eleventy and other Gulp tasks</h3>
+			<p>
+				<strong>Note:</strong> This generally precludes using <em class="tag">eleventy --serve</em>. You can use <em class="tag">eleventy --serve</em>,
+				but that's only useful if Eleventy is the final task. More likely Eleventy would be used to render the static pages first, then
+				Gulp would process them with everything else over to a production folder. In this example, it's assumed Eleventy is rendering to
+				<em class="path">/dist</em>, and then Gulp copies it to <em class="path">/public</em> :
+			</p>
+			<pre class="codeexample">
+const { src, dest, series, parallel, watch } = require('gulp');
+const cp = require("child_process");
+
+const render = () => {
+    return cp.spawn("npx", ["eleventy", "--quiet"], { stdio: "inherit" });
+};
+
+const copy = () => {
+    return src('./dist/**/*')
+        .pipe(dest('./public'));
+};
+
+exports.default = series(render, copy);
+			</pre>
+			<p>
+				In order to serve up the pages to browse at root, install and run http-server (but this does not provide auto-reload) :
+			</p>
+			<pre class="codeexample">
+npm i -D http-server
+npx http-server
+			</pre>
+		</article>
+	</section>
+	<nav class="next">
+		<a href="adding-collections-with-javascript.html">Adding Collections With JavaScript &gt;&gt;</a>
+	</nav>
+{% endraw %}
+{% endblock %}

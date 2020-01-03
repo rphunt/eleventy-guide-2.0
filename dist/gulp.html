@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Eleventy Walk Through - Eleventy and Template Languages</title>
+	<title>Eleventy Walk Through - Intro</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
@@ -108,113 +108,72 @@
 		
 
 	<section>
-		<h2>Eleventy and Template Languages</h2>
+		<h2>Gulp with Eleventy as a Task</h2>
 		<article>
-			<h3 id="fileextensions">File Extensions</h3>
-
+			<h3 id="usinggulp">Using Gulp</h3>
 			<p>
-				Eleventy can process around ten different template languages (<a href="http://localhost/eleventy/guide/intro.html#introeleventy">See Intro for the list</a>). Eleventy defaults to Liquid for pages with an HTML extension. Eleventy relies on the file extension to know what language is to be used, so to tell it to use Nunjucks, use the extension <span class="path">*.njk</span>. This can also affect certain defaults, so it's useful just to indicate what language is intended, so even when using Liquid, the extension <span class="path">*.liquid</span> is a good idea.
+				<em>Gulp</em> is a task runner used to automate various processes of building a coding project such as a website. Eleventy can render static
+				pages from markdown and data, and does offer some features for handling CSS and such, but Gulp offers a lot more power and flexibility for
+				transpiling CSS and JS, minifying them, moving files around, and much more. This section assumes experience using Gulp.
 			</p>
 			<p>
-				Different languages have different features and syntax. Nunjucks, for example, can use JavaScript in front matter and data, while Liquid can't. The pages created so far have defaulted to Liquid because their extension was *.html, but to continue from here, they will be converted to Nunjucks.
-			</p>
-
-			<p>
-				Change these filenames to the <span class="path">*.njk</span> extension.
-
-				<pre class="codeexample">
-animals.html => animals.njk
-fishpaged.html => fishpaged.njk
-index.html => index.njk
-postlist.html => postlist.njk
-
-_includes/_foot.html => _includes/_foot.njk
-_includes/_head.html => _includes/_head.njk
-_includes/layout.html => _includes/layout.njk
-				</pre>
+				The idea here is to utilize an NPM module <em class="tag">child_process</em> and its method <em class="tag">spawn</em>. This allows running
+				Eleventy as a task from within <em class="path">gulpfile.js</em> :
 			</p>
 			<p>
-				Changing these filenames will affect includes and layouts, so some content will need to changed. For includes, the &quot;.html&quot; extension part can now be removed, since the template will default to &quot;.liquid&quot;. And front matter pointing to layouts needs extensions to be changed to &quot;.liquid&quot;.
-
-				<pre class="codeexample">
-animals.njk (include head and foot tags need double quotes and &quot;.html&quot; changed to &quot;njk&quot;)
-fishpaged.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
-index.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
-
-about.md (change the extensions in the front matter to &quot;.njk&quot;)
-
-posts/post-01.md (change the extensions in the front matter to &quot;.njk&quot;)
-posts/post-02.md (change the extensions in the front matter to &quot;.njk&quot;)
-posts/post-03.md (change the extensions in the front matter to &quot;.njk&quot;)
-
-_includes/layout.njk (change the extensions in the front matter to &quot;.njk&quot;)
-
-fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.pageNumber + 1 }})"
-
-				</pre>
-
-				Confirm everything processed correctly. Basically, everything in <span class="path">_site</span> should look the same as before. Note how, even though the templates are now <span class="path">*.njk</span>, the output files are still <span class="path">*.html</span>.
-
+				In the project folder, install gulp globally and locally (if you haven't already) :
 			</p>
+			<pre class="codeexample">
+npm i -D gulp
+npm i -D -g gulp
+			</pre>
+			<p>
+				Create <em class="path">gulpfile.js</em> in the project root :
+			</p>
+			<pre class="codeexample">
+const { src, dest, series, parallel, watch } = require('gulp');
+const cp = require("child_process");
+
+const render = () => {
+    return cp.spawn("npx", ["eleventy", "--quiet"], { stdio: "inherit" });
+};
+
+exports.default = render;
+			</pre>
+			<h3 id="eleventyothergulptasks">Eleventy and other Gulp tasks</h3>
+			<p>
+				<strong>Note:</strong> This generally precludes using <em class="tag">eleventy --serve</em>. You can use <em class="tag">eleventy --serve</em>,
+				but that's only useful if Eleventy is the final task. More likely Eleventy would be used to render the static pages first, then
+				Gulp would process them with everything else over to a production folder. In this example, it's assumed Eleventy is rendering to
+				<em class="path">/dist</em>, and then Gulp copies it to <em class="path">/public</em> :
+			</p>
+			<pre class="codeexample">
+const { src, dest, series, parallel, watch } = require('gulp');
+const cp = require("child_process");
+
+const render = () => {
+    return cp.spawn("npx", ["eleventy", "--quiet"], { stdio: "inherit" });
+};
+
+const copy = () => {
+    return src('./dist/**/*')
+        .pipe(dest('./public'));
+};
+
+exports.default = series(render, copy);
+			</pre>
+			<p>
+				In order to serve up the pages to browse at root, install and run http-server (but this does not provide auto-reload) :
+			</p>
+			<pre class="codeexample">
+npm i -D http-server
+npx http-server
+			</pre>
 		</article>
-
-		<article>
-			<h3 id="nunjucksjavascript">Nunjucks and JavaScript</h3>
-			<p>
-				Create the file <span class="path">jsontest.njk</span>. Note how the front matter starts with <span class="var">---js</span> :
-
-				<pre class="codeexample">
----js
-{
-    title: "JS test page",
-    body: "body text from JS",
-    arctics : function() {
-        var arctics = ["walrus", "penguin", "puffin", "polar bear"];
-        return arctics.sort();
-    }
-}
----
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-     &lt;title&gt;{{ title }}&lt;/title>&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;{{ title }}&lt;/h1&gt;
-    {{ body }}
-    {% for arctic in arctics() -%}
-        {{ loop.index }}. {{ arctic }}
-    {% endfor -%}
-&lt;/body&gt;
-&lt;/html&gt;
-				</pre>
-				A new folder and file <span class="path">_site/jsontest/index.html</span>	should be generated :
-
-				<pre class="codeexample">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;JS test page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;JS test page&lt;/h1&gt;
-    body text from JS
-    1. penguin
-    2. polar bear
-    3. puffin
-    4. walrus
-    &lt;/body>
-&lt;/html&gt;
-				</pre>
-				For more details on what different template languages can do, <a href="https://www.11ty.io/docs/languages/">check out the Eleventy documentation on languages</a>.
-			</p>
-
-		</article>
-
-	<nav class="next">
-		<a href="custom-configuration.html">Custom Configuration &gt;&gt;</a>
-	</nav>
 	</section>
+	<nav class="next">
+		<a href="adding-collections-with-javascript.html">Adding Collections With JavaScript &gt;&gt;</a>
+	</nav>
 
 
 		<section class="references">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Eleventy Walk Through - Eleventy and Template Languages</title>
+	<title>Eleventy Walk Through - Intro</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
@@ -108,113 +108,168 @@
 		
 
 	<section>
-		<h2>Eleventy and Template Languages</h2>
+		<h2>Adding Collections With JavaScript</h2>
 		<article>
-			<h3 id="fileextensions">File Extensions</h3>
-
+			<h3 id="collectioncrreation">Collection Creation</h3>
 			<p>
-				Eleventy can process around ten different template languages (<a href="http://localhost/eleventy/guide/intro.html#introeleventy">See Intro for the list</a>). Eleventy defaults to Liquid for pages with an HTML extension. Eleventy relies on the file extension to know what language is to be used, so to tell it to use Nunjucks, use the extension <span class="path">*.njk</span>. This can also affect certain defaults, so it's useful just to indicate what language is intended, so even when using Liquid, the extension <span class="path">*.liquid</span> is a good idea.
-			</p>
+        In Eleventy, collections are added to the <em class="var">collections</em> object by <em class="tag">tags</em> in
+        markdown file front matter. Pagination objects are created by <em class="tag">pagination</em> in template file
+				front matter. Collections are available to all templates, but pagination is specific to the template it is invoked in.
+      </p>
 			<p>
-				Different languages have different features and syntax. Nunjucks, for example, can use JavaScript in front matter and data, while Liquid can't. The pages created so far have defaulted to Liquid because their extension was *.html, but to continue from here, they will be converted to Nunjucks.
-			</p>
-
-			<p>
-				Change these filenames to the <span class="path">*.njk</span> extension.
-
-				<pre class="codeexample">
-animals.html => animals.njk
-fishpaged.html => fishpaged.njk
-index.html => index.njk
-postlist.html => postlist.njk
-
-_includes/_foot.html => _includes/_foot.njk
-_includes/_head.html => _includes/_head.njk
-_includes/layout.html => _includes/layout.njk
-				</pre>
-			</p>
-			<p>
-				Changing these filenames will affect includes and layouts, so some content will need to changed. For includes, the &quot;.html&quot; extension part can now be removed, since the template will default to &quot;.liquid&quot;. And front matter pointing to layouts needs extensions to be changed to &quot;.liquid&quot;.
-
-				<pre class="codeexample">
-animals.njk (include head and foot tags need double quotes and &quot;.html&quot; changed to &quot;njk&quot;)
-fishpaged.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
-index.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
-
-about.md (change the extensions in the front matter to &quot;.njk&quot;)
-
-posts/post-01.md (change the extensions in the front matter to &quot;.njk&quot;)
-posts/post-02.md (change the extensions in the front matter to &quot;.njk&quot;)
-posts/post-03.md (change the extensions in the front matter to &quot;.njk&quot;)
-
-_includes/layout.njk (change the extensions in the front matter to &quot;.njk&quot;)
-
-fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.pageNumber + 1 }})"
-
-				</pre>
-
-				Confirm everything processed correctly. Basically, everything in <span class="path">_site</span> should look the same as before. Note how, even though the templates are now <span class="path">*.njk</span>, the output files are still <span class="path">*.html</span>.
-
-			</p>
+				Using JavaScript, new collections can be created from existing collections, or from the data sets created by pagination. Eleventy
+				provides the <em class="var">addCollection</em> method, which appends whatever is return by its callback.
+				The callback can use methods such as <em class="var">getFilteredByTag</em> or
+				<em class="var">getFilteredByGlob</em>.
+      </p>
 		</article>
 
 		<article>
-			<h3 id="nunjucksjavascript">Nunjucks and JavaScript</h3>
+			<h3 id="newcollectionfrommarkdownfiles">New Collection from Tags in Markdown Files</h3>
 			<p>
-				Create the file <span class="path">jsontest.njk</span>. Note how the front matter starts with <span class="var">---js</span> :
+				The markdown files <em class="path">src/posts/*.md</em> have front matter with a <em class="var">tags</em>
+				value of &quot;post&quot;. The <em class="var">getFilteredByTag</em> method can get that collection and
+				create a new one from that.
+			</p>
+			<p>
+				In <em class="path">.eleventy.js</em> add this :
+			</p>
+			<pre class="codeexample">
+eleventyConfig.addCollection("testCollection01" , function(collection) {
+    var postCollection = collection.getFilteredByTag("post");
+    return postCollection;
+});
+			</pre>
+			<p>
+				Create a template <em class="path">src/collectiontest.njk</em> to call this new collection.
+				Note that there is <em class="var">data</em> and <em class="var">title</em>, but <em class="var">content</em> is not incuded :
+			</p>
 
-				<pre class="codeexample">
----js
-{
-    title: "JS test page",
-    body: "body text from JS",
-    arctics : function() {
-        var arctics = ["walrus", "penguin", "puffin", "polar bear"];
-        return arctics.sort();
-    }
-}
+			<pre class="codeexample">
 ---
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-     &lt;title&gt;{{ title }}&lt;/title>&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;{{ title }}&lt;/h1&gt;
-    {{ body }}
-    {% for arctic in arctics() -%}
-        {{ loop.index }}. {{ arctic }}
+title: Collections Test
+---
+{% include "_head.njk" %}
+&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;h2&gt;New Post Collection&lt;/h2&gt;
+&lt;ul&gt;
+    {% for item in collections.testCollection01 -%}
+    &lt;li&gt;
+    &lt;h4&gt;{{ item.data.title }}&lt;/h4&gt;
+    &lt;small&gt;{{ item.date | dateformat2 }}&lt;/small&gt;
+    &lt;/li&gt;
     {% endfor -%}
-&lt;/body&gt;
-&lt;/html&gt;
-				</pre>
-				A new folder and file <span class="path">_site/jsontest/index.html</span>	should be generated :
-
-				<pre class="codeexample">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;JS test page&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;JS test page&lt;/h1&gt;
-    body text from JS
-    1. penguin
-    2. polar bear
-    3. puffin
-    4. walrus
-    &lt;/body>
-&lt;/html&gt;
-				</pre>
-				For more details on what different template languages can do, <a href="https://www.11ty.io/docs/languages/">check out the Eleventy documentation on languages</a>.
-			</p>
-
+&lt;/ul&gt;
+{% include "_foot.njk" %}
+			</pre>
 		</article>
 
-	<nav class="next">
-		<a href="custom-configuration.html">Custom Configuration &gt;&gt;</a>
-	</nav>
+		<article>
+			<h3 id="newcollectionfrompaginatontemplates">New Collection from Pagination in Templates</h3>
+			<p>
+				The template <em class="path">src/fishpaged.njk</em> has front matter with <em class="var">pagination</em>
+				calling from a JSON file. The <em class="var">getFilteredByGlob</em> method can get the pagination data via the template
+				and create a new collection from that.
+			</p>
+
+			<p>
+				In <em class="path">.eleventy.js</em> add this :
+			</p>
+			<pre class="codeexample">
+eleventyConfig.addCollection("paginationCollection" , function(collection) {
+    var pageCollection = collection.getFilteredByGlob("**/fishpaged.njk");
+    return pageCollection;
+});
+			</pre>
+			<p>
+				Add this to <em class="path">src/collectiontest.njk</em> to call this new collection :
+			</p>
+			<pre class="codeexample">
+&lt;h2&gt;New Pagination Collection&lt;/h2&gt;
+&lt;ul&gt;
+    {% for item in collections.paginationCollection -%}
+    &lt;li&gt;{{ item.data.title }}, {{ item.url }}, {{ item.date }}, {{ item.data.fishList.fish }}&lt;/li&gt;
+    {% endfor -%}
+&lt;/ul&gt;
+			</pre>
+		</article>
+
+		<article>
+			<h3 id="newcollectionfromtagsintemplates">New Collection from Tags in Templates</h3>
+			<p>
+				Add <em class="var">tags: fishtag</em> to the front matter of the <em class="path">src/fishpaged.njk</em>
+				template.
+			</p>
+			<p>
+				The <em class="var">getFilteredByTag</em> method can get that collection and
+				create a new one from the JSON.
+			</p>
+
+			<p>
+				In <em class="path">.eleventy.js</em> add this :
+			</p>
+			<pre class="codeexample">
+eleventyConfig.addCollection("templateTagCollection" , function(collection) {
+    var coll = collection.getFilteredByTag("fishtag");
+    return coll;
+});
+
+			</pre>
+			<p>
+				Add this to <em class="path">src/collectiontest.njk</em> to call this new collection :
+			</p>
+			<pre class="codeexample">
+&lt;h4&gt;New Tag from Template Collection&lt;/h4&gt;
+&lt;ul&gt;
+    {% for item in collections.templateTagCollection -%}
+    &lt;li&gt;{{ item.data.title }}, {{ item.url }}, {{ item.date }}, {{ item.data.fishList.fish }}&lt;/li&gt;
+    {% endfor -%}
+&lt;/ul&gt;
+			</pre>
+		</article>
+
+		<article>
+			<h3 id="newcollectionfromtagsintemplates">New Collection from Data in Templates</h3>
+			<p>
+				The template <em class="path">src/index.njk</em> has front matter data called <em class="var">birds</em>.
+				The <em class="var">getFilteredByGlob</em> method can get that data via the template
+				and create a new collection from that. This gives oher templates access to the data in that template.
+			</p>
+
+			<p>
+				In <em class="path">.eleventy.js</em> add this :
+			</p>
+			<pre class="codeexample">
+eleventyConfig.addCollection("dataCollection" , function(collection) {
+    var coll = collection.getFilteredByGlob("**/index.njk");
+    return coll;
+});
+			</pre>
+			<p>
+				Add this to <em class="path">src/collectiontest.njk</em> to call this new collection (note how this one
+				adds a secondary loop to cycle through the birds list) :
+			</p>
+			<pre class="codeexample">
+&lt;h2&gt;New Data Collection&lt;/h2&gt;
+&lt;ul&gt;
+{% for item in collections.dataCollection -%}
+    &lt;li&gt;
+    {{ item.data.title }}, {{ item.url }}, {{ item.date }}, {{ item.data.birds }}
+        &lt;ul&gt;
+            {% for bird in item.data.birds -%}
+            &lt;li&gt;{{ bird }}&lt;/li&gt;
+            {% endfor -%}
+        &lt;/ul&gt;
+    &lt;/li&gt;
+{% endfor -%}
+&lt;/ul&gt;
+			</pre>
+		</article>
+
 	</section>
+	<nav class="next">
+		<a href="start.html">Start &gt;&gt;</a>
+	</nav>
 
 
 		<section class="references">

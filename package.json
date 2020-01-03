@@ -4,13 +4,16 @@
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
-    "build": "gulp render"
+    "build": "gulp render",
+    "serve": "npx http-server",
+    "help": "echo scripts are: build, serve"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-nunjucks": "^5.0.1"
+    "gulp-nunjucks": "^5.0.1",
+    "http-server": "^0.12.0"
   }
 }

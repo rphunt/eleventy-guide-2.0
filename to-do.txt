@@ -17,6 +17,7 @@ v 10 pagination with njk and js
 
 
 data contained in collections and objects
+gulp
 
 
 

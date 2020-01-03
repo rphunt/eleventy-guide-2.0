@@ -86,6 +86,22 @@
 					<li><a href="shortcodes.html#pairedshortcode">Paired Shortcode</a></li>
 				</ul>
 			</li>
+			<li><a href="gulp.html">Gulp with Eleventy as a Task</a>
+				<ul>
+					<li><a href="gulp.html#usinggulp">Using Gulp</a></li>
+					<li><a href="gulp.html#eleventyothergulptasks">Eleventy and other Gulp tasks</a></li>
+				</ul>
+			</li>
+
+			<li><a href="adding-collections-with-javascript.html">Adding Collections With JavaScript</a>
+				<ul>
+					<li><a href="adding-collections-with-javascript.html#collectioncrreation">Collection Creation</a></li>
+					<li><a href="adding-collections-with-javascript.html#collectioncrreation">Eleventy and other Gulp tasks</a></li>
+				</ul>
+			</li>
+
+
+
 		</ul>
 	</nav><!-- .toc end -->
 	<section class="content">
@@ -94,7 +110,7 @@
 	<section>
 		<h2>Shortcodes</h2>
 		<article>
-			<h3 id="shortcodeseleventy">Shortcodes in Eleventy</h2>
+			<h3 id="shortcodeseleventy">Shortcodes in Eleventy</h3>
 			<p>
 				<em>Shortcodes</em> have some similarities to filters, but can provide some extra flexibility. Filters allow piping a variable into a function, which then returns a modified form of that variable. Shortcodes are called with mutliple parameters in a very function-like manner. The idea then being that the variables are used to assemble content to be returned. A type of automated layout. There are also <em>Paired Shortcodes</em> which include <em>end</em> tags. Between the beginning and end tags there can be content which the shortcode can also process. That content can contain variables and shortcodes.
 			</p>
@@ -103,8 +119,8 @@
 			<h3 id="shortcode">Shortcode</h3>
 			<p>
 				Edit <span class="path">src/index.njk</span> to add some new front matter and a tag for a shortcode called <span class="tag">shorttest</span>. As can be seen, there is no pipe, and there are two variables being supplied :
-
-				<pre class="codeexample">
+			</p>
+			<pre class="codeexample">
 ---
 title: Birds
 subtitle: Eleventy subtitle
@@ -126,33 +142,29 @@ birds:
 {% include "_foot.njk %}
 			</pre class="codeexample">
 
-			</p>
-
 			<p>
 				Edit <span class="path">.eleventy.js</span> by adding the shortcode <span class="var">shorttest</span> after the filter <span class="var">decorate</span>. Note the function accepts two parameters. :
-
-				<pre class="codeexample">
+			</p>
+			<pre class="codeexample">
 eleventyConfig.addShortcode("shorttest", function(subtitle, greeting){
     return "===="+subtitle+", "+greeting+"====";
 });
-				</pre>
-
+			</pre>
+			<p>
 				This should result in a new <span class="tag">&lt;H2&gt;</span>, containing the two values,  under the <span class="tag">&lt;H1&gt;</span> in <span class="path">dist/index.html</span> :
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;h1&gt;Eleventy Title from Data&lt;/h1&gt;
 &lt;h2&gt;====Eleventy subtitle, Welcome====&lt;/h2&gt;
-				</pre>
-
-			</p>
+			</pre>
 		</article>
 
 		<article>
 			<h3 id="pairedshortcode">Paired Shortcode</h3>
 			<p>
 				Edit <span class="path">src/index.njk</span> again to add a tag for a paired shortcode called <span class="tag">pairedtest</span>. Note both the <span class="tag">{% pairedtest %}</span> and the <span class="tag">{% endpairedtest %}</span> tags, and note there is text between them :
-
-				<pre class="codeexample">
+			</p>
+			<pre class="codeexample">
 ---
 title: Eleventy Title from Data
 subtitle: Eleventy subtitle
@@ -175,38 +187,29 @@ flowers:
 {% include "_foot.njk" %}
 			</pre class="codeexample">
 
-			</p>
-
 			<p>
 				Edit <span class="path">.eleventy.js</span> again by adding the paired shortcode <span class="var">pairedtest</span> after the shortcode <span class="var">shorttest</span>. Note the function accepts three parameters.  The first one is the content inside the paired shortcode tags.
-
-				<pre class="codeexample">
+			</p>
+			<pre class="codeexample">
 eleventyConfig.addPairedShortcode("pairedtest", function(data, subtitle, greeting) {
     return "&lt;h3&gt;"+subtitle+"&lt;/h3&gt;&lt;h4&gt;"+greeting+"&lt;/h4&gt;"+"&lt;p&gt;&lt;em&gt;"+data+"&lt;/em&gt;&lt;/p&gt;";
 });
-				</pre>
+			</pre>
+			<p>
 
 				This should result in a new line starting with the fully assembled content, in <span class="path">dist/index.html</span> :
-
-				<pre class="codeexample">
+			</p>
+			<pre class="codeexample">
 &lt;h1&gt;Eleventy Title from Data&lt;/h1&gt;
 &lt;h2&gt;====Eleventy subtitle, Welcome====&lt;/h2&gt;
 &lt;h3&gt;Eleventy subtitle&lt;/h3&gt;&lt;h4&gt;Welcome&lt;/h4&gt;&lt;p&gt;&lt;em&gt;Paired Shortcode Content&lt;em&gt;&lt;/p&gt;
-				</pre>
-
-
-
-			</p>
-
+			</pre>
 
 		</article>
 
-
-
-
 	</section>
 	<nav class="next">
-		<a href="start.html">Start &gt;&gt;</a>
+		<a href="gulp.html">Gulp with Eleventy as a Task &gt;&gt;</a>
 	</nav>
 
 
