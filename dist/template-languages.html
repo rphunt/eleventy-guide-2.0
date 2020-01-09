@@ -113,7 +113,7 @@
 			<h3 id="fileextensions">File Extensions</h3>
 
 			<p>
-				Eleventy can process around ten different template languages (<a href="http://localhost/eleventy/guide/intro.html#introeleventy">See Intro for the list</a>). Eleventy defaults to Liquid for pages with an HTML extension. Eleventy relies on the file extension to know what language is to be used, so to tell it to use Nunjucks, use the extension <span class="path">*.njk</span>. This can also affect certain defaults, so it's useful just to indicate what language is intended, so even when using Liquid, the extension <span class="path">*.liquid</span> is a good idea.
+				Eleventy can process around ten different template languages (<a href="http://localhost/eleventy/guide/intro.html#introeleventy">See Intro for the list</a>). Eleventy defaults to <em>Liquid</em> for pages with an HTML extension. Eleventy relies on the file extension to know what language is to be used, so to tell it to use <em>Nunjucks</em>, use the extension <span class="path">*.njk</span>. This can also affect certain defaults, so it's useful just to indicate what language is intended, so even when using Liquid, the extension <span class="path">*.liquid</span> is a good idea.
 			</p>
 			<p>
 				Different languages have different features and syntax. Nunjucks, for example, can use JavaScript in front matter and data, while Liquid can't. The pages created so far have defaulted to Liquid because their extension was *.html, but to continue from here, they will be converted to Nunjucks.
@@ -134,7 +134,7 @@ _includes/_head.html => _includes/_head.njk
 _includes/layout.html => _includes/layout.njk
 			</pre>
 			<p>
-				Changing these filenames will affect includes and layouts, so some content will need to changed. For includes, the &quot;.html&quot; extension part can now be removed, since the template will default to &quot;.liquid&quot;. And front matter pointing to layouts needs extensions to be changed to &quot;.liquid&quot;.
+				Changing these filenames will affect includes and layouts, so some content will need to changed. For includes, the &quot;.html&quot; extension part can now be removed, since the template will default to &quot;.njk&quot;. And front matter pointing to layouts needs extensions to be changed to &quot;.njk&quot;.
       </p>
 
 			<pre class="codeexample">
