@@ -19,7 +19,8 @@ collection from json?
 v 10 pagination with njk and js
 addcollection templateContent
 data contained in collections and objects
-
+clearer explanation of template?
+markdown file as a template
 
 
 

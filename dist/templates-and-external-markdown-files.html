@@ -127,7 +127,7 @@
 				Create a new file, <span class="path">about.md</span>. This will be the markdown file. Create a new folder <span class="path">_includes</span>. Inside of that create a file <span class="path">layout.html</span>. This will be the layout template. Eleventy defaults to <span class="path">_includes</span> to find templates files.
 			</p>
 			<p>
-				Here is the <span class="path">about.md</span> file:
+				Here is the <span class="path">about.md</span> file :
 
 				<pre class="codeexample">
 ---
@@ -141,7 +141,7 @@ This is the Animals about page
 			</p>
 
 			<p>
-				Here is the <span class="path">layout.html</span> file:
+				Here is the <span class="path">layout.html</span> file :
 
 				<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
@@ -270,7 +270,7 @@ title: Title from layout.html
 			</p>
 			<p>
 				The title on the page shouldn't change. Eleventy has a <em>cascade</em> that prioritizes which variables are finally applied. In this case,
-				the markdown front matter wins out. In the layout file, try changing it to this:
+				the markdown front matter wins out. In the layout file, try changing it to this :
 
 				<pre class="codeexample">
 ---
@@ -290,7 +290,7 @@ title2: Title from layout.html
 				</pre>
 			</p>
 			<p>
-				Now all the layout front matter shows up. <a href="https://www.11ty.io/docs/layouts/" target="_blank">More information about Eleventy's data cascade can be found here</a>.
+				Now the layout front matter title shows up instead. <a href="https://www.11ty.io/docs/layouts/" target="_blank">More information about Eleventy's data cascade can be found here</a>.
 			</p>
 		</article>
 
@@ -301,7 +301,7 @@ title2: Title from layout.html
 			</p>
 
 			<p>
-				We'll be creating a set of blog post markdown files which use <span class="path">_includes/layout.html</span>, so we need to change back, so that you're using the markdown file's <span class="var">title</span>:
+				We'll be creating a set of blog post markdown files which use <span class="path">_includes/layout.html</span>, so you'll need to revert it so that you're using the markdown file's <span class="var">title</span>:
 				<pre class="codeexample">
 ---
 disclaimer: This is a disclaimer from layout.html
@@ -355,12 +355,12 @@ Welcome to the blog.
 				</pre>
 			</p>
 			<p>
-				A new folder <span class="path">_site/postlist</span> should appear, containing an <span class="path">index.html</span> file. The file should contain:
+				A new folder <span class="path">_site/postlist</span> should appear, containing an <span class="path">index.html</span> file. The file should contain :
 				<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-    &lt;title>&lt;/title&gt;
+    &lt;title&gt;Blog Posts&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
         &lt;li&gt;Blog Post 01, Mon Dec 31 2018 19:00:00 GMT-0500 (Eastern Standard Time)&lt;/li&gt;
@@ -374,7 +374,7 @@ Welcome to the blog.
 &lt;!DOCTYPE htm&gt;
 &lt;html&gt;
 &lt;head&lt;
-    &lt;title&gt;Title from layout.html&lt;/title&gt;
+    &lt;title&gt;Blog Post 01&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;h1&gt;First Blog Post&lt;/h1&gt;
@@ -438,7 +438,7 @@ Even more news today.
 				</p>
 
 				<p>
-					
+
 				</p>
 
 				<p>To allow better organizing, the three <span class="path">post-*.md</span> files can be moved from the root into a dedicated folder, e.g. <span class="path">posts</span>. Eleventy will still process them the same way, except the <span class="path">post-*</span> folders will be under <span class="path">_site/posts</span> now.

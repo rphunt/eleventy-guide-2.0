@@ -108,7 +108,7 @@
 		
 
 	<section>
-		<h2>Pagination v10</h2>
+		<h2>Pagination</h2>
 		<article>
 			<h3 id="basicpaginationjsonarray">Basic Pagination of JSON Array</h3>
 			<p>
@@ -241,7 +241,7 @@ pagination:
         next: "", /* relative to the current page, the path for the next page, can be used in a "next page" link */
         previous: "", /* relative to the current page, the path for the next page, can be used in a "previous page" link */
         first: "", /* the path for the first page, can be used in a "first page" link */
-        last: "", /* the path for the last page, can be used in a "las page" link */
+        last: "", /* the path for the last page, can be used in a "last page" link */
     },
 
     pages: [], /* an array of the unformatted data in the pages */
@@ -277,10 +277,10 @@ permalink: "fishes/page-{{ pagination.pageNumber }}/index.html"
 ---
 			</pre>
 
-			Instead of a <span class="path">_site/fishpaged</span> folder, there should now be a <span class="path">_site/fishes</span> folder, with subfolders like <span class="path">_site/fishes/page-0/</span>, then <span class="path">_site/fishes/page-0/</span>, etc.
+			Instead of a <span class="path">_site/fishpaged</span> folder, there should now be a <span class="path">_site/fishes</span> folder, with subfolders like <span class="path">_site/fishes/page-0/</span>, then <span class="path">_site/fishes/page-1/</span>, etc.
 
 			<p>
-				Note how this time, there is no <span class="path">index.html</span> in <span class="path">_site/fishes</span>, instead there is a <span class="path">_site/fishes/page-0/</span> which has the page for the first two items (<em>perch</em> and <em>bass</em>).
+				Note how this time, there is no <span class="path">index.html</span> in <span class="path">_site/fishes</span>, instead there is the <span class="path">_site/fishes/page-0/</span> which has the page for the first two items (<em>perch</em> and <em>bass</em>).
 			</p>
 			<p>
 				To have the folders start with <span class="path">page-1</span>, change the <span class="var">permalink</span> value to :
@@ -322,7 +322,7 @@ _site/fishes/page-3/index.html
 ...
 				</pre>
 			<p>
-				This way the URL for the main <span class="path">fishes</span> page is a little cleaner. This can be done by adding a conditional to the permalink front matter:
+				This way the URL for the first <span class="path">fishes</span> page is a little cleaner. This can be done by adding a conditional to the permalink front matter:
 			</p>
 
 				<pre class="codeexample">
