@@ -112,7 +112,7 @@
 		<article>
 			<h3 id="filterseleventy">Filters in Eleventy</h2>
 				<p>
-					Filters in Eleventy are JavaScript functions that accept content, modify it, then return it to be display in place of the original. They are added to the <span class="path">.eleventy.js</span> config file.
+					Filters in Eleventy are JavaScript functions that accept content, modify it, then return it to be displayed in place of the original. They are added to the <span class="path">.eleventy.js</span> config file.
 				</p>
 				<p>
 					Some filters are built-in via the template languages, e.g. Liquid makes <span class="tag">url_encode</span> available. But Eleventy does lack certain formatting features that can be found in other templating platforms, date formatting for example. A JavaScript function can be added as a filter to provide that formatting.
@@ -130,7 +130,7 @@ module.exports = (function(eleventyConfig) {
 }
 					</pre>
 					But to keep the previously entered configuration values, they can be returned as an object :
-	
+
 					<pre class="codeexample">
 module.exports = (function(eleventyConfig) {
 
@@ -144,7 +144,7 @@ module.exports = (function(eleventyConfig) {
         },
 
         templateFormats: ["njk", "md", "css", "js"]
-    }; 
+    };
 
 });
 					</pre>
@@ -176,7 +176,7 @@ module.exports = (function(eleventyConfig) {
         },
 
         templateFormats: ["njk", "md", "css", "js"]
-    }; 
+    };
 
 });
 					</pre>
@@ -201,7 +201,7 @@ birds:
         {% endfor %}
     &lt;/ul&gt;
 
-{% include &quot;_foot.njk&quot; %}				
+{% include &quot;_foot.njk&quot; %}
 				</pre>
 				The <span class="path">dist/index.html</span> should now have asterixes in the list items.
 				<pre class="codeexample">
@@ -225,7 +225,7 @@ birds:
 npm i -D moment-timezone
 					</pre>
 
-				Edit <span class="path">.eleventy,js</span> to require <em>moment-timezone</em> and add a filter <span class="var">dateformat</span> : 
+				Edit <span class="path">.eleventy,js</span> to require <em>moment-timezone</em> and add a filter <span class="var">dateformat</span> :
 
 					<pre class="codeexample">
 var moment = require('moment-timezone');
@@ -251,7 +251,7 @@ module.exports = (function(eleventyConfig) {
         },
 
         templateFormats: ["njk", "md", "css", "js"]
-    }; 
+    };
 
 });
 					</pre>
@@ -271,7 +271,7 @@ module.exports = (function(eleventyConfig) {
 &lt;body&gt;
     &lt;ul&gt;
         {% for post in collections.post -%}
-        &lt;li&gt;&lt;a href="{{ post.url }}" &gt;{{ post.data.title }}, {{ post.data.date }}&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="{{ post.url }}" &gt;{{ post.data.title }}, {{ post.data.date | dateformat }}&lt;/a&gt;&lt;/li&gt;
         {% endfor -%}
     &lt;/ul&gt;
 &lt;/body&gt;
@@ -285,7 +285,7 @@ module.exports = (function(eleventyConfig) {
     &lt;li&gt;&lt;a href="/posts/post-01/"&gt;Blog Post 01, 2018 December 31, Monday, 19:12:00&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="/posts/post-02/"&gt;Blog Post 02, 2019 January 01, Tuesday, 19:01:00&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="/posts/post-03/"&gt;Blog Post 03, 2019 January 02, Wednesday, 19:01:00&lt;/a&gt;&lt;/li&gt;
-				</pre>					
+				</pre>
 
 			</p>
 
