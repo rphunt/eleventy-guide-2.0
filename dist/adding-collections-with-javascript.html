@@ -118,9 +118,9 @@
       </p>
 			<p>
 				Using JavaScript, new collections can be created from existing collections, or from the data sets created by pagination. Eleventy
-				provides the <em class="var">addCollection</em> method, which appends whatever is return by its callback.
+				provides the <em class="var">addCollection</em> method, which adds whatever is returned by its callback to the <em class="var">collections</em> object.
 				The callback can use methods such as <em class="var">getFilteredByTag</em> or
-				<em class="var">getFilteredByGlob</em>.
+				<em class="var">getFilteredByGlob</em> to access the source data.
       </p>
 		</article>
 
@@ -141,8 +141,10 @@ eleventyConfig.addCollection("testCollection01" , function(collection) {
 });
 			</pre>
 			<p>
-				Create a template <em class="path">src/collectiontest.njk</em> to call this new collection.
-				Note that there is <em class="var">data</em> and <em class="var">title</em>, but <em class="var">content</em> is not incuded :
+				Create a template <em class="path">src/collectiontest.njk</em> to call this new collection. Note
+				<em class="tag">{{ item.templateContent | safe }}</em>. This is how to insert the markdown content
+				from a collection; also, it is piped into <em class="var">safe</em> which is a filter included by Eleventy
+				that keeps the resulting HTML of the content from being turned into character entities.
 			</p>
 
 			<pre class="codeexample">
@@ -157,6 +159,7 @@ title: Collections Test
     &lt;li&gt;
     &lt;h4&gt;{{ item.data.title }}&lt;/h4&gt;
     &lt;small&gt;{{ item.date | dateformat2 }}&lt;/small&gt;
+    {{ item.templateContent | safe }}
     &lt;/li&gt;
     {% endfor -%}
 &lt;/ul&gt;
