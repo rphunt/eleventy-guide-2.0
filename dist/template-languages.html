@@ -108,7 +108,7 @@
 		
 
 	<section>
-		<h2>Eleventy and Template Languages</h2>
+		<h2>Eleventy and Template Languages - v10</h2>
 		<article>
 			<h3 id="fileextensions">File Extensions</h3>
 
@@ -121,8 +121,9 @@
 
 			<p>
 				Change these filenames to the <span class="path">*.njk</span> extension.
+      </p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 animals.html => animals.njk
 fishpaged.html => fishpaged.njk
 index.html => index.njk
@@ -131,12 +132,12 @@ postlist.html => postlist.njk
 _includes/_foot.html => _includes/_foot.njk
 _includes/_head.html => _includes/_head.njk
 _includes/layout.html => _includes/layout.njk
-				</pre>
-			</p>
+			</pre>
 			<p>
 				Changing these filenames will affect includes and layouts, so some content will need to changed. For includes, the &quot;.html&quot; extension part can now be removed, since the template will default to &quot;.liquid&quot;. And front matter pointing to layouts needs extensions to be changed to &quot;.liquid&quot;.
+      </p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 animals.njk (include head and foot tags need double quotes and &quot;.html&quot; changed to &quot;njk&quot;)
 fishpaged.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
 index.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
@@ -151,19 +152,18 @@ _includes/layout.njk (change the extensions in the front matter to &quot;.njk&qu
 
 fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.pageNumber + 1 }})"
 
-				</pre>
-
+			</pre>
+      <p>
 				Confirm everything processed correctly. Basically, everything in <span class="path">_site</span> should look the same as before. Note how, even though the templates are now <span class="path">*.njk</span>, the output files are still <span class="path">*.html</span>.
-
-			</p>
+      </p>
 		</article>
 
 		<article>
 			<h3 id="nunjucksjavascript">Nunjucks and JavaScript</h3>
 			<p>
 				Create the file <span class="path">jsontest.njk</span>. Note how the front matter starts with <span class="var">---js</span> :
-
-				<pre class="codeexample">
+      </p>
+			<pre class="codeexample">
 ---js
 {
     title: "JS test page",
@@ -187,10 +187,12 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
     {% endfor -%}
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
+			</pre>
+      <p>
 				A new folder and file <span class="path">_site/jsontest/index.html</span>	should be generated :
+      </p>
 
-				<pre class="codeexample">
+		<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -205,11 +207,69 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
     4. walrus
     &lt;/body>
 &lt;/html&gt;
-				</pre>
+			</pre>
+
+		</article>
+
+    <article>
+			<h3 id="nunjucksjavascriptpagination">Nunjucks and JavaScript and Pagination</h3>
+			<p>
+        Front matter in JavaScript gives an extra feature to pagination, the <span class="var">before</span> key. This allows insertion of a JS function to process the data before pagination. Create a  <span class="path">src/fishpaged2.njk</span> file, noting the change in the syntax from YAML to JavaScript :
+      </p>
+
+      <pre class="codeexample">
+---js
+{
+  title: "Fish Paged 2",
+  pagination: {
+    data: "fishList.fish",
+    size: 3,
+    before: function(data) {
+      return data.map(item => 'Fish of the day: '+ item);
+    }
+  }
+}
+---
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+     &lt;title&gt;{{ title }}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;{{ title }}&lt;/h1&gt;
+    &lt;ul&gt;
+        {% for fish in pagination.items -%}
+        &lt;li>{{ fish }}&lt;/li&gt;
+        {% endfor -%}
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </pre>
+
+      <p>
+				A new folder and file <span class="path">_site/pagedfish2/index.html</span>	should be generated. You should see &quot;Fish of the day:&quot; preceding each list item :
+      </p>
+      <pre class="codeexample">
+        <!DOCTYPE html>
+&lt;html>
+&lt;head>
+     <title>Fish Paged 2</title>
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Fish Paged 2&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Fish of the day: perch&lt;/li&gt;
+        &lt;li&gt;Fish of the day: bass&lt;/li&gt;
+        &lt;li&gt;Fish of the day: bream&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </pre>
+      <p>
 				For more details on what different template languages can do, <a href="https://www.11ty.io/docs/languages/">check out the Eleventy documentation on languages</a>.
 			</p>
 
-		</article>
+    </article>
 
 	<nav class="next">
 		<a href="custom-configuration.html">Custom Configuration &gt;&gt;</a>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Eleventy Walk Through - Intro</title>
+	<title>Eleventy Walk Through - Eleventy and Template Languages</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
@@ -108,52 +108,113 @@
 		
 
 	<section>
-		<h2>Intros to Eleventy and This Guide</h2>
+		<h2>Eleventy and Template Languages</h2>
 		<article>
-			<h3 id="introeleventy">Intro to Eleventy</h3>
+			<h3 id="fileextensions">File Extensions</h3>
+
 			<p>
-				Eleventy is what is known as a Static Site Generator. It can use various files to assemble
-				finished web pages utilizing templates, data, markdown, etc. You then post these pages to your web hosting.
-			</p>
-			<p>Eleventy can use various template languages:
-				<ul>
-				<li>HTML *.html</li>
-				<li>Markdown *.md</li>
-				<li>JavaScript *.11ty.js</li>
-				<li>Liquid *.liquid</li>
-				<li>Nunjucks *.njk</li>
-				<li>Mustache *.mustache</li>
-				<li>EJS *.ejs</li>
-				<li>Haml *.haml</li>
-				<li>Pug *.pug</li>
-				<li>JavaScript Template Literals *.jstl</li>
-				</ul>
+				Eleventy can process around ten different template languages (<a href="http://localhost/eleventy/guide/intro.html#introeleventy">See Intro for the list</a>). Eleventy defaults to Liquid for pages with an HTML extension. Eleventy relies on the file extension to know what language is to be used, so to tell it to use Nunjucks, use the extension <span class="path">*.njk</span>. This can also affect certain defaults, so it's useful just to indicate what language is intended, so even when using Liquid, the extension <span class="path">*.liquid</span> is a good idea.
 			</p>
 			<p>
-				Eleventy will cycle through all the source files in the project it's configured to, gathering up data from markdown, YAML front matter, JSON, or JavaScript, and making it available to the appropriate templates, all automatically. Eleventy then generates the resulting folders with their respective *.html files into a target output folder, to provide a flat, static website that requires no server-side processing.
+				Different languages have different features and syntax. Nunjucks, for example, can use JavaScript in front matter and data, while Liquid can't. The pages created so far have defaulted to Liquid because their extension was *.html, but to continue from here, they will be converted to Nunjucks.
+			</p>
+
+			<p>
+				Change these filenames to the <span class="path">*.njk</span> extension.
+
+				<pre class="codeexample">
+animals.html => animals.njk
+fishpaged.html => fishpaged.njk
+index.html => index.njk
+postlist.html => postlist.njk
+
+_includes/_foot.html => _includes/_foot.njk
+_includes/_head.html => _includes/_head.njk
+_includes/layout.html => _includes/layout.njk
+				</pre>
+			</p>
+			<p>
+				Changing these filenames will affect includes and layouts, so some content will need to changed. For includes, the &quot;.html&quot; extension part can now be removed, since the template will default to &quot;.liquid&quot;. And front matter pointing to layouts needs extensions to be changed to &quot;.liquid&quot;.
+
+				<pre class="codeexample">
+animals.njk (include head and foot tags need double quotes and &quot;.html&quot; changed to &quot;njk&quot;)
+fishpaged.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
+index.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
+
+about.md (change the extensions in the front matter to &quot;.njk&quot;)
+
+posts/post-01.md (change the extensions in the front matter to &quot;.njk&quot;)
+posts/post-02.md (change the extensions in the front matter to &quot;.njk&quot;)
+posts/post-03.md (change the extensions in the front matter to &quot;.njk&quot;)
+
+_includes/layout.njk (change the extensions in the front matter to &quot;.njk&quot;)
+
+fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.pageNumber + 1 }})"
+
+				</pre>
+
+				Confirm everything processed correctly. Basically, everything in <span class="path">_site</span> should look the same as before. Note how, even though the templates are now <span class="path">*.njk</span>, the output files are still <span class="path">*.html</span>.
+
 			</p>
 		</article>
+
 		<article>
-			<h3 id="introguide">Intro to This Guide</h3>
+			<h3 id="nunjucksjavascript">Nunjucks and JavaScript</h3>
 			<p>
-				This guide is meant to provide some step by step instructions for using Eleventy, and
-				provide additional reference information. It is not meant as a reference, though it might work as one to some extent. It does not build a project, but goes through steps to demonstrate various features. It is not meant to cover all options in all template languages, it is recommended that you <a href="https://www.11ty.io/docs/" target="_blank">refer to the official documentation</a> for more details.
+				Create the file <span class="path">jsontest.njk</span>. Note how the front matter starts with <span class="var">---js</span> :
+
+				<pre class="codeexample">
+---js
+{
+    title: "JS test page",
+    body: "body text from JS",
+    arctics : function() {
+        var arctics = ["walrus", "penguin", "puffin", "polar bear"];
+        return arctics.sort();
+    }
+}
+---
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+     &lt;title&gt;{{ title }}&lt;/title>&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;{{ title }}&lt;/h1&gt;
+    {{ body }}
+    {% for arctic in arctics() -%}
+        {{ loop.index }}. {{ arctic }}
+    {% endfor -%}
+&lt;/body&gt;
+&lt;/html&gt;
+				</pre>
+				A new folder and file <span class="path">_site/jsontest/index.html</span>	should be generated :
+
+				<pre class="codeexample">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;JS test page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;JS test page&lt;/h1&gt;
+    body text from JS
+    1. penguin
+    2. polar bear
+    3. puffin
+    4. walrus
+    &lt;/body>
+&lt;/html&gt;
+				</pre>
+				For more details on what different template languages can do, <a href="https://www.11ty.io/docs/languages/">check out the Eleventy documentation on languages</a>.
 			</p>
-			<p>
-				This guide is based on Eleventy version 0.10.0.
-			</p>
-			<p>
-				For this guide we are using NodeJS and NPM. It's assumed you have some experience in HTML, CSS, and JavaScript (including JSON, NodeJS and NPM). It is not assumed that you are familiar
-				with template languages or other Static Site Generators. What is presented here isn't the only way to use Eleventy; if you want to do things differently, go for it.
-			</p>
-			<p>
-				Beyond this sentence, the words &quot;simple&quot; and &quot;simply&quot; will not be used, because generally it will be obvious.
-			</p>
+
 		</article>
-	</section>
+
 	<nav class="next">
-		<a href="start.html">Start &gt;&gt;</a>
+		<a href="custom-configuration.html">Custom Configuration &gt;&gt;</a>
 	</nav>
+	</section>
 
 
 		<section class="references">
