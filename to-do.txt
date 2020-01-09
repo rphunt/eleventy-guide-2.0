@@ -22,6 +22,7 @@ data contained in collections and objects
 clearer explanation of template?
 markdown file as a template
 pass through
+first shortcode example?
 
 
 
