@@ -14,15 +14,16 @@ switch to nunjucks **
 pass thru files?
 v 10 pagination **
 gulp **
-collection from json?
+v 10 pagination with njk and js **
 
-v 10 pagination with njk and js
+collection from json - hack?
 addcollection templateContent
 data contained in collections and objects
 clearer explanation of template?
 markdown file as a template
 pass through
-shortcode examples?
+shortcode examples fix
+json with html
 
 
 

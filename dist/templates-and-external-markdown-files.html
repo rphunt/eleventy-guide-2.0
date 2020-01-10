@@ -32,6 +32,7 @@
 					<li><a href="templates-and-external-markdown-files.html#layoutsmarkdownfrontmatter">Layouts and Markdown With Front Matter</a></li>
 					<li><a href="templates-and-external-markdown-files.html#collections">Collections</a></li>
 					<li><a href="templates-and-external-markdown-files.html#linkingcollectionitem">Linking to a Collection Item</a></li>
+					<li><a href="templates-and-external-markdown-files.html#collectionsandmarkdowncontent">Collections and Markdown Content</a></li>
 					<li><a href="templates-and-external-markdown-files.html#eleventydates">Eleventy and Date Values</a></li>
 				</ul>
 			</li>
@@ -477,6 +478,50 @@ Even more news today.
 			</p>
 		</article>
 
+		<article>
+			<h3 id="collectionsandmarkdowncontent">Collections and Markdown Content</h3>
+				<p>
+					When a markdown file uses a layout template, that template only uses the content found in that
+					specific markdown, via the <em class="tag">{{ content }}</em> value. As noted previously, that content is preformatted
+					as HTML before insertion into the layout.
+				</p>
+				<p>
+					However, when using the collection object, the markdown content must be acquired from
+						the particular collection being iterated. In the above example, the value would be found in
+						<em class="var">post.templateContent</em>. Note that it is not part of <em class="var">post.data</em>.
+				</p>
+				<p>
+					The <em class="var">post.templateContent</em> is not raw data, but does contain the preformatted
+					HTML. But as part of a collection, Eleventy considers it all a value, and will encode it as
+					character entities before inserting it into the template, so that the HTML code displays on the page.
+					To keep the HTML intact, <em class="var">post.templateContent</em> can be piped to the <em class="tag">safe</em>
+					filter.
+				</p>
+				<p>
+					To see this work, add <em class="var">post.templateContent</em> and <em class="tag">safe</em> to <span class="path">postlist.html</span> :
+				</p>
+
+				<pre class="codeexample">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Blog Posts&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;ul&gt;
+        {% for post in collections.post -%}
+        &lt;li&gt;&lt;a href="{{ post.url }}"&gt;{{ post.data.title }}, {{ post.data.date }}&lt;/a&gt;
+        {{ post.templateContent | safe }}
+        &lt;/li&gt;
+        {% endfor -%}
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+				</pre>
+				<p>
+					This should result in the formatted content for each post appearing below the links in the list. 
+				</p>
+		</article>
 		<article>
 			<h3 id="eleventydates">Eleventy and Date Values</h3>
 				<p>
