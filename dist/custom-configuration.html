@@ -66,17 +66,18 @@
 			</li>
 			<li><a href="custom-configuration.html">Custom Configuration</a>
 				<ul>
-					<li><a href="custom-configuration.html#targetpath">Target Path</a></li>
+					<li><a href="custom-configuration.html#outputpath">Output Path</a></li>
 					<li><a href="custom-configuration.html#sourcepath">Source Path</a></li>
 					<li><a href="custom-configuration.html#globaldatapath">Global Data Path</a></li>
 					<li><a href="custom-configuration.html#includespath">Includes Path</a></li>
 					<li><a href="custom-configuration.html#templateformats">Template Formats</a></li>
+					<li><a href="custom-configuration.html#includingfuctionsinconfiguration">Including Functions in the Configuration</a></li>
+					<li><a href="custom-configuration.html#passthroughfilecopying">Passthrough File Copying</a></li>
 				</ul>
 			</li>
 			<li><a href="filters.html">Filters</a>
 				<ul>
 					<li><a href="filters.html#filterseleventy">Filters in Eleventy</a></li>
-					<li><a href="filters.html#configobject">Eleventy Config Object</a></li>
 					<li><a href="filters.html#createfilter">Create a Filter</a></li>
 					<li><a href="filters.html#formatdate">Format a Date</a></li>
 				</ul>
@@ -112,42 +113,50 @@
 	<section>
 		<h2>Custom Configuration</h2>
 		<article>
-			<h3 id="targetpath">Target Path</h3>
+			<h3 id="outputpath">Output Path</h3>
 			<p>
-       			Eleventy can be customized to match the way you prefer to work. For example, you can change the target folder from <span class="path">_site</span> to <span class="path">dist</span>. Configuration is done by creating the <span class="path">.eleventy.js</span> file (note the dot at the beginning) :
-				<pre class="codeexample">
+       			Eleventy can be customized to match the way you prefer to work. For example, you can change the output folder from <span class="path">_site</span> to <span class="path">dist</span>. Configuration is done by creating the <span class="path">.eleventy.js</span> file (note the dot at the beginning) :
+			</p>
+			<pre class="codeexample">
 module.exports = {
     dir: {
         output: "dist"
     }
 };
-				</pre>
+			</pre>
+			<p>
 				Delete the <span class="path">_site</span> folder, re-run Eleventy. A new <span class="path">dist</span> folder should appear.
 			</p>
+
 		</article>
 
 		<article>
 			<h3 id="sourcepath">Source Path</h3>
 			<p>
        			Instead of placing templates in the project root, Eleventy can process from a source folder, e.g. <span class="path">src</span>.  Edit <span class="path">.eleventy.js</span> :
-				<pre class="codeexample">
+			</p>
+
+			<pre class="codeexample">
 module.exports = {
     dir: {
         output: "dist",
         input: "src"
     }
 };
-				</pre>
+			</pre>
 
-				Move the <span class="path">*.njk</span> and <span class="path">*.md</span> files, and <span class="path">posts</span>, <span class="path">_includes</span> and <span class="path">_data</span> folders all into <span class="path">src</span>. Delete the target folder, re-run Eleventy, and <span class="path">dist</span> should re-appear with the same structure as before.
+			<p>
+				Move the <span class="path">*.njk</span> and <span class="path">*.md</span> files, and <span class="path">posts</span>, <span class="path">_includes</span> and <span class="path">_data</span> folders all into <span class="path">src</span>. Delete the output folder, re-run Eleventy, and <span class="path">dist</span> should re-appear with the same structure as before.
 			</p>
 		</article>
 
 		<article>
 			<h3 id="globaldatapath">Global Data Path</h3>
 			<p>
-       			To change the folder for global data file to <span class="path">jsondata</span>,  edit <span class="path">.eleventy.js</span> (and of course remember to rename <span class="path">_data</span> to <span class="path">jsondata</span>) :
-				<pre class="codeexample">
+       			To change the folder for global data file to <span class="path">jsondata</span>,  edit <span class="path">.eleventy.js</span> (and rename <span class="path">_data</span> to <span class="path">jsondata</span>) :
+			</p>
+
+			<pre class="codeexample">
 module.exports = {
     dir: {
         output: "dist",
@@ -155,15 +164,16 @@ module.exports = {
         data: "jsondata"
     }
 };
-				</pre>
-			</p>
+			</pre>
+
 		</article>
 
 		<article>
 			<h3 id="includespath">Includes Path</h3>
 			<p>
-       			To change the folder for includes to <span class="path">partials_layout</span>,  edit <span class="path">.eleventy.js</span> (and of course remember to rename <span class="path">_includes</span> to <span class="path">partials_layouts</span>) :
-				<pre class="codeexample">
+       			To change the folder for includes to <span class="path">partials_layout</span>,  edit <span class="path">.eleventy.js</span> (and rename <span class="path">_includes</span> to <span class="path">partials_layouts</span>) :
+			</p>
+			<pre class="codeexample">
 module.exports = {
     dir: {
         output: "dist",
@@ -172,18 +182,18 @@ module.exports = {
         includes: "partials_layouts"
     }
 };
-				</pre>
-			</p>
+			</pre>
 		</article>
 
 		<article>
 			<h3 id="templateformats">Template Formats</h3>
 			<p>
 				There should currently be <span class="path">*.md</span> and  <span class="path">*.njk</span> files in the <span class="path">eleventy-test</span> project folder. To tell Eleventy to only process <span class="path">*.njk</span> and <span class="path">*.md</span> files, edit <span class="path">.eleventy.js</span> :
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 module.exports = {
-  
+
     dir: {
         output: "dist",
         input: "src",
@@ -193,17 +203,15 @@ module.exports = {
 
     templateFormats: ["njk", "md"]
 
-};					
-				</pre>
-
-			</p>
+};
+			</pre>
 
 			<p>
-				This can also be used to insure that non-template files are sent to the target folder. Create a <span class="path">css/main.css</span> folder and file, and create a <span class="path">js/main.js</span> folder and file. Add their extensions into the <span class="var">templateFormats</span> :
-
-				<pre class="codeexample">
+				This can can be used to prevent any other template file types in the project folder from being rendered. It can also be used to have non-template files sent to the output folder. Create a <span class="path">css/main.css</span> folder and file, and create a <span class="path">js/main.js</span> folder and file. Add their extensions into the <span class="var">templateFormats</span> :
+		  </p>
+			<pre class="codeexample">
 module.exports = {
-  
+
     dir: {
         output: "dist",
         input: "src",
@@ -213,17 +221,96 @@ module.exports = {
 
     templateFormats: ["njk", "md", css", "js"]
 
-};					
-				</pre>
-				Those folders should now appear in <span class="path">dist</span>. Note that this is due to the file extensions, not the folder names. If the folder was empty, it would not end up in <span class="path">dist</span>.
+};
+		</pre>
+		<p>
+				The folders <em class="path">dist/css</em> and <em class="path">dist/js</em> should now appear in <span class="path">dist</span>. Note that this is due to the file extensions, not the folder names. If the folder was empty, it would not end up in <span class="path">dist</span>.
+		</p>
 
+		<p>
+			<strong>Note:</strong> This is not necessarily the best way to manage and transfer non-template/content assets (e.g. js, css, images). Further down this page is a section that addresses how to copy over complete folders of assets.
+		</p>
 
-			</p>
+	</article>
 
-			<p>
-				There are more configuration options available, <a href="https://www.11ty.dev/docs/config/" target="_blank">check out the Eleventy documentation</a> for more details.
-			</p>
-    	</article>
+	<article>
+
+		<h3 id="includingfuctionsinconfiguration">Including Functions in the Configuration</h3>
+
+		<p>
+			Eleventy's configuration can do more than just change defaults. It can use JavaScrpt to add funcionality like <em>Filters</em>, <em>Shortcodes</em>, custom created <em>Collections</em>, and more. This is done by passing Elevety's configuration object into the <em class="path">.eleventy.js</em> module.
+		</p>
+		<p>
+				To make Eleventy data available to the config file, the <span class="var">module.exports</span> must be changed into a function. It can then accept the Eleventy config object, in this manner :
+		</p>
+		<pre class="codeexample">
+module.exports = (function(eleventyConfig) {
+
+}
+		</pre>
+		But to keep the previously entered configuration values, they can be returned as an object :
+
+		<pre class="codeexample">
+module.exports = (function(eleventyConfig) {
+
+    return {
+
+        dir: {
+            output: "dist",
+            input: "src",
+            data: "jsondata",
+            includes: "partials_layouts"
+        },
+
+        templateFormats: ["njk", "md", "css", "js"]
+    };
+
+});
+		</pre>
+
+  </article>
+
+	<article>
+
+		<h3 id="passthroughfilecopying">Passthrough File Copying</h3>
+
+		<p>
+			When Eleventy is run, it renders the template formats it either defaults to or is configured to, and writes the results to the output folder. But a project may require additional assets such as css files, image files, or non-data js files. Eleventy provides a method to copy those over without treating them like templates.
+		</p>
+		<p>
+			This is done in the configuration file by adding <em class="var">addPassthroughCopy</em>. Edit <em class="path">.eleventy.js</em>  to remove "css" and "js" from <em class="var">templateFormats</em>, and to add two <em class="var">addPassthroughCopy</em> functions :
+
+		</p>
+		<pre class="codeexample">
+module.exports = (function(eleventyConfig) {
+
+    eleventyConfig.addPassthroughCopy("src/js");
+    eleventyConfig.addPassthroughCopy("src/css");
+
+    return {
+
+        dir: {
+            output: "dist",
+            input: "src",
+            data: "jsondata",
+            includes: "partials_layouts"
+        },
+
+        templateFormats: ["njk", "md"]
+    };
+
+});
+	</pre>
+	<p>
+		The folders <em class="path">dist/css</em> and <em class="path">dist/js</em> should be found, containing all the files and folders that <em class="path">src/css</em> and <em class="path">src/js</em> contain.
+	</p>
+
+	<p>
+		There are more configuration options available, <a href="https://www.11ty.dev/docs/config/" target="_blank">check out the Eleventy documentation</a> for more details.
+	</p>
+
+	</article>
+
 	<nav class="next">
 		<a href="filters.html">Filters &gt;&gt;</a>
 	</nav>

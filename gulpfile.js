@@ -10,25 +10,25 @@ npm i -D gulp-nunjucks
 This is for Eleventy Guide Nunjucks build.
 */
 
+/* TODO: test this */
+
 const { src, dest, series, parallel, watch } = require('gulp');
 const nunjucks = require('gulp-nunjucks');
 
-/* functions */
+/* Functions */
 
 const nunjucksbuild = () => {
-    return src('./src/*.html')
+  return src('./src/*.html')
     .pipe(nunjucks.compile())
     .pipe(dest('./dist'));
 };
 
 const css = () => {
-    return src('./src/css/*.css')
-    .pipe(dest('./dist/css'));
+  return src('./src/css/*.css').pipe(dest('./dist/css'));
 };
 
 const fonts = () => {
-    return src('./src/fonts/*.*')
-    .pipe(dest('./dist/fonts'));
+  return src('./src/fonts/*.*').pipe(dest('./dist/fonts'));
 };
 
 exports.render = series(nunjucksbuild, css, fonts);

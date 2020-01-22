@@ -66,17 +66,18 @@
 			</li>
 			<li><a href="custom-configuration.html">Custom Configuration</a>
 				<ul>
-					<li><a href="custom-configuration.html#targetpath">Target Path</a></li>
+					<li><a href="custom-configuration.html#outputpath">Output Path</a></li>
 					<li><a href="custom-configuration.html#sourcepath">Source Path</a></li>
 					<li><a href="custom-configuration.html#globaldatapath">Global Data Path</a></li>
 					<li><a href="custom-configuration.html#includespath">Includes Path</a></li>
 					<li><a href="custom-configuration.html#templateformats">Template Formats</a></li>
+					<li><a href="custom-configuration.html#includingfuctionsinconfiguration">Including Functions in the Configuration</a></li>
+					<li><a href="custom-configuration.html#passthroughfilecopying">Passthrough File Copying</a></li>
 				</ul>
 			</li>
 			<li><a href="filters.html">Filters</a>
 				<ul>
 					<li><a href="filters.html#filterseleventy">Filters in Eleventy</a></li>
-					<li><a href="filters.html#configobject">Eleventy Config Object</a></li>
 					<li><a href="filters.html#createfilter">Create a Filter</a></li>
 					<li><a href="filters.html#formatdate">Format a Date</a></li>
 				</ul>
@@ -112,44 +113,12 @@
 	<section>
 		<h2>Filters</h2>
 		<article>
-			<h3 id="filterseleventy">Filters in Eleventy</h2>
+			<h3 id="filterseleventy">Filters in Eleventy</h3>
 				<p>
 					Filters in Eleventy are JavaScript functions that accept content, modify it, then return it to be displayed in place of the original. They are added to the <span class="path">.eleventy.js</span> config file.
 				</p>
 				<p>
 					Some filters are built-in via the template languages, e.g. Liquid makes <span class="tag">url_encode</span> available. But Eleventy does lack certain formatting features that can be found in other templating platforms, date formatting for example. A JavaScript function can be added as a filter to provide that formatting.
-				</p>
-		</article>
-
-		<article>
-			<h3 id="configobject">Eleventy Config Object</h2>
-				<p>
-					To make Eleventy content available to the config file, the <span class="var">module.exports</span> must be changed into a function. It can then accept the Eleventy config object, in this manner :
-
-					<pre class="codeexample">
-module.exports = (function(eleventyConfig) {
-
-}
-					</pre>
-					But to keep the previously entered configuration values, they can be returned as an object :
-
-					<pre class="codeexample">
-module.exports = (function(eleventyConfig) {
-
-    return {
-
-        dir: {
-            output: "dist",
-            input: "src",
-            data: "jsondata",
-            includes: "partials_layouts"
-        },
-
-        templateFormats: ["njk", "md", "css", "js"]
-    };
-
-});
-					</pre>
 				</p>
 		</article>
 
