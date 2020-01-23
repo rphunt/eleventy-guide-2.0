@@ -16,8 +16,9 @@ v 10 pagination **
 gulp **
 v 10 pagination with njk and js **
 json with html **
+pass through **
 
-pass through!!!
+
 collection from json - hack?
 clearer explanation of template?
 markdown file as a template
