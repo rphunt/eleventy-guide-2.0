@@ -5,8 +5,9 @@
   "main": "gulpfile.js",
   "scripts": {
     "build": "gulp render",
+    "copy": "gulp copy",
     "serve": "npx http-server",
-    "help": "echo scripts are: build, serve"
+    "help": "echo scripts are: build, serve, copy"
   },
   "keywords": [],
   "author": "",

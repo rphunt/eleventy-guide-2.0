@@ -1,138 +1,63 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Eleventy Walk Through - Templates and External Markdown Files</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
-<body>
-<div class="main">
-
-	<nav class="tableofcontents">
-		<h1><a href=".">Eleventy Walk Through</a></h1>
-		<ul>
-			<li><a href="intro.html">Intros to Eleventy and This Guide</a>
-				<ul>
-					<li><a href="intro.html#introeleventy">Intro to Eleventy</a></li>
-					<li><a href="intro.html#introguide">Intro to This Guide</a></li>
-				</ul>
-			</li>
- 			<li><a href="start.html">Start</a></li>
-			<li><a href="local-server.html">Local Server</a>
-			</li>
-			<li><a href="basic-data-and-templating-using-liquid.html">Basic Data and Templating Using Liquid</a>
-				<ul>
-					<li><a href="basic-data-and-templating-using-liquid.html#whitespace">Whitespace (Line Breaks)</a></li>
-				</ul>
-			</li>
-			<li><a href="templates-and-external-markdown-files.html">Templates and External Markdown Files</a>
-				<ul>
-					<li><a href="templates-and-external-markdown-files.html#layouts">Layouts</a></li>
-					<li><a href="templates-and-external-markdown-files.html#folderstructure">Folder Structure</a></li>
-					<li><a href="templates-and-external-markdown-files.html#layoutsmarkdownfrontmatter">Layouts and Markdown With Front Matter</a></li>
-					<li><a href="templates-and-external-markdown-files.html#collections">Collections</a></li>
-					<li><a href="templates-and-external-markdown-files.html#linkingcollectionitem">Linking to a Collection Item</a></li>
-					<li><a href="templates-and-external-markdown-files.html#collectionsandmarkdowncontent">Collections and Markdown Content</a></li>
-					<li><a href="templates-and-external-markdown-files.html#eleventydates">Eleventy and Date Values</a></li>
-				</ul>
-			</li>
-			<li><a href="partials-and-include.html">Partials and Include</a>
-				<ul>
-					<li><a href="partials-and-include.html#usinginclude">Using Include</a></li>
-					<li><a href="partials-and-include.html#frontmatterpartials">Using Front Matter With Partials</a></li>
-				</ul>
-			</li>
-			<li><a href="global-data-files.html">Global Data Files</a>
-				<ul>
-					<li><a href="global-data-files.html#globaldatainpage">Using Global Data in a Page</a></li>
-					<li><a href="global-data-files.html#globaldatasubfolder">Global Data in a Subfolder</a></li>
-					<li><a href="global-data-files.html#accessingnormaljsondata">Accessing normal JSON data</a></li>
-					<li><a href="global-data-files.html#htmlinjson">HTML in JSON</a></li>
-				</ul>
-			</li>
-			<li><a href="pagination.html">Pagination</a>
-				<ul>
-					<li><a href="pagination.html#basicpaginationjsonarray">Basic Pagination of JSON Array</a></li>
-					<li><a href="pagination.html#paginationjsonobject">Pagination of JSON object</a></li>
-					<li><a href="pagination.html#customizingpermalinks">Customizing the Permalinks</a></li>
-					<li><a href="pagination.html#pagenavigation">Page Navigation</a></li>
-				</ul>
-			</li>
-			<li><a href="template-languages.html">Eleventy and Template Languages</a>
-				<ul>
-					<li><a href="template-languages.html#fileextensions">File Extensions</a></li>
-					<li><a href="template-languages.html#nunjucksjavascript">Nunjucks and Javascript</a></li>
-				</ul>
-			</li>
-			<li><a href="custom-configuration.html">Custom Configuration</a>
-				<ul>
-					<li><a href="custom-configuration.html#outputpath">Output Path</a></li>
-					<li><a href="custom-configuration.html#sourcepath">Source Path</a></li>
-					<li><a href="custom-configuration.html#globaldatapath">Global Data Path</a></li>
-					<li><a href="custom-configuration.html#includespath">Includes Path</a></li>
-					<li><a href="custom-configuration.html#templateformats">Template Formats</a></li>
-					<li><a href="custom-configuration.html#includingfuctionsinconfiguration">Including Functions in the Configuration</a></li>
-					<li><a href="custom-configuration.html#passthroughfilecopying">Passthrough File Copying</a></li>
-				</ul>
-			</li>
-			<li><a href="filters.html">Filters</a>
-				<ul>
-					<li><a href="filters.html#filterseleventy">Filters in Eleventy</a></li>
-					<li><a href="filters.html#createfilter">Create a Filter</a></li>
-					<li><a href="filters.html#formatdate">Format a Date</a></li>
-				</ul>
-			</li>
-			<li><a href="shortcodes.html">Shortcodes</a>
-				<ul>
-					<li><a href="shortcodes.html#shortcodeseleventy">Shortcodes in Eleventy</a></li>
-					<li><a href="shortcodes.html#shortcode">Shortcode</a></li>
-					<li><a href="shortcodes.html#pairedshortcode">Paired Shortcode</a></li>
-				</ul>
-			</li>
-			<li><a href="gulp.html">Gulp with Eleventy as a Task</a>
-				<ul>
-					<li><a href="gulp.html#usinggulp">Using Gulp</a></li>
-					<li><a href="gulp.html#eleventyothergulptasks">Eleventy and other Gulp tasks</a></li>
-				</ul>
-			</li>
-
-			<li><a href="adding-collections-with-javascript.html">Adding Collections With JavaScript</a>
-				<ul>
-					<li><a href="adding-collections-with-javascript.html#collectioncrreation">Collection Creation</a></li>
-					<li><a href="adding-collections-with-javascript.html#collectioncrreation">Eleventy and other Gulp tasks</a></li>
-				</ul>
-			</li>
-
-
-
-		</ul>
-	</nav><!-- .toc end -->
-	<section class="content">
-		
-
+{% set title = 'Templates Files' %}
+{% extends '_includes/_layout.html' %}
+{% block content %}
+{% raw %}
 	<section>
 
 		<article>
-			<h2>Templates and External Markdown Files</h2>
+			<h2>Template Files</h2>
 
 			<p>
-				Markdown files in Eleventy are like a README.md file you find on GitHub. They have the same syntax. They can also have front matter added. They are used to contain data and content, which is usually then inserted into a template file.
+				<em>Templates</em> are files that indicate how content and data should be used in the pages that Eleventy renders.
 			</p>
+			<p>
+				The <em class="path">index.html</em> previously created is a template. It uses a template language to indicate how and where to use data from the front matter in the temlate's HTML. <em>Markdown</em> files and <em>Layouts</em> are also types of templates.
+			</p>
+		</article>
+
+		<article>
+
+				<h3 id="markdown">Markdown</h3>
+				<p>
+			<p>
+				<em>Markdown</em> files in Eleventy are like the <em class="path">README.md</em> files you find in GitHub repos. They use the same syntax. They can also have front matter added. They are used to contain data and content, which Eleventy can then render into HTML, or which can be inserted into another template file (i.e. a <em>Layout</em> file).
+			</p>
+			<p>
+				 Create the file <span class="path">about.md</span> :
+			</p>
+			<pre class="codeexample">
+# Animals About Page
+
+This is the Animals about page
+		</pre>
+
+		<p>
+			A new folder <span class="path">_site/about</span> should appear, and inside that
+			an <span class="path">index.html</span> file (the About page). In that file should be the  content :
+		</p>
+
+		<pre class="codeexample">
+&lt;h1&gt;Animals About Page&lt;/h1&gt;
+&lt;p&gt;This is the Animals about page&lt;/p&gt;
+		</pre>
+		<p>
+			The markdown text with the <span class="tag">#</span> has been automatically inserted into a new <span class="tag">&lt;H1&gt;</span> tag, with the remaining content inserted into a new <span class="tag">&lt;P&gt;</span> tag.
+		</p>
+	</article>
+
+	<article>
 
 			<h3 id="layouts">Layouts</h3>
 			<p>
-				Layouts are a type of template that has content meant to wrap other content, e.g. HTML
-				that wraps markdown. The markdown file indicates what layout it is to use. Eleventy will then
-				assemble them and create a folder for the new file. The folder will be named after the markdown file and will contain an <span class="path">index.html</span> file.
+				<em>Layouts</em> files have content, usually HTML, that is meant to wrap other content, such as from <em>Markdown</em> files. A markdown file uses its front matter to specify the layout file. Eleventy will then
+				assemble the two and create a folder for the new file. The folder will be named after the markdown file and will contain an <span class="path">index.html</span> file.
 			</p>
 
 			<p>
-				Create a new file, <span class="path">about.md</span>. This will be the markdown file. Create a new folder <span class="path">_includes</span>. Inside of that create a file <span class="path">layout.html</span>. This will be the layout template. Eleventy defaults to <span class="path">_includes</span> to find templates files.
+				 Edit the <span class="path">about.md</span> file to add front matter :
 			</p>
-			<p>
-				Here is the <span class="path">about.md</span> file :
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 layout: layout.html
 ---
@@ -140,13 +65,13 @@ layout: layout.html
 # Animals About Page
 
 This is the Animals about page
-				</pre>
-			</p>
+		</pre>
 
-			<p>
-				Here is the <span class="path">layout.html</span> file :
+		<p>
+			Create a new folder <span class="path">_includes</span>. Inside of that create a file <span class="path">layout.html</span>. This will be the layout template. Eleventy defaults to <span class="path">_includes</span> to find templates files :
+		</p>
 
-				<pre class="codeexample">
+		<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -156,10 +81,9 @@ This is the Animals about page
     {{ content }}
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
-			</p>
+		</pre>
 
-			<p>
+		<p>
 				In the <span class="path">about.md</span> file is the front matter specifying the layout template,
 				in this case <span class="path">_includes/layout.html</span>. Since Eleventy defaults to the <span class="path">_includes</span>
 				folder, that part doesn't need to be added. Below that is the markdown content.
@@ -170,10 +94,10 @@ This is the Animals about page
 			</p>
 
 			<p>
-				A new folder <span class="path">_site/about</span> should appear, and inside that
-				an <span class="path">index.html</span> file (the About page). In that file should be the  content :
+				The <span class="path">about/index.html</span> file should now have the  content :
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -181,16 +105,10 @@ This is the Animals about page
 &lt;/head&gt;
 &lt;body&gt;
     &lt;h1&gt;Animals About Page&lt;/h1&gt;
-    &lt;p&gt;This is the Animals about page&lt;&lt;/p&gt;
+    &lt;p&gt;This is the Animals about page&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
-
-			</p>
-
-			<p>
-				The markdown text with the <span class="tag">#</span> has been automatically inserted into a new <span class="tag">&lt;H1&gt;</span> tag, with the remaining content inserted into a new <span class="tag">&lt;P&gt;</span> tag.
-			</p>
+			</pre>
 		</article>
 
 		<article>
@@ -212,8 +130,9 @@ This is the Animals about page
 
 			<p>
 				Add a variable in the <span class="path">about.md</span> file :
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 layout: layout.html
 title: Animals About Page 2
@@ -222,15 +141,16 @@ title: Animals About Page 2
 # {{ title }}
 
 This is the Animals about page version 2
-				</pre>
-			</p>
+			</pre>
+
 			<p>
 				You should see the <span class="tag">&lt;H1&gt;</span> text of the About page change to match the <span class="var">title</span> variable.
 			</p>
 			<p>
 				Add a variable in the <span class="path">layout.html</span> file :
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 disclaimer: This is a disclaimer from layout.html
 ---
@@ -244,8 +164,7 @@ disclaimer: This is a disclaimer from layout.html
     &lt;p&gt;{{ disclaimer }}&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
-			</p>
+			</pre>
 
 			<p>
 				The front matter <span class="var">disclaimer</span> variable should appear in the About page as well as the markdown and front matter from the markdown. You should also see that the
@@ -253,8 +172,9 @@ disclaimer: This is a disclaimer from layout.html
 			</p>
 			<p>
 				Now try adding a <span class="var">title</span> variable to the layout front matter.
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 disclaimer: This is a disclaimer from layout.html
 title: Title from layout.html
@@ -269,13 +189,14 @@ title: Title from layout.html
     &lt;p&gt;{{ disclaimer }}&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
-			</p>
+			</pre>
+
 			<p>
 				The title on the page shouldn't change. Eleventy has a <em>cascade</em> that prioritizes which variables are finally applied. In this case,
 				the markdown front matter wins out. In the layout file, try changing it to this :
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 disclaimer: This is a disclaimer from layout.html
 title2: Title from layout.html
@@ -290,8 +211,8 @@ title2: Title from layout.html
     &lt;p&gt;{{ disclaimer }}&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
-			</p>
+			</pre>
+
 			<p>
 				Now the layout front matter title shows up instead. <a href="https://www.11ty.io/docs/layouts/" target="_blank">More information about Eleventy's data cascade can be found here</a>.
 			</p>
@@ -305,7 +226,9 @@ title2: Title from layout.html
 
 			<p>
 				We'll be creating a set of blog post markdown files which use <span class="path">_includes/layout.html</span>, so you'll need to revert it so that you're using the markdown file's <span class="var">title</span>:
-				<pre class="codeexample">
+			</p>
+
+			<pre class="codeexample">
 ---
 disclaimer: This is a disclaimer from layout.html
 title2: Title from layout.html
@@ -320,13 +243,13 @@ title2: Title from layout.html
     &lt;p&gt;{{ disclaimer }}&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
-
-			</p>
+			</pre>
 
 			<p>
 				Create a markdown file <span class="path">post-01.md</span>.
-				<pre class="codeexample">
+			</p>
+
+			<pre class="codeexample">
 ---
 tags: post
 title: Blog Post 01
@@ -336,12 +259,12 @@ layout: layout.html
 
 # First Blog Post
 Welcome to the blog.
-				</pre>
-			</p>
+			</pre>
+
 			<p>
 				Create a  <span class="path">postlist.html</span> file in the project root:
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -355,11 +278,13 @@ Welcome to the blog.
     &lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
-			</p>
+			</pre>
+
 			<p>
 				A new folder <span class="path">_site/postlist</span> should appear, containing an <span class="path">index.html</span> file. The file should contain :
-				<pre class="codeexample">
+			</p>
+
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -369,11 +294,13 @@ Welcome to the blog.
         &lt;li&gt;Blog Post 01, Mon Dec 31 2018 19:00:00 GMT-0500 (Eastern Standard Time)&lt;/li&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
+			</pre>
 
+			<p>
 					There should also be a new folder <span class="path">_site/post-01</span>, containing an <span class="path">index.html</span> file. This is the actual permalink page for the post. The file should contain:
+		  </p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE htm&gt;
 &lt;html&gt;
 &lt;head&lt;
@@ -386,15 +313,17 @@ Welcome to the blog.
     &lt;p&gt;This is a disclaimer from layout.html&lt;/p&gt;
 &lt;/bod&gt;
 &lt;/htm&gt;
-				</pre>
+			</pre>
+
+			<p>
 				This is the post markdown using the original layout template created before.
 			</p>
 
 			<p>
 				Create two more markdown files, <span class="path">post-02.md</span> and <span class="path">post-03.md</span>.
+			</p>
 
-
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 tags: post
 title: Blog Post 02
@@ -404,9 +333,9 @@ layout: layout.html
 
 # Second Blog Post
 Down to business.
-				</pre>
+			</pre>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 tags: post
 title: Blog Post 03
@@ -416,10 +345,13 @@ layout: layout.html
 
 # Third Blog Post
 Even more news today.
-				</pre>
-				The <span class="path">_site/postlist/index.html</span> file should now look like:
+			</pre>
 
-				<pre class="codeexample">
+			<p>
+				The <span class="path">_site/postlist/index.html</span> file should now look like:
+			</p>
+
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -433,19 +365,18 @@ Even more news today.
     &lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
+			</pre>
+
+			<p>
 					And you should have two more folders, <span class="path">_site/post-02</span> and <span class="path">_site/post-03</span> with their <span class="path">index.html</span> files.
-				</p>
-				<p>
+			</p>
+
+			<p>
 					It can be seen that Eleventy gathered up all the markdown files with the <span class="var">post</span> tag, and included them in the list items in <span class="path">postlist/index.html</span>.
-				</p>
+			</p>
 
-				<p>
-
-				</p>
-
-				<p>To allow better organizing, the three <span class="path">post-*.md</span> files can be moved from the root into a dedicated folder, e.g. <span class="path">posts</span>. Eleventy will still process them the same way, except the <span class="path">post-*</span> folders will be under <span class="path">_site/posts</span> now.
-				</p>
+			<p>To allow better organizing, the three <span class="path">post-*.md</span> files can be moved from the root into a dedicated folder, e.g. <span class="path">posts</span>. Eleventy will still process them the same way, except the <span class="path">post-*</span> folders will be under <span class="path">_site/posts</span> now.
+			</p>
 
 		</article>
 
@@ -453,8 +384,9 @@ Even more news today.
 			<h3 id="linkingcollectionitem">Linking to a Collection Item</h3>
 			<p>
 				To turn the list items in <span class="path">postlist/index.html</span> into links, edit <span class="path">postlist.html</span> to add <span class="var">{{ post.url }}</span> as a link :
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -468,16 +400,16 @@ Even more news today.
     &lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
+			</pre>
 
+			<p>
 				The resulting list items should all now look similar to this :
-
-				<pre class="codeexample">
-&lt;li&gt;&lt;a href="/posts/post-01/"&gt;Blog Post 01, Mon Dec 31 2018 19:00:00 GMT-0500 (Eastern Standard Time)&lt;/a&gt;&lt;/li&gt;
-				</pre>
-
-
 			</p>
+
+			<pre class="codeexample">
+&lt;li&gt;&lt;a href="/posts/post-01/"&gt;Blog Post 01, Mon Dec 31 2018 19:00:00 GMT-0500 (Eastern Standard Time)&lt;/a&gt;&lt;/li&gt;
+			</pre>
+
 		</article>
 
 		<article>
@@ -521,7 +453,7 @@ Even more news today.
 &lt;/html&gt;
 				</pre>
 				<p>
-					This should result in the formatted content for each post appearing below the links in the list. 
+					This should result in the formatted content for each post appearing below the links in the list.
 				</p>
 		</article>
 		<article>
@@ -544,42 +476,5 @@ Even more news today.
 	<nav class="next">
 		<a href="partials-and-include.html">Partials and Include &gt;&gt;</a>
 	</nav>
-
-
-		<section class="references">
-			<article>
-				<h2>References</h2>
-				<ul>
-
-					<li><a href="https://www.11ty.io/docs/" target="_blank">Eleventy Documentation</a></li>
-
-					<li><a href="https://www.zachleat.com/web/eleventy-tutorial-level-1/" target="_blank">Making a
-					Simple Web Site with the Simplest Static Site Generator, Level 1</a></li>
-
-					<li><a href="https://www.filamentgroup.com/lab/build-a-blog/" target="_blank">Build your own Blog from Scratch using Eleventy</a></li>
-
-					<li><a href="https://keepinguptodate.com/pages/2019/06/creating-blog-with-eleventy/" target="_blank">Creating A Blog With Eleventy</a></li>
-
-					<li><a href="https://learnxinyminutes.com/docs/yaml/" target="_blank">Learn YAML in Y minutes</a></li>
-
-					<li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Basic Syntax</a></li>
-
-					<li><a href="https://shopify.github.io/liquid/basics/introduction/" target="_blank">Liquid Syntax</a></li>
-
-					<li><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks Overview</a></li>
-
-					<li><a href="https://www.w3schools.com/whatis/whatis_json.asp" target="_blank">What is JSON?</a></li>
-
-
-
-
-
-
-
-				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
-</div><!-- .main end -->
-</body>
-</html>
+{% endraw %}
+{% endblock %}}

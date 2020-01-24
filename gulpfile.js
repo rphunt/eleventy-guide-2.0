@@ -31,4 +31,9 @@ const fonts = () => {
   return src('./src/fonts/*.*').pipe(dest('./dist/fonts'));
 };
 
+const pagescopy = () => {
+  return src('./dist/**/*.*').pipe(dest('../../githubpages-02/public/eleventy-walkthrough'));
+};
+
 exports.render = series(nunjucksbuild, css, fonts);
+exports.copy = series(pagescopy);
