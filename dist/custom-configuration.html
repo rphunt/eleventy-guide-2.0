@@ -221,7 +221,7 @@ module.exports = {
         includes: "partials_layouts"
     },
 
-    templateFormats: ["njk", "md", css", "js"]
+    templateFormats: ["njk", "md", "css", "js"]
 
 };
 		</pre>
@@ -277,10 +277,10 @@ module.exports = (function(eleventyConfig) {
 		<h3 id="passthroughfilecopying">Passthrough File Copying</h3>
 
 		<p>
-			When Eleventy is run, it renders the template formats it either defaults to or is configured to, and writes the results to the output folder. But a project may require additional assets such as css files, image files, or non-data js files. Eleventy provides a method to copy those over without treating them like templates.
+			When Eleventy is run, it renders the template formats it either defaults to or is configured to, and writes the results to the output folder. But a project may require additional assets such as css files, image files, or non-data/non-template js files. Eleventy provides a method to copy those over without treating them like templates.
 		</p>
 		<p>
-			This is done in the configuration file by adding <em class="var">addPassthroughCopy</em>. Edit <em class="path">.eleventy.js</em>  to remove "css" and "js" from <em class="var">templateFormats</em>, and to add two <em class="var">addPassthroughCopy</em> functions :
+			This is done in the configuration file by adding <em class="var">addPassthroughCopy</em>. First, delete the <span class="path">dist</span> folder, then edit <em class="path">.eleventy.js</em>  to remove "css" and "js" from <em class="var">templateFormats</em>, and to add two <em class="var">addPassthroughCopy</em> functions :
 
 		</p>
 		<pre class="codeexample">
@@ -304,7 +304,7 @@ module.exports = (function(eleventyConfig) {
 });
 	</pre>
 	<p>
-		The folders <em class="path">dist/css</em> and <em class="path">dist/js</em> should be found, containing all the files and folders that <em class="path">src/css</em> and <em class="path">src/js</em> contain.
+		The folders <em class="path">dist/css</em> and <em class="path">dist/js</em> should again be found, containing all the files and folders that <em class="path">src/css</em> and <em class="path">src/js</em> contain.
 	</p>
 
 	<p>
