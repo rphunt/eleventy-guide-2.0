@@ -139,7 +139,7 @@
 ]
 				</pre>
 			<p>
-				Create the file <span class="path">fishpaged.html</span>. In the front matter there will be a pagination variable which contains what data to paginate (<span class="var">data: fishList</span>) and how many items per page (<span class="var">size: 2</span>). The following <em>for loop</em> iterates through the resulting <span class="var">pagination</span> items.
+				Create the file <span class="path">fishpaged.html</span>. In the front matter there will be a <span class="var">pagination</span> variable which contains what data to paginate (<span class="var">data: fishList</span>) and how many items per page (<span class="var">size: 2</span>). The following <em>for loop</em> iterates through the resulting <span class="var">pagination</span> items.
 			</p>
 
 				<pre class="codeexample">
@@ -160,7 +160,7 @@ pagination:
 				</pre>
 
 			<p>
-				You should now find a <span class="path">_site/fishpaged</span> folder, containing an <span class="path">index.html</span> and 6 numbered folders, each containing an <span class="path">index.html</span>. The <span class="path">_site/fishpaged/index.html</span> should contain :
+				You should now find a <span class="path">_site/fishpaged</span> folder, containing an <span class="path">index.html</span> and folders numbered 1 to 6, each containing an <span class="path">index.html</span>. The <span class="path">_site/fishpaged/index.html</span> should contain :
 			</p>
 
 				<pre class="codeexample">
@@ -181,7 +181,7 @@ pagination:
 &lt;/html&gt;
 				</pre>
 			<p>
-				Each subfolder's index file (e.g. <span class="path">_site/fishpaged/1/index.html</span>) should have two more of the animals from the JSON file, with the 6th one only having &quot;guppy&quot;. Again, the idea is to result in a clean URL structure, e.g. <span class="path">http://localhost/eleventy/eleventy-test/_site/fishpaged/1/</span>, then <span class="path">http://localhost/eleventy/eleventy-test/_site/fishpaged/2/</span>, etc.
+				Each subfolder's index file (e.g. <span class="path">_site/fishpaged/1/index.html</span>) should have two more of the fish from the JSON file, with the 6th one only having &quot;guppy&quot;. Again, the idea is to result in a clean URL structure, e.g. <span class="path">http://localhost/eleventy/eleventy-test/_site/fishpaged/1/</span>, then <span class="path">http://localhost/eleventy/eleventy-test/_site/fishpaged/2/</span>, etc.
 			</p>
 
 
@@ -233,7 +233,7 @@ pagination:
 		<article>
 			<h3 id="paginationobject">Pagination Object</h3>
 			<p>
-				It's helpful to look at the actual organization of the data in the Pagination object, to see how it can be used in a template.
+				It's helpful to look at the actual organization of the data in the <em>Pagination</em> object, to see how it can be used in a template.
 			</p>
 			<pre class="codeexample">
 {
@@ -268,7 +268,7 @@ pagination:
 				The Eleventy default for the pagination folder structure can be overriden in the front matter. The syntax uses template tags, the only time they can be used in front matter.
 			</p>
 			<p>
-				Edit <span class="path">fishpaged.html</span> so the front matter is :
+				Delete the <span class="path">_site</span> folder, then edit <span class="path">fishpaged.html</span> so the front matter is :
 			</p>
 
 				<pre class="codeexample">
@@ -351,14 +351,14 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
 				<strong>Note:</strong> Eleventy thinks of the site root as being <span class="path">_site</span>, especially when generating its own URLs. This is where runnning Eleventy's server (or some other server) makes working on pagination much easier.
 			</p>
 			<p>
-				Edit <span class="path">fishpaged.html</span> to add the needed tags and front matter :
+				Edit <span class="path">fishpaged.html</span> to add the needed tags :
 			</p>
 
 				<pre class="codeexample">
 ---
 title: Fish Paged
 pagination:
-    data: fishList
+    data: fishList.fish
     size: 2
 permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber | plus: 1 }}{% endif %}/index.html"
 ---
@@ -388,7 +388,7 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
 
 				<pre class="codeexample">
 &lt;ul&gt;
-    &lt;li&gt;&lt;a href="{{ paginationhref.href.first }}"&gt;First&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="{{ pagination.href.first }}"&gt;First&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;{% if pagination.href.previous %}&lt;a href="{{ pagination.href.previous }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
 
     &lt;li&gt;{% if pagination.href.next %}&lt;a href="{{ pagination.href.next }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
@@ -407,7 +407,7 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
     &lt;li&gt;{% if pagination.href.previous %}&lt;a href="{{ pagination.href.previous }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
 
     &lt;li&gt;
-    Page {{ pagination.pageNumber + 1 }}
+    Page {{ pagination.pageNumber | plus: 1 }}
     &lt;/li&gt;
 
     &lt;li&gt;{% if pagination.href.next %}&lt;a href="{{ pagination.href.next }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
