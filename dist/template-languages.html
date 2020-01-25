@@ -63,6 +63,7 @@
 				<ul>
 					<li><a href="template-languages.html#fileextensions">File Extensions</a></li>
 					<li><a href="template-languages.html#nunjucksjavascript">Nunjucks and Javascript</a></li>
+					<li><a href="template-languages.html#nunjucksjavascriptpagination">Nunjucks and JavaScript and Pagination</a></li>
 				</ul>
 			</li>
 			<li><a href="custom-configuration.html">Custom Configuration</a>
@@ -131,6 +132,7 @@
 animals.html => animals.njk
 fishpaged.html => fishpaged.njk
 index.html => index.njk
+intro.html => intro.njk
 postlist.html => postlist.njk
 
 _includes/_foot.html => _includes/_foot.njk
@@ -138,21 +140,22 @@ _includes/_head.html => _includes/_head.njk
 _includes/layout.html => _includes/layout.njk
 			</pre>
 			<p>
-				Changing these filenames will affect includes and layouts, so some content will need to changed. For includes, the &quot;.html&quot; extension part can now be removed, since the template will default to &quot;.njk&quot;. And front matter pointing to layouts needs extensions to be changed to &quot;.njk&quot;.
+				Changing these filenames will affect includes and layouts, so some content will need to changed. For includes, the &quot;.html&quot; extension must be changed to &quot;njk&quot;. And front matter pointing to layouts needs extensions to be changed to &quot;.njk&quot;.
       </p>
 
 			<pre class="codeexample">
-animals.njk (include head and foot tags need double quotes and &quot;.html&quot; changed to &quot;njk&quot;)
-fishpaged.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
-index.njk (include head and foot tags can have the &quot;.html&quot; changed to &quot;njk&quot;)
+animals.njk (include tags for head and foot need double quotes and extension changed to &quot;njk&quot;)
+fishpaged.njk (include tags for head and foot need double quotes and extension changed to &quot;njk&quot;)
+index.njk (include tags for head and foot need double quotes and extension changed to &quot;njk&quot;)
+intro.njk (include tags for head and foot need double quotes and extension changed to &quot;njk&quot;)
 
-about.md (change the extensions in the front matter to &quot;.njk&quot;)
+about.md (change the extension in the front matter to &quot;.njk&quot;)
 
-posts/post-01.md (change the extensions in the front matter to &quot;.njk&quot;)
-posts/post-02.md (change the extensions in the front matter to &quot;.njk&quot;)
-posts/post-03.md (change the extensions in the front matter to &quot;.njk&quot;)
+posts/post-01.md (change the extension in the front matter to &quot;.njk&quot;)
+posts/post-02.md (change the extension in the front matter to &quot;.njk&quot;)
+posts/post-03.md (change the extension in the front matter to &quot;.njk&quot;)
 
-_includes/layout.njk (change the extensions in the front matter to &quot;.njk&quot;)
+_includes/layout.njk (change the extension in the front matter to &quot;.njk&quot;)
 
 fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.pageNumber + 1 }})"
 
@@ -218,7 +221,7 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
     <article>
 			<h3 id="nunjucksjavascriptpagination">Nunjucks and JavaScript and Pagination</h3>
 			<p>
-        Front matter in JavaScript gives an extra feature to pagination, the <span class="var">before</span> key. This allows insertion of a JS function to process the data before pagination. Create a  <span class="path">src/fishpaged2.njk</span> file, noting the change in the syntax from YAML to JavaScript :
+        JavaScript front matter provides an extra feature to pagination, the <span class="var">before</span> key. This allows insertion of a JS function to process the data before pagination. Create a  <span class="path">src/fishpaged2.njk</span> file, noting the change in the syntax from YAML to JavaScript :
       </p>
 
       <pre class="codeexample">
