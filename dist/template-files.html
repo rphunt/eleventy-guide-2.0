@@ -120,7 +120,7 @@
 				<em>Templates</em> are files that indicate how content and data should be used in the pages that Eleventy renders.
 			</p>
 			<p>
-				The <em class="path">index.html</em> previously created is a template. It uses a template language to indicate how and where to use data from the front matter in the temlate's HTML. <em>Markdown</em> files and <em>Layouts</em> are also types of templates.
+				The <em class="path">index.html</em> previously created is a template. It uses a template language to indicate how and where to use data from the front matter in the template's HTML. <em>Markdown</em> files and <em>Layouts</em> are also types of templates.
 			</p>
 		</article>
 
@@ -158,7 +158,7 @@ This is the Animals about page
 
 			<h3 id="layouts">Layouts</h3>
 			<p>
-				<em>Layouts</em> files have content, usually HTML, that is meant to wrap other content, such as from <em>Markdown</em> files. A markdown file uses its front matter to specify the layout file. Eleventy will then
+				<em>Layout</em> files have content, usually HTML, that is meant to wrap other content, such as from <em>Markdown</em> files. A markdown file uses its front matter to specify what layout file to use. Eleventy will then
 				assemble the two and create a folder for the new file. The folder will be named after the markdown file and will contain an <span class="path">index.html</span> file.
 			</p>
 
@@ -193,7 +193,7 @@ This is the Animals about page
 		</pre>
 
 		<p>
-				In the <span class="path">about.md</span> file is the front matter specifying the layout template,
+				In the <span class="path">about.md</span> file is the front matter that specifies the layout template,
 				in this case <span class="path">_includes/layout.html</span>. Since Eleventy defaults to the <span class="path">_includes</span>
 				folder, that part doesn't need to be added. Below that is the markdown content.
 			</p>
@@ -234,7 +234,7 @@ This is the Animals about page
 			<h3 id="layoutsmarkdownfrontmatter">Layouts and Markdown With Front Matter</h3>
 
 			<p>
-				Both the layout and the markdown can contain and use front matter as well as markdown content.
+				Both layout and markdown files can contain and use front matter as well as markdown content.
 			</p>
 
 			<p>
@@ -301,7 +301,7 @@ title: Title from layout.html
 			</pre>
 
 			<p>
-				The title on the page shouldn't change. Eleventy has a <em>cascade</em> that prioritizes which variables are finally applied. In this case,
+				The title on the page <strong>should not</strong> change. Eleventy has a <em>cascade</em> that prioritizes which variables are finally applied. In this case,
 				the markdown front matter wins out. In the layout file, try changing it to this :
 			</p>
 
@@ -330,17 +330,16 @@ title2: Title from layout.html
 		<article>
 			<h3 id="collections">Collections</h3>
 			<p>
-				A collection groups data based on a common <span class="var">tags</span> value. If the front matter in a markdown file contains a particular <span class="var">tags</span> value, it will be included in a collection and provided to templates that call for it. The <span class="var">tags</span> variable can contain multiple values, which means the same front matter can belong to multiple collections.
+				A <em>Collection</em> groups data based on a common <span class="var">tags</span> value. If the front matter in a markdown file contains a particular <span class="var">tags</span> value, that markdown will be included in a collection and provided to templates that call for it. The <span class="var">tags</span> variable can contain multiple values, which means the same markdown can belong to multiple collections.
 			</p>
 
 			<p>
-				We'll be creating a set of blog post markdown files which use <span class="path">_includes/layout.html</span>, so you'll need to revert it so that you're using the markdown file's <span class="var">title</span>:
+				We'll be creating a set of <em>Blog Post</em> markdown files which use <span class="path">_includes/layout.html</span>, so you'll need to revert it so that you're using the markdown file's <span class="var">title</span>:
 			</p>
 
 			<pre class="codeexample">
 ---
 disclaimer: This is a disclaimer from layout.html
-title2: Title from layout.html
 ---
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -371,7 +370,7 @@ Welcome to the blog.
 			</pre>
 
 			<p>
-				Create a  <span class="path">postlist.html</span> file in the project root:
+				Create a  <span class="path">postlist.html</span> as well:
 
 			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
@@ -388,7 +387,9 @@ Welcome to the blog.
 &lt;/body&gt;
 &lt;/html&gt;
 			</pre>
-
+			<p>
+				As can be seen, there is a for loop cycling through <em class="var">collections.post</em>. The <em class="var">collections</em> object contains the <em class="var">post</em> collection created by the tag "post" in the markdown page's front matter.
+			</p>
 			<p>
 				A new folder <span class="path">_site/postlist</span> should appear, containing an <span class="path">index.html</span> file. The file should contain :
 			</p>
@@ -534,11 +535,10 @@ Even more news today.
 						<em class="var">post.templateContent</em>. Note that it is not part of <em class="var">post.data</em>.
 				</p>
 				<p>
-					The <em class="var">post.templateContent</em> is not raw data, but does contain the preformatted
-					HTML. But as part of a collection, Eleventy considers it all a value, and will encode it as
+					The <em class="var">post.templateContent</em> is not raw data, but is the preformatted
+					HTML. But as part of a collection, Eleventy considers the content a value, and will encode it as
 					character entities before inserting it into the template, so that the HTML code displays on the page.
-					To keep the HTML intact, <em class="var">post.templateContent</em> can be piped to the <em class="tag">safe</em>
-					filter.
+					To preserve the HTML tags, <em class="var">post.templateContent</em> can be piped to the <em class="tag">safe</em> filter.
 				</p>
 				<p>
 					To see this work, add <em class="var">post.templateContent</em> and <em class="tag">safe</em> to <span class="path">postlist.html</span> :
@@ -578,7 +578,7 @@ Even more news today.
 					If the front matter has a value with the form of <em>YYYY-MM-DD</em>, Eleventy will process it as a date, regardless of the variable name. And if that format is seen in the filename, Eleventy will let that override the file creation date.
 				</p>
 				<p>
-					The date value displayed might not be in a desired format. Refer to the section on <a href="filters.html#formatdate">using a filter to format a date</a>.
+					The timezone  and the format of the date can be changed. Refer to the section on <a href="filters.html#formatdate">using a filter to format a date</a>.
 				</p>
 		</article>
 	</section>

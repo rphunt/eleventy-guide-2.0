@@ -115,7 +115,7 @@
 		<h2>Global Data Files</h2>
 		<article>
 			<p>
-				Front matter and Markdown are ways to provide data and content for Eleventy to process into web pages, but to centralize and more tightly organize the data being used in a web site, Eleventy can use <em>global data files</em>. These are files located in a central location that can be used across all templates. These data files can be either JSON or JavaScript. Eleventy defaults to the <span class="path">_data</span> folder for data files.
+				<em>Front matter</em> and <em>Markdown</em> are ways to provide data and content for Eleventy to process into web pages, but to centralize and more tightly organize the data being used in a web site, Eleventy can use <em>global data files</em>. These are files located in a central location that can be used across all templates. These data files can be either JSON or JavaScript. Eleventy defaults to the <span class="path">_data</span> folder for data files.
 			</p>
 
 			<h3 id="globaldatainpage">Using Global Data in a Page</h3>
@@ -240,7 +240,7 @@ title: Animals
     {% endfor -%}
 &lt;/ul&gt;
 &lt;ul&gt;
-    {% for animal in mammmals.animalList.small -%}
+    {% for animal in mammals.animalList.small -%}
     &lt;li&gt;{{ animal }}&lt;/li&gt;
     {% endfor -%}
 &lt;/ul&gt;
@@ -279,7 +279,7 @@ title: Animals
 				HTML can be included in JSON data like any other text, which is especially useful since content items don't always have the same structure. HTML does have to be escaped in JSON, and then be piped through the <em class="var">safe</em> filter to work correctly.
 			</p>
 			<p>
-				Create <em class="path">jsondata/intro.json</em> :
+				Create <em class="path">_data/intro.json</em> :
 			</p>
 			<pre class="codeexample">
 [
@@ -289,7 +289,7 @@ title: Animals
 			</pre>
 
 			<p>
-				Create <em class="path">_src/intro.njk</em>
+				Create <em class="path">_src/intro.html</em>
 			</p>
 			<pre class="codeexample">
 {% include _head.html %}

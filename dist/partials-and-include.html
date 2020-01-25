@@ -158,7 +158,7 @@ flowers:
 ---
 {% include _head.html %}
     &lt;h1&gt;{{ title }}&lt;/h1&gt;
-    
+
     &lt;ul&gt;
         {% for bird in birds %}
         &lt;li&gt;{{ bird }}&lt;/li&gt;
@@ -179,7 +179,7 @@ flowers:
     &lt;title&gt;Included Header&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;h1&gt;Eleventy Title from Data&lt;/h1&gt;
+&lt;h1&gt;Birds&lt;/h1&gt;
 &lt;ul&gt;
 	&lt;li&gt;robin&lt;/li&gt;
 	&lt;li&gt;finch&lt;/li&gt;
@@ -209,7 +209,7 @@ flowers:
 			</p>
 			<p>
 				This shows that the included partial will process the front matter of the including page. However, front matter that is <em>in</em> the partial will not be processed, and will just appear on the page as part of the HTML. Basically the partial is added to the page's
-				HTML first, then Eleventy processes the tags.
+				HTML first, then Eleventy processes the tags. In other words, don't bother putting front matter in partials.
 			</p>
 
 
