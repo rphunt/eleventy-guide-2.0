@@ -101,7 +101,16 @@
 			<li><a href="adding-collections-with-javascript.html">Adding Collections With JavaScript</a>
 				<ul>
 					<li><a href="adding-collections-with-javascript.html#collectioncrreation">Collection Creation</a></li>
-					<li><a href="adding-collections-with-javascript.html#collectioncrreation">Eleventy and other Gulp tasks</a></li>
+					<li><a href="adding-collections-with-javascript.html#newcollectionfrommarkdownfiles">New Collection from Tags in Markdown Files</a></li>
+
+					<li><a href="adding-collections-with-javascript.html#newcollectionfrompaginatontemplates">New Collection from Pagination in Templates</a></li>
+
+					<li><a href="adding-collections-with-javascript.html#newcollectionfromtagsintemplates">New Collection from Tags in Templates</a></li>
+
+					<li><a href="adding-collections-with-javascript.html#newcollectionfromdataintemplates">New Collection from Data in Templates</a></li>
+
+
+
 				</ul>
 			</li>
 
@@ -117,9 +126,7 @@
 		<article>
 			<h3 id="collectioncrreation">Collection Creation</h3>
 			<p>
-        In Eleventy, collections are added to the <em class="var">collections</em> object by <em class="tag">tags</em> in
-        markdown file front matter. Pagination objects are created by <em class="tag">pagination</em> in template file
-				front matter. Collections are available to all templates, but pagination is specific to the template it is invoked in.
+        In Eleventy, collections are added to the <em class="var">collections</em> object by <em class="tag">tags</em> in markdown file front matter. Pagination objects are created by <em class="tag">pagination</em> in template file front matter. Collections are available to all templates, but pagination is specific to the template it is invoked in.
       </p>
 			<p>
 				Using JavaScript, new collections can be created from existing collections, or from the data sets created by pagination. Eleventy
@@ -164,19 +171,23 @@ title: Collections Test
     {% for item in collections.testCollection01 -%}
     &lt;li&gt;
     &lt;h4&gt;{{ item.data.title }}&lt;/h4&gt;
-    &lt;small&gt;{{ item.date | dateformat2 }}&lt;/small&gt;
+    &lt;small&gt;{{ item.date | dateformat }}&lt;/small&gt;
     {{ item.templateContent | safe }}
     &lt;/li&gt;
     {% endfor -%}
 &lt;/ul&gt;
 {% include "_foot.njk" %}
 			</pre>
+
+			<p>
+				The file <span class="path">dist/collectiontest.html</span> should be found, with the markdown content in a list form.
+			</p>
 		</article>
 
 		<article>
 			<h3 id="newcollectionfrompaginatontemplates">New Collection from Pagination in Templates</h3>
 			<p>
-				The template <em class="path">src/fishpaged.njk</em> has front matter with <em class="var">pagination</em>
+				The template <em class="path">src/fishpaged.njk</em> has front matter, with <em class="var">pagination</em>
 				calling from a JSON file. The <em class="var">getFilteredByGlob</em> method can get the pagination data via the template
 				and create a new collection from that.
 			</p>
@@ -201,6 +212,11 @@ eleventyConfig.addCollection("paginationCollection" , function(collection) {
     {% endfor -%}
 &lt;/ul&gt;
 			</pre>
+
+			<p>
+				The file <span class="path">dist/collectiontest.html</span> should now also contain the stringified JSON data.
+			</p>
+
 		</article>
 
 		<article>
@@ -235,10 +251,15 @@ eleventyConfig.addCollection("templateTagCollection" , function(collection) {
     {% endfor -%}
 &lt;/ul&gt;
 			</pre>
+
+			<p>
+				The file <span class="path">dist/collectiontest.html</span> should now also contain the stringified JSON data a second time. But of course this time it was attained via a tag instead of a file path.
+			</p>
+
 		</article>
 
 		<article>
-			<h3 id="newcollectionfromtagsintemplates">New Collection from Data in Templates</h3>
+			<h3 id="newcollectionfromdataintemplates">New Collection from Data in Templates</h3>
 			<p>
 				The template <em class="path">src/index.njk</em> has front matter data called <em class="var">birds</em>.
 				The <em class="var">getFilteredByGlob</em> method can get that data via the template
@@ -273,6 +294,10 @@ eleventyConfig.addCollection("dataCollection" , function(collection) {
 {% endfor -%}
 &lt;/ul&gt;
 			</pre>
+			<p>
+				The file <span class="path">dist/collectiontest.html</span> should now also contain a list of the data found in the <span class="path">src/index.njk</span> front matter.
+			</p>
+
 		</article>
 
 	</section>
