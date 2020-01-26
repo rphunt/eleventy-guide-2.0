@@ -120,7 +120,7 @@
 					Filters in Eleventy are JavaScript functions that accept content, modify it, then return it to be displayed in place of the original. They are added to the <span class="path">.eleventy.js</span> config file.
 				</p>
 				<p>
-					Some filters are built-in via the template languages, e.g. Liquid makes <span class="tag">url_encode</span> available. But Eleventy does lack certain formatting features that can be found in other templating platforms, date formatting for example. A JavaScript function can be added as a filter to provide that formatting.
+					Some filters are built-in via the template languages, e.g. <span class="tag">safe</span> and <span class="tag">url_encode</span> are available by default. But Eleventy does lack certain formatting features that can be found in other templating platforms, <em>date formatting</em> for example. A JavaScript function can be added as a filter to provide that formatting.
 				</p>
 		</article>
 
@@ -135,6 +135,9 @@
 					<pre class="codeexample">
 module.exports = (function(eleventyConfig) {
 
+    eleventyConfig.addPassthroughCopy("src/js");
+    eleventyConfig.addPassthroughCopy("src/css");
+
     eleventyConfig.addFilter("decorate", function(text) {
         return "***"+text+"***";
     });
@@ -148,7 +151,7 @@ module.exports = (function(eleventyConfig) {
             includes: "partials_layouts"
         },
 
-        templateFormats: ["njk", "md", "css", "js"]
+        templateFormats: ["njk", "md"]
     };
 
 });
@@ -205,6 +208,9 @@ var moment = require('moment-timezone');
 
 module.exports = (function(eleventyConfig) {
 
+    eleventyConfig.addPassthroughCopy("src/js");
+    eleventyConfig.addPassthroughCopy("src/css");
+
     eleventyConfig.addFilter("decorate", function(text) {
         return "***"+text+"***";
     });
@@ -212,7 +218,6 @@ module.exports = (function(eleventyConfig) {
     eleventyConfig.addFilter("dateformat", function(dateIn) {
         return moment(dateIn).tz('GMT').format('YYYY MMMM DD, dddd, HH:MM:SS z');
     });
-
 
     return {
 
@@ -223,7 +228,7 @@ module.exports = (function(eleventyConfig) {
             includes: "partials_layouts"
         },
 
-        templateFormats: ["njk", "md", "css", "js"]
+        templateFormats: ["njk", "md"]
     };
 
 });
