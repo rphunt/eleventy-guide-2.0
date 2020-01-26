@@ -123,7 +123,7 @@
 		<article>
 			<h3 id="shortcode">Shortcode</h3>
 			<p>
-				Edit <span class="path">src/index.njk</span> to add some new front matter and a tag for a shortcode called <span class="tag">shorttest</span>. As can be seen, there is no pipe, and there are two variables being supplied :
+				Edit <span class="path">src/index.njk</span> to add some new front matter and a tag for a shortcode called <span class="tag">shorttest</span>. As can be seen, there is no pipe, and there are two variables being supplied (set in the front matter) :
 			</p>
 			<pre class="codeexample">
 ---
@@ -148,11 +148,11 @@ birds:
 			</pre class="codeexample">
 
 			<p>
-				Edit <span class="path">.eleventy.js</span> by adding the shortcode <span class="var">shorttest</span> after the filter <span class="var">decorate</span>. Note the function accepts two parameters. :
+				Edit <span class="path">.eleventy.js</span> by adding the shortcode <span class="var">shorttest</span> after the filter <span class="var">decorate</span>. Note the function accepts two parameters :
 			</p>
 			<pre class="codeexample">
 eleventyConfig.addShortcode("shorttest", function(subtitle, greeting){
-    return "===="+subtitle+", "+greeting+"====";
+    return "&lt;h2&gt;&lt;em&gt;"+subtitle+">&lt;/em>, "+greeting+"&gt;&lt;/h2&gt;
 });
 			</pre>
 			<p>
@@ -160,7 +160,7 @@ eleventyConfig.addShortcode("shorttest", function(subtitle, greeting){
 
 			<pre class="codeexample">
 &lt;h1&gt;Eleventy Title from Data&lt;/h1&gt;
-&lt;h2&gt;====Eleventy subtitle, Welcome====&lt;/h2&gt;
+&lt;h2&gt;&lt;em&gt;Eleventy subtitle&lt;/em&gt;, Welcome&lt;/h2&gt;
 			</pre>
 		</article>
 
@@ -182,7 +182,7 @@ flowers:
 ---
 {% include "_head.njk" %}
     &lt;h1&gt;{{ title }}&lt;/h1&gt;
-    &lt;h2&gt;{% shorttest subtitle, greeting %}&lt;/h2&gt;
+    {% shorttest subtitle, greeting %}
     {% pairedtest subtitle, greeting %}Paired Shortcode Content{% endpairedtest %}
     &lt;ul&gt;
         {% for flower in flowers -%}
@@ -206,7 +206,7 @@ eleventyConfig.addPairedShortcode("pairedtest", function(data, subtitle, greetin
 			</p>
 			<pre class="codeexample">
 &lt;h1&gt;Eleventy Title from Data&lt;/h1&gt;
-&lt;h2&gt;====Eleventy subtitle, Welcome====&lt;/h2&gt;
+&lt;h2&gt;Eleventy subtitle, Welcome&lt;/h2&gt;
 &lt;h3&gt;Eleventy subtitle&lt;/h3&gt;&lt;h4&gt;Welcome&lt;/h4&gt;&lt;p&gt;&lt;em&gt;Paired Shortcode Content&lt;em&gt;&lt;/p&gt;
 			</pre>
 
