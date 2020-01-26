@@ -145,13 +145,16 @@ const render = () => {
 
 exports.default = render;
 			</pre>
+			<p>
+				In a terminal, in the project folder, running <span class="tag">gulp</span> now should run Eleventy which will render the project the same way as before.
+			</p>
+			</article>
+			<article>
 			<h3 id="eleventyothergulptasks">Eleventy and other Gulp tasks</h3>
 			<p>
-				<strong>Note:</strong> This generally precludes using <em class="tag">eleventy --serve</em>. You can use <em class="tag">eleventy --serve</em>,
-				but that's only useful if Eleventy is the final task. More likely Eleventy would be used to render the static pages first, then
-				Gulp would process them with everything else over to a production folder. In this example, it's assumed Eleventy is rendering to
-				<em class="path">/dist</em>, and then Gulp copies it to <em class="path">/public</em> :
+				More likely Eleventy would be used to render the static pages first, then Gulp would process them and copy them over to a production folder. In the example below, it's assumed Eleventy is rendering to <em class="path">dist/</em>, and then Gulp copies it to <em class="path">public/</em>
 			</p>
+
 			<pre class="codeexample">
 const { src, dest, series, parallel, watch } = require('gulp');
 const cp = require("child_process");
@@ -168,7 +171,10 @@ const copy = () => {
 exports.default = series(render, copy);
 			</pre>
 			<p>
-				In order to serve up the pages to browse at root, install and run http-server (note this does not provide auto-reload) :
+				<strong>Note:</strong> This Gulp flow generally precludes using <em class="tag">eleventy --serve</em>. Sometimes you can use <em class="tag">eleventy --serve</em>, but that's only useful if Eleventy is the final task.
+			</p>
+			<p>
+				So instead, in order to serve up the pages to browse at root, install http-server, then run it in a new terminal (note this does not provide auto-reload) :
 			</p>
 			<pre class="codeexample">
 npm i -D http-server
