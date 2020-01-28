@@ -118,66 +118,78 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 		<h2>Local Server</h2>
-		<article>
+
+		<section class="chapter">
 			<h3 id="introeleventy">Intro to Eleventy Server</h3>
 			<p>
 				Eleventy includes a local web server feature. Two of the main benefits are auto-refresh, and running your site at the web root.
 			</p>
 			<p>
 				If you have the server running, and the page you're editing is loaded into your browser (using the Eleventy server URL), then when you save the file the site will automatically rebuild and then refresh in the browser. However, there are two caveats:
+			</p>
+
 				<ol>
 					<li><s>It only refreshes if the changes are done in a template that has <span class="tag">&lt;body&gt;&lt;/body&gt;</span> tags.</s> (note that this may no longer be accurate)</li>
-					<li>If the folder structure is changed or a new file is added, the server will have to be stopped and restarted. Apparently it only processes the files it saw when it was started.</li>
+					<li><s>If the folder structure is changed or a new file is added, the server will have to be stopped and restarted. Apparently it only processes the files it saw when it was started.</s> (note that this may no longer be accurate)</li>
 				</ol>
-			</p>
 			<p>
 				Running at the web root is useful because Eleventy assumes any URLs it generates (such as hrefs for pagination) are at the root.
 			</p>
 			<p>
 				To start the Eleventy server :
-				<pre class="codeexample">
-npx eleventy --serve
-				</pre>
 			</p>
+			<pre class="codeexample">
+npx eleventy --serve
+			</pre>
 
 			<p>
 				When the server starts, part of the messages it returns should be similar to :
-				<pre class="codeexample">
+			</p>
+
+			<pre class="codeexample">
 [Browsersync] Access URLs:
  ------------------------------------
        Local: http://localhost:8080
     External: http://192.168.1.5:8080
-				</pre>
+			</pre>
+			<p>
 				The <em>Local</em> URL is what you point your browser to.
 			</p>
 
 			<p>
 				Eleventy defaults to port 8080. To start the server at a specifc port :
-				<pre class="codeexample">
-npx eleventy --serve --port=8081
-				</pre>
-			</p>
-			<p>
-				This guide will assume the server is being used throughout. If it is not, make sure to re-run Eleventy whenever changes are made :
-				<pre class="codeexample">
-npx eleventy
-				</pre>
-				And remember that sometimes the site needs to be at root for certain things to work. In those cases the server is probably the easiest way to deal with that.
 			</p>
 
-	</section>
+			<pre class="codeexample">
+npx eleventy --serve --port=8081
+			</pre>
+
+			<p>
+				This guide will assume the server is being used throughout. If it is not, make sure to re-run Eleventy whenever changes are made :
+			</p>
+
+			<pre class="codeexample">
+npx eleventy
+			</pre>
+
+			<p>
+				And remember that sometimes the site needs to be at root for certain things to work. In those cases the server is probably the easiest way to deal with that.
+			</p>
+		</section>
+
+	</article>
 	<nav class="next">
 			<a href="basic-data-and-templating-using-liquid.html">Basic Data and Templating Using Liquid &gt;&gt;</a>
 		</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -207,9 +219,8 @@ npx eleventy
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

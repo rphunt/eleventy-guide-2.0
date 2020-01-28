@@ -118,12 +118,13 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 		<h2>Intros to Eleventy and This Guide</h2>
-		<article>
+		<section class="chapter">
 			<h3 id="introeleventy">Intro to Eleventy</h3>
 			<p>
 				Eleventy is what is known as a Static Site Generator. It can use various files to assemble
@@ -146,8 +147,9 @@
 			<p>
 				Eleventy will cycle through all the source files in a project that it's configured to, gathering up data from markdown, YAML front matter, JSON, or JavaScript, and making it available to the appropriate templates, all automatically. Eleventy then generates the resulting folders with their respective *.html files into a target output folder, to provide a flat, static website that requires no server-side processing.
 			</p>
-		</article>
-		<article>
+		</section>
+		
+		<section class="chapter">
 			<h3 id="introguide">Intro to This Guide</h3>
 			<p>
 				This guide is meant to provide some step by step instructions for using Eleventy, and
@@ -155,7 +157,7 @@
 			</p>
 			<p>
 				As noted above, Eleventy can use various template languages, but it defaults to <em>Liquid</em>. This guide
-				will use that syntax until specifically noting a change, such as in the section where all the templates are switched to <em>Nunjucks</em>.
+				will use that syntax until specifically noting a change, such as in the article where all the templates are switched to <em>Nunjucks</em>.
 			</p>
 			<p>
 				This guide is based on Eleventy version 0.10.0.
@@ -167,15 +169,14 @@
 			<p>
 				Beyond this sentence, the words &quot;simple&quot; and &quot;simply&quot; will not be used, because generally it will be obvious.
 			</p>
-		</article>
-	</section>
+		</section>
+	</article>
 	<nav class="next">
 		<a href="start.html">Start &gt;&gt;</a>
 	</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -205,9 +206,8 @@
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

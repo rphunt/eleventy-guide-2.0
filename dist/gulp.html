@@ -118,17 +118,18 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 		<h2>Gulp with Eleventy as a Task</h2>
-		<article>
+		<section class="chapter">
 			<h3 id="usinggulp">Using Gulp</h3>
 			<p>
 				<em>Gulp</em> is a task runner used to automate various processes of building a coding project such as a website. Eleventy can render static
 				pages from markdown and data, and does offer some features for handling CSS and such, but Gulp offers a lot more power and flexibility for
-				transpiling CSS and JS, minifying them, moving files around, and much more. This section assumes experience using Gulp.
+				transpiling CSS and JS, minifying them, moving files around, and much more. This article assumes experience using Gulp.
 			</p>
 			<p>
 				The idea here is to utilize an NPM module <em class="tag">child_process</em> and its method <em class="tag">spawn</em>. This allows running
@@ -157,8 +158,9 @@ exports.default = render;
 			<p>
 				In a terminal, in the project folder, running <span class="tag">gulp</span> now should run Eleventy which will render the project the same way as before.
 			</p>
-			</article>
-			<article>
+			</section>
+			
+			<section class="chapter">
 			<h3 id="eleventyothergulptasks">Eleventy and other Gulp tasks</h3>
 			<p>
 				Generally,  Eleventy would be used to render the static pages first, then Gulp would process them and copy them over to a production folder. In the example below, it's assumed Eleventy is rendering to <em class="path">dist/</em>, and then Gulp copies it to <em class="path">public/</em>
@@ -189,15 +191,14 @@ exports.default = series(render, copy);
 npm i -D http-server
 npx http-server
 			</pre>
-		</article>
-	</section>
+		</section>
+	</article>
 	<nav class="next">
 		<a href="adding-collections-with-javascript.html">Adding Collections With JavaScript &gt;&gt;</a>
 	</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -227,9 +228,8 @@ npx http-server
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

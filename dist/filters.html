@@ -118,12 +118,14 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 		<h2>Filters</h2>
-		<article>
+
+		<section class="chapter">
 			<h3 id="filterseleventy">Filters in Eleventy</h3>
 				<p>
 					Filters in Eleventy are JavaScript functions that accept content, modify it, then return it to be displayed in place of the original. They are added to the <span class="path">.eleventy.js</span> config file.
@@ -131,17 +133,18 @@
 				<p>
 					Some filters are built-in via the template languages, e.g. <span class="tag">safe</span> and <span class="tag">url_encode</span> are available by default. But Eleventy does lack certain formatting features that can be found in other templating platforms, <em>date formatting</em> for example. A JavaScript function can be added as a filter to provide that formatting.
 				</p>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="createfilter">Create a Filter</h3>
 			<p>
 				There is an Eleventy method <span class="var">addFilter</span> you can use. <span class="var">addFilter</span> is a <em>universal filter</em> and will work with <em>Liquid, Nunjucks, JavaScript,</em> and <em>Handlebars</em>. Eleventy also has specific methods for each of those languages.
 			</p>
 			<p>
 				Edit the config file to create a filter named <span class="var">decorate</span>. This will add asterixes to the start and end of the filtered content :
+			</p>
 
-					<pre class="codeexample">
+			<pre class="codeexample">
 module.exports = (function(eleventyConfig) {
 
     eleventyConfig.addPassthroughCopy("src/js");
@@ -164,12 +167,13 @@ module.exports = (function(eleventyConfig) {
     };
 
 });
-					</pre>
-			</p>
+			</pre>
+
 			<p>
 				Edit the <span class="path">src/index.njk</span> file to use the filter (using a pipe <span class="tag">&lt;li&gt;{{ bird | decorate }}&lt;/li&gt;</span>) :
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 title: Birds
 birds:
@@ -187,32 +191,34 @@ birds:
     &lt;/ul&gt;
 
 {% include &quot;_foot.njk&quot; %}
-				</pre>
+			</pre>
+			<p>
 				The <span class="path">dist/index.html</span> should now have asterixes in the list items.
-				<pre class="codeexample">
+			</p>
+
+			<pre class="codeexample">
 &lt;ul&gt;
     &lt;li&gt;***robin***&lt;/li&gt;
     &lt;li&gt;***finch***&lt;/li&gt;
     &lt;li&gt;***sparrow***&lt;/li&gt;
 &lt;/ul&gt;
-				</pre>
-			</p>
+			</pre>
+		</section>
 
-
-		</article>
-
-		<article>
+		<section class="chapter">
 			<h3 id="formatdate">Format a Date</h3>
 			<p>
 				Using Eleventy in the NPM ecosystem makes NodeJS modules available for use. There is a module called <em>Moment</em> which is very popular for formatting dates. However, because Eleventy renders dates to the local timezone, adjusting back to UTC might be desired. For that, <em>Moment-Timezone</em> can be used. First, install moment-timezone :
-
-					<pre class="codeexample">
+		  </p>
+			<pre class="codeexample">
 npm i -D moment-timezone
-					</pre>
+			</pre>
 
+			<p>
 				Edit <span class="path">.eleventy,js</span> to require <em>moment-timezone</em> and add a filter <span class="var">dateformat</span> :
+			</p>
 
-					<pre class="codeexample">
+			<pre class="codeexample">
 var moment = require('moment-timezone');
 
 module.exports = (function(eleventyConfig) {
@@ -241,15 +247,17 @@ module.exports = (function(eleventyConfig) {
     };
 
 });
-					</pre>
+			</pre>
 
+			<p>
 					More information on using Moment-Timezone can be found <a href="https://momentjs.com/timezone/docs/" target="_blank">in the Moment-Timezone official documentation</a>.
 			</p>
 
 			<p>
 				Edit <span class="path">src/postlist.njk</span> so that it includes <span class="tag">{{ post.data.date | dateformat }}</span> :
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -263,34 +271,32 @@ module.exports = (function(eleventyConfig) {
     &lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
+			</pre>
 
+			<p>
 				The resulting <span class="path">dist/postlist/index.html</span> should now have these list items in a more readable format:
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;ul&gt;
     &lt;li&gt;&lt;a href="/posts/post-01/"&gt;Blog Post 01, 2018 December 31, Monday, 19:12:00&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="/posts/post-02/"&gt;Blog Post 02, 2019 January 01, Tuesday, 19:01:00&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="/posts/post-03/"&gt;Blog Post 03, 2019 January 02, Wednesday, 19:01:00&lt;/a&gt;&lt;/li&gt;
-				</pre>
+			</pre>
 
-			</p>
-
-
-		</article>
+		</section>
 
 			<p>
 				There is more information on filters. <a href="https://www.11ty.dev/docs/filters/" target="_blank">Check out the Eleventy documentation</a> for more details.
 			</p>
 
-	</section>
+	</article>
 	<nav class="next">
 		<a href="shortcodes.html">Shortcodes &gt;&gt;</a>
 	</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -320,9 +326,8 @@ module.exports = (function(eleventyConfig) {
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

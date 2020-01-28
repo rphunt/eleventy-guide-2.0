@@ -118,12 +118,14 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-<section>
+<article>
 		<h2>Global Data Files</h2>
-		<article>
+
+		<section class="chapter">
 			<p>
 				<em>Front matter</em> and <em>Markdown</em> are ways to provide data and content for Eleventy to process into web pages, but to centralize and more tightly organize the data being used in a web site, Eleventy can use <em>global data files</em>. These are files located in a central location that can be used across all templates. These data files can be either JSON or JavaScript. Eleventy defaults to the <span class="path">_data</span> folder for data files.
 			</p>
@@ -177,9 +179,9 @@ title: Animals
     &lt;/ul&gt;
 &lt;p&gt;Footer text&lt;/p&gt;
 			</pre>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 
 			<h3 id="globaldatasubfolder">Global Data in a Subfolder</h3>
 
@@ -204,9 +206,9 @@ title: Animals
 			<p>
 				After the site is rebuilt, the <span class="path">_site/animals/index.html</span> file shoud still contain the same animal list.
 			</p>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="accessingnormaljsondata">Accessing standard JSON data</h3>
 
 			<p>
@@ -280,9 +282,9 @@ title: Animals
 &lt;p&gt;Footer text&lt;/p&gt;
 				</pre>
 
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="htmlinjson">HTML in JSON</h3>
 
 			<p>
@@ -322,17 +324,16 @@ title: Animals
 &lt;/p&gt;
 &lt;h3 class="subtitle"&gt;Animal types&lt;/h3&gt;
 &lt;p&gt;This site is &lt;em&gt;somewhat&lt;/em&gt; organized by animal type.&lt;/p&gt;
-</pre>
-</article>
+			</pre>
+		</section>
 
-	</section>
+	</article>
 <nav class="next">
 	<a href="pagination.html">Pagination &gt;&gt;</a>
 </nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -362,9 +363,8 @@ title: Animals
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

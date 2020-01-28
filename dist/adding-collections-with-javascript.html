@@ -118,12 +118,13 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 		<h2>Adding Collections With JavaScript</h2>
-		<article>
+		<section class="chapter">
 			<h3 id="collectioncrreation">Collection Creation</h3>
 			<p>
         In Eleventy, collections are added to the <em class="var">collections</em> object by <em class="tag">tags</em> in markdown file front matter. Pagination objects are created by <em class="tag">pagination</em> in template file front matter. Collections are available to all templates, but pagination is specific to the template it is invoked in.
@@ -134,9 +135,9 @@
 				The callback can use methods such as <em class="var">getAll</em>, <em class="var">getFilteredByTag</em>, or
 				<em class="var">getFilteredByGlob</em> to access the source data.
       </p>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="newcollectionfrommarkdownfiles">New Collection from Tags in Markdown Files</h3>
 			<p>
 				The markdown files <em class="path">src/posts/*.md</em> have front matter with a <em class="var">tags</em>
@@ -182,9 +183,9 @@ title: Collections Test
 			<p>
 				The file <span class="path">dist/collectiontest.html</span> should be found, with the markdown content in a list form.
 			</p>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="newcollectionfrompaginatontemplates">New Collection from Pagination in Templates</h3>
 			<p>
 				The template <em class="path">src/fishpaged.njk</em> has front matter, with <em class="var">pagination</em>
@@ -217,9 +218,9 @@ eleventyConfig.addCollection("paginationCollection" , function(collection) {
 				The file <span class="path">dist/collectiontest.html</span> should now also contain the stringified JSON data.
 			</p>
 
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="newcollectionfromtagsintemplates">New Collection from Tags in Templates</h3>
 			<p>
 				Add <em class="var">tags: fishtag</em> to the front matter of the <em class="path">src/fishpaged.njk</em>
@@ -256,9 +257,9 @@ eleventyConfig.addCollection("templateTagCollection" , function(collection) {
 				The file <span class="path">dist/collectiontest.html</span> should now also contain the stringified JSON data a second time. But of course this time it was attained via a tag instead of a file path.
 			</p>
 
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="newcollectionfromdataintemplates">New Collection from Data in Templates</h3>
 			<p>
 				The template <em class="path">src/index.njk</em> has front matter data called <em class="var">birds</em>.
@@ -298,16 +299,15 @@ eleventyConfig.addCollection("dataCollection" , function(collection) {
 				The file <span class="path">dist/collectiontest.html</span> should now also contain a list of the data found in the <span class="path">src/index.njk</span> front matter.
 			</p>
 
-		</article>
+		</section>
 
-	</section>
+	</article>
 	<nav class="next">
 		<a href="start.html">Start &gt;&gt;</a>
 	</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -337,9 +337,8 @@ eleventyConfig.addCollection("dataCollection" , function(collection) {
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

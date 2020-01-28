@@ -118,24 +118,29 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
-		<article>
-			<h2>Partials and Include</h2>
+	<article>
+		<h2>Partials and Include</h2>
+
+		<section class="chapter">
 			<p>
 				<em>Partials</em> often refers to HTML that is not a complete web page, but is intended for re-use within multiple web pages. Common examples are the header and the footer of site pages. Some advantages of this are: not having to copy that code into every page of the site; and if a change has to be made, it only has to be done in one place.
 			</p>
+		</section>
 
+		<section class="chapter">
 			<h3 id="usinginclude">Using Include</h3>
 			<p>
 				The tag <span class="tag">{% include %}</span> is how a partial is added to a page. By default, Eleventy looks for partials in the <span class="path">_includes</span> folder. For example, to include header HTML that is in the file <span class="path">_includes/_head.html</span>, the tag would be <span class="tag">{% include _head.html %}</span>. Note that it's common practice to start the filename of a partial with &quot;_&quot;.
 			</p>
 			<p>
 				Create a file <span class="path">_includes/_head.html</span>
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -143,22 +148,22 @@
     &lt;title&gt;Included Header&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-				</pre class="codeexample">
-			</p>
+			</pre class="codeexample">
 			<p>
 				Create a file <span class="path">_includes/_foot.html</span>
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;p&gt;Footer text&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre class="codeexample">
-			</p>
+			</pre class="codeexample">
 
 			<p>
 				Edit your <span class="path">index.html</span> (in the project root) to remove the head and foot of the HTML, and add include tags, so it looks like this.
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 title: Eleventy Title from Data
 flowers:
@@ -176,12 +181,13 @@ flowers:
     &lt;/ul&gt;
 
 {% include _foot.html %}
-			</pre class="codeexample">
+		 </pre class="codeexample">
 
+		 <p>
 				The HTML in the <span class="path">index.html</span> should now look like
+		 </p>
 
-
-				<pre class="codeexample">
+		 <pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -198,14 +204,14 @@ flowers:
 &lt;p&gt;Footer text&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-			</pre class="codeexample">
-			</p>
+		 </pre class="codeexample">
 
-			<h3 id="frontmatterpartials">Using Front Matter With Partials</h3>
-			<p>
+		 <h3 id="frontmatterpartials">Using Front Matter With Partials</h3>
+		 <p>
 				Edit the <span class="path">_includes/head.html</span> to use the title tag
+		 </p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -213,25 +219,23 @@ flowers:
     &lt;title&gt;{{ title }}&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-				</pre class="codeexample">
+			</pre class="codeexample">
 
+			<p>
 				The title in <span class="path">index.html</span> should now go back to matching that page's front matter variable <span class="var">title</span> (<span class="var">Eleventy Title from Data</span>).
 			</p>
 			<p>
 				This shows that the included partial will process the front matter of the including page. However, front matter that is <em>in</em> the partial will not be processed, and will just appear on the page as part of the HTML. Basically the partial is added to the page's
 				HTML first, then Eleventy processes the tags. In other words, don't bother putting front matter in partials.
 			</p>
-
-
-		</article>
-	</section>
+		</section>
+	</article>
 	<nav class="next">
 		<a href="global-data-files.html">Global Data Files &gt;&gt;</a>
 	</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -261,9 +265,8 @@ flowers:
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

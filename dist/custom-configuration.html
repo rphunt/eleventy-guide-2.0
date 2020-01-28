@@ -118,12 +118,13 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 		<h2>Custom Configuration</h2>
-		<article>
+		<section class="chapter">
 			<h3 id="outputpath">Output Path</h3>
 			<p>
        			Eleventy can be customized to match the way you prefer to work. For example, you can change the output folder from <span class="path">_site</span> to <span class="path">dist</span>. Configuration is done by creating the <span class="path">.eleventy.js</span> file (note the dot at the beginning) :
@@ -139,9 +140,9 @@ module.exports = {
 				Delete the <span class="path">_site</span> folder, re-run Eleventy. A new <span class="path">dist</span> folder should appear.
 			</p>
 
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="sourcepath">Source Path</h3>
 			<p>
        			Instead of placing templates in the project root, Eleventy can process from a source folder, e.g. <span class="path">src</span>.  Edit <span class="path">.eleventy.js</span> :
@@ -159,9 +160,9 @@ module.exports = {
 			<p>
 				Move the <span class="path">*.njk</span> and <span class="path">*.md</span> files, and <span class="path">posts</span>, <span class="path">_includes</span> and <span class="path">_data</span> folders all into <span class="path">src</span>. Delete the output folder, re-run Eleventy, and <span class="path">dist</span> should re-appear with the same structure as before.
 			</p>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="globaldatapath">Global Data Path</h3>
 			<p>
        			To change the folder for global data file to <span class="path">jsondata</span>,  edit <span class="path">.eleventy.js</span> (and rename <span class="path">_data</span> to <span class="path">jsondata</span>) :
@@ -177,9 +178,9 @@ module.exports = {
 };
 			</pre>
 
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="includespath">Includes Path</h3>
 			<p>
        			To change the folder for includes to <span class="path">partials_layout</span>,  edit <span class="path">.eleventy.js</span> (and rename <span class="path">_includes</span> to <span class="path">partials_layouts</span>) :
@@ -194,9 +195,9 @@ module.exports = {
     }
 };
 			</pre>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="templateformats">Template Formats</h3>
 			<p>
 				There should currently be <span class="path">*.md</span> and  <span class="path">*.njk</span> files in the <span class="path">eleventy-test</span> project folder. To tell Eleventy to only process <span class="path">*.njk</span> and <span class="path">*.md</span> files, edit <span class="path">.eleventy.js</span> :
@@ -239,12 +240,12 @@ module.exports = {
 		</p>
 
 		<p>
-			<strong>Note:</strong> This is not necessarily the best way to manage and transfer non-template/content assets (e.g. js, css, images). Further down this page is a section that addresses how to copy over complete folders of assets.
+			<strong>Note:</strong> This is not necessarily the best way to manage and transfer non-template/content assets (e.g. js, css, images). Further down this page is a article that addresses how to copy over complete folders of assets.
 		</p>
 
-	</article>
+	</section>
 
-	<article>
+	<section class="chapter">
 
 		<h3 id="includingfuctionsinconfiguration">Including Functions in the Configuration</h3>
 
@@ -279,9 +280,9 @@ module.exports = (function(eleventyConfig) {
 });
 		</pre>
 
-  </article>
+  </section>
 
-	<article>
+	<section class="chapter">
 
 		<h3 id="passthroughfilecopying">Passthrough File Copying</h3>
 
@@ -320,17 +321,16 @@ module.exports = (function(eleventyConfig) {
 		There are more configuration options available, <a href="https://www.11ty.dev/docs/config/" target="_blank">check out the Eleventy documentation</a> for more details.
 	</p>
 
-	</article>
+	</section>
 
 	<nav class="next">
 		<a href="filters.html">Filters &gt;&gt;</a>
 	</nav>
-	</section>
+	</article>
 
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -360,9 +360,8 @@ module.exports = (function(eleventyConfig) {
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

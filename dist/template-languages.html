@@ -118,12 +118,13 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 		<h2>Eleventy and Template Languages</h2>
-		<article>
+		<section class="chapter">
 			<h3 id="fileextensions">File Extensions</h3>
 
 			<p>
@@ -172,9 +173,9 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
       <p>
 				Confirm everything processed correctly. Basically, everything in <span class="path">_site</span> should look the same as before. Note how, even though the templates are now <span class="path">*.njk</span>, the output files are still <span class="path">*.html</span>.
       </p>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="nunjucksjavascript">Nunjucks and JavaScript</h3>
 			<p>
 				Create the file <span class="path">jsontest.njk</span>. Note how the front matter starts with <span class="var">---js</span> :
@@ -208,7 +209,7 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
 				A new folder and file <span class="path">_site/jsontest/index.html</span>	should be generated :
       </p>
 
-		<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -225,9 +226,9 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
 &lt;/html&gt;
 			</pre>
 
-		</article>
+		</section>
 
-    <article>
+    <section class="chapter">
 			<h3 id="nunjucksjavascriptpagination">Nunjucks and JavaScript and Pagination</h3>
 			<p>
         JavaScript front matter provides an extra feature to pagination, the <span class="var">before</span> key. This allows insertion of a JS function to process the data before pagination. Create a  <span class="path">src/fishpaged2.njk</span> file, noting the change in the syntax from YAML to JavaScript :
@@ -266,10 +267,10 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
 				A new folder and file <span class="path">_site/pagedfish2/index.html</span>	should be generated. You should see &quot;Fish of the day:&quot; preceding each list item :
       </p>
       <pre class="codeexample">
-        <!DOCTYPE html>
+&lt;!DOCTYPE html&gt;
 &lt;html>
 &lt;head>
-     <title>Fish Paged 2</title>
+     &lt;title&gt;Fish Paged 2&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;h1&gt;Fish Paged 2&lt;/h1&gt;
@@ -285,16 +286,15 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
 				For more details on what different template languages can do, <a href="https://www.11ty.io/docs/languages/">check out the Eleventy documentation on languages</a>.
 			</p>
 
-    </article>
+    </section>
 
 	<nav class="next">
 		<a href="custom-configuration.html">Custom Configuration &gt;&gt;</a>
 	</nav>
-	</section>
+	</article>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -324,9 +324,8 @@ fishpaged.njk (change {{ pagination.pageNumber : plus 1 }} to {{ pagination.page
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

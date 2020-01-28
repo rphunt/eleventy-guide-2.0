@@ -118,53 +118,58 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 		<article>
 			<h2>Start</h2>
+
+		<section class="chapter">
 
 			<p>
 				Start a project by creating a project folder, installing Eleventy locally using NPM, then creating an HTML file.
 			</p>
 			<p>
 				Create your project folder (the project root).
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 mkdir eleventy-test
 cd eleventy-test
-				</pre class="codeexample">
-			</p>
+			</pre class="codeexample">
 
 			<p>
 				Setup Node and Eleventy locally
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 npm init -y
 npm install --save-dev @11ty/eleventy
-				</pre class="codeexample">
-			</p>
+			</pre class="codeexample">
 
 			<p>
 				Do a quick test.
-
-				<pre class="codeexample">
-npx eleventy
-				</pre class="codeexample">
-
-				A simple message like this should be returned.
-
-				<pre class="codeexample">
-Processed 0 files in 0.02 seconds (v0.9.0)
-				</pre>
-
 			</p>
+
+			<pre class="codeexample">
+npx eleventy
+			</pre class="codeexample">
+
+			<p>
+				A simple message like this should be returned.
+			</p>
+
+			<pre class="codeexample">
+Processed 0 files in 0.02 seconds (v0.9.0)
+			</pre>
 
 			<p>
 				Create an <span class="path">index.html</span> file. At this point it can just be standard HTML.
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -175,38 +180,40 @@ Processed 0 files in 0.02 seconds (v0.9.0)
 &lt;h1&gt;Eleventy Test&lt;/h1&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre class="codeexample">
-			</p>
+			</pre class="codeexample">
 
 			<p>
 				Run Eleventy again.
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 npx eleventy
-				</pre class="codeexample">
+			</pre class="codeexample">
 
-				It should return a message like this
+			<p>
+				It should return a message like this :
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 Writing _site/index.html from ./index.html.
 Processed 1 file in 0.03 seconds (v0.9.0)
-				</pre>
+			</pre>
 
+			<p>
 				There should now be a new folder, <span class="path">_site</span>, in the project folder. Inside <span class="path">_site</span> you should find a new <span class="path">index.html</span>, the HTML should match the HTML inside the <span class="path">index.html</span> you created. <span class="path">_site</span> is the default output folder for Eleventy.
-
 			</p>
+			
 			<p>
 				You should check this new file in your web browser by loading the <span class="path">/eleventy-test/_site</span> folder.
 			</p>
-		</article>
-	</section>
+		</section>
+	</article>
 	<nav class="next">
 		<a href="local-server.html">Local Server &gt;&gt;</a>
 	</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -236,9 +243,8 @@ Processed 1 file in 0.03 seconds (v0.9.0)
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

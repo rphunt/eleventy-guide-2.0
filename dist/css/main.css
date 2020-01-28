@@ -31,7 +31,7 @@ html {
 body {
 }
 
-article, p, h1, h2, h3, h4, ul, ol {
+p, h1, h2, h3, h4, ul, ol, .chapter {
 	margin-bottom: 1em;
 }
 

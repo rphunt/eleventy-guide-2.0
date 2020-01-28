@@ -19,16 +19,14 @@ json with html **
 pass through **
 clearer explanation of template **
 markdown file as a template **
+addcollection templateContent **
+shortcode examples fix **
 
-shortcode examples fix
+
 collection from json - hack?
-
-addcollection templateContent?
 
 data contained in collections and objects
 transforms?
-
-
 
 ==================================================
 

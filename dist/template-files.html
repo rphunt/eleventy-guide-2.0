@@ -118,12 +118,13 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 
-		<article>
+		<section class="chapter">
 			<h2>Template Files</h2>
 
 			<p>
@@ -132,12 +133,11 @@
 			<p>
 				The <em class="path">index.html</em> previously created is a template. It uses a template language to indicate how and where to use data from the front matter in the template's HTML. <em>Markdown</em> files and <em>Layouts</em> are also types of templates.
 			</p>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 
-				<h3 id="markdown">Markdown</h3>
-				<p>
+			<h3 id="markdown">Markdown</h3>
 			<p>
 				<em>Markdown</em> files in Eleventy are like the <em class="path">README.md</em> files you find in GitHub repos. They use the same syntax. They can also have front matter added. They are used to contain data and content, which Eleventy can then render into HTML, or which can be inserted into another template file (i.e. a <em>Layout</em> file).
 			</p>
@@ -162,9 +162,9 @@ This is the Animals about page
 		<p>
 			The markdown text with the <span class="tag">#</span> has been automatically inserted into a new <span class="tag">&lt;H1&gt;</span> tag, with the remaining content inserted into a new <span class="tag">&lt;P&gt;</span> tag.
 		</p>
-	</article>
+	</section>
 
-	<article>
+	<section class="chapter">
 
 			<h3 id="layouts">Layouts</h3>
 			<p>
@@ -184,13 +184,13 @@ layout: layout.html
 # Animals About Page
 
 This is the Animals about page
-		</pre>
+			</pre>
 
-		<p>
+			<p>
 			Create a new folder <span class="path">_includes</span>. Inside of that create a file <span class="path">layout.html</span>. This will be the layout template. Eleventy defaults to <span class="path">_includes</span> to find templates files :
-		</p>
+			</p>
 
-		<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -200,9 +200,9 @@ This is the Animals about page
     {{ content }}
 &lt;/body&gt;
 &lt;/html&gt;
-		</pre>
+			</pre>
 
-		<p>
+			<p>
 				In the <span class="path">about.md</span> file is the front matter that specifies the layout template,
 				in this case <span class="path">_includes/layout.html</span>. Since Eleventy defaults to the <span class="path">_includes</span>
 				folder, that part doesn't need to be added. Below that is the markdown content.
@@ -228,9 +228,9 @@ This is the Animals about page
 &lt;/body&gt;
 &lt;/html&gt;
 			</pre>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="folderstructure">Folder Structure</h3>
 			<p>
 				Again, Eleventy is for creating static web sites. It assumes there is no database backend or server rendering, that the pages are delivered as they are stored on the web host. It also assumes that the web hosting is intended for static web sites, and does not offer things like redirects or other server processing.
@@ -238,9 +238,9 @@ This is the Animals about page
 			<p>
 				To achieve the preferred URL style of <span class="path">domain/folder/</span> as opposed to page names like <span class="path">index.html</span>, it creates a folder for every page that would be delivered, which then contains an <span class="path">index.html</span>. Since <span class="path">index.html</span> is always a default for web servers, it is not needed in the URL, providing a clean address structure. The <span class="path">index.html</span> also helps prevent exposing any other files that might be in that folder, thus adding a little more security.
 			</p>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="layoutsmarkdownfrontmatter">Layouts and Markdown With Front Matter</h3>
 
 			<p>
@@ -335,9 +335,9 @@ title2: Title from layout.html
 			<p>
 				Now the layout front matter title shows up instead. <a href="https://www.11ty.io/docs/layouts/" target="_blank">More information about Eleventy's data cascade can be found here</a>.
 			</p>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="collections">Collections</h3>
 			<p>
 				A <em>Collection</em> groups data based on a common <span class="var">tags</span> value. If the front matter in a markdown file contains a particular <span class="var">tags</span> value, that markdown will be included in a collection and provided to templates that call for it. The <span class="var">tags</span> variable can contain multiple values, which means the same markdown can belong to multiple collections.
@@ -417,7 +417,7 @@ Welcome to the blog.
 			</pre>
 
 			<p>
-					There should also be a new folder <span class="path">_site/post-01</span>, containing an <span class="path">index.html</span> file. This is the actual permalink page for the post. The file should contain:
+				There should also be a new folder <span class="path">_site/post-01</span>, containing an <span class="path">index.html</span> file. This is the actual permalink page for the post. The file should contain:
 		  </p>
 
 			<pre class="codeexample">
@@ -498,9 +498,9 @@ Even more news today.
 			<p>To allow better organizing, the three <span class="path">post-*.md</span> files can be moved from the root into a dedicated folder, e.g. <span class="path">posts</span>. Eleventy will still process them the same way, except the <span class="path">post-*</span> folders will be under <span class="path">_site/posts</span> now.
 			</p>
 
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="linkingcollectionitem">Linking to a Collection Item</h3>
 			<p>
 				To turn the list items in <span class="path">postlist/index.html</span> into links, edit <span class="path">postlist.html</span> to add <span class="var">{{ post.url }}</span> as a link :
@@ -530,9 +530,9 @@ Even more news today.
 &lt;li&gt;&lt;a href="/posts/post-01/"&gt;Blog Post 01, Mon Dec 31 2018 19:00:00 GMT-0500 (Eastern Standard Time)&lt;/a&gt;&lt;/li&gt;
 			</pre>
 
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="collectionsandmarkdowncontent">Collections and Markdown Content</h3>
 				<p>
 					When a markdown file uses a layout template, that template only uses the content found in that
@@ -574,8 +574,8 @@ Even more news today.
 				<p>
 					This should result in the formatted content for each post appearing below the links in the list.
 				</p>
-		</article>
-		<article>
+		</section>
+		<section class="chapter">
 			<h3 id="eleventydates">Eleventy and Date Values</h3>
 				<p>
 					It can be seen that Eleventy is not handling <span class="var">date</span> as a string but as a <em>date value</em>, and assumes <span class="var">date</span> is entered as a UTC time, and then adjusts it for the local time zone.
@@ -588,17 +588,16 @@ Even more news today.
 					If the front matter has a value with the form of <em>YYYY-MM-DD</em>, Eleventy will process it as a date, regardless of the variable name. And if that format is seen in the filename, Eleventy will let that override the file creation date.
 				</p>
 				<p>
-					The timezone  and the format of the date can be changed. Refer to the section on <a href="filters.html#formatdate">using a filter to format a date</a>.
+					The timezone  and the format of the date can be changed. Refer to the article on <a href="filters.html#formatdate">using a filter to format a date</a>.
 				</p>
-		</article>
-	</section>
+		</section>
+	</article>
 	<nav class="next">
 		<a href="partials-and-include.html">Partials and Include &gt;&gt;</a>
 	</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -628,9 +627,8 @@ Even more news today.
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

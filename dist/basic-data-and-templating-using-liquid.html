@@ -118,26 +118,26 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 
-		<article>
-			<h2>Basic Data and Templating Using Liquid</h2>
+		<h2>Basic Data and Templating Using Liquid</h2>
 
+		<section class="chapter">
 			<p>
-				<em>Liquid</em> is one of the template languages that Eleventy can process. We will try that
-				by adding some data into the <span class="path">index.html</span> file, using what is called <em>front matter</em>. The syntax is based on YAML (a type of markup language).
+				<em>Liquid</em> is one of the template languages that Eleventy can process. We will try that by adding some data into the <span class="path">index.html</span> file, using what is called <em>front matter</em>. The syntax is based on YAML (a type of markup language).
 			</p>
 			<p>
 				Edit your <span class="path">index.html</span> by adding two lines of <span class="var">---</span> with some data in between, as seen below. This is called <em>front matter</em>. We are creating one variable <span class="var">title</span>, with a value of <span class="var">Eleventy Title from Data</span>. The front matter has to be at the top of the page above the HTML, otherwise it will be displayed like any other text.
 			</p>
 			<p>
-				What we are also changing is the text inside the title and <span class="tag">&lt;h1&gt;</span> tags. We're replacing both with
-				<span class="tag">{{ title }}</span>. The double curly brackets indicate where Eleventy is to automatically insert a value into the HTML, in this case, <span class="var">title's</span> value from the front matter. This particular syntax is from the Liquid template language.
+				What we are also changing is the text inside the title and <span class="tag">&lt;h1&gt;</span> tags. We're replacing both with <span class="tag">{{ title }}</span>. The double curly brackets indicate where Eleventy is to automatically insert a value into the HTML, in this case, <span class="var">title's</span> value from the front matter. This particular syntax is from the Liquid template language.
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 title: Birds
 ---
@@ -151,8 +151,7 @@ title: Birds
     &lt;h1&gt;{{ title }}&lt;/h1&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre class="codeexample">
-			</p>
+			</pre class="codeexample">
 			<p>
 				Now check the page in your browser. The title and the header should now match the value from the front matter.
 			</p>
@@ -164,8 +163,9 @@ title: Birds
 			</p>
 			<p>
 				The new tags provide commands, so instead of the <span class="tag">{{ }}</span> form, they use a <span class="tag">{% %}</span> form. In this case, a <em>for loop</em> is created with an opening tag and a closing tag. It cycles through the <span class="var">birds</span> list, creating a discrete variable <span class="var">bird</span> each time, that can then be inserted in the HTML.
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 title: Birds
 birds:
@@ -190,13 +190,13 @@ birds:
 
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre class="codeexample">
-			</p>
+			</pre class="codeexample">
 
 			<p>
 				Check the page in your browser. A list should now additionally appear on the page. And if you open <span class="path">_site/index.html</span> in your editor, you should see:
+			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -216,32 +216,33 @@ birds:
 &lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
-			</p>
+			</pre>
+		</section>
 
-				<h3 id="whitespace">Whitespace (Line Breaks)</h3>
-				<p>
+		<section class="chapter">
+			<h3 id="whitespace">Whitespace (Line Breaks)</h3>
+			<p>
 					There will be line breaks around the lines with the <span class="tag">&lt;LI&gt;</span> tags. To clean this up, adding dashes to the loop tags prevents adding line breaks.
-				<pre class="codeexample">
+			</p>
+			<pre class="codeexample">
 &lt;ul&gt;
     {%- for bird in birds -%}
     &lt;li&gt;{{ bird }}&lt;/li&gt;
     {%- endfor -%}
 &lt;/ul&gt;
-				</pre>
+			</pre>
+			<p>
 					With the dashes at the start and end of the tags, the <span class="tag">&lt;LI&gt;s</span> will end up all on one line. To keep each <span class="tag">&lt;LI&gt;</span> on it's own line, just add dashes at the end of the tags.
-				</p>
+			</p>
 
-
-		</article>
-	</section>
+		</section>
+	</article>
 	<nav class="next">
 		<a href="template-files.html">Templates Files &gt;&gt;</a>
 	</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -271,9 +272,8 @@ birds:
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

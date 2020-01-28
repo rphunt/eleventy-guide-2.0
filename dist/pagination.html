@@ -118,12 +118,14 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 		<h2>Pagination</h2>
-		<article>
+
+		<section class="chapter">
 			<h3 id="basicpaginationjsonarray">Basic Pagination of JSON Array</h3>
 			<p>
 				Pagination can be automatically handled by Eleventy. Front matter in a template is used to indicate what data is paginated, and how many items per page there should be.
@@ -131,7 +133,7 @@
 			<p>
 				Create a new <span class="path">_data/fishList.json</span> file containing an array (this one has 13 items) :
 			</p>
-				<pre class="codeexample">
+			<pre class="codeexample">
 [
     "perch",
     "bass",
@@ -147,12 +149,12 @@
     "carp",
     "guppy"
 ]
-				</pre>
+			</pre>
 			<p>
 				Create the file <span class="path">fishpaged.html</span>. In the front matter there will be a <span class="var">pagination</span> variable which contains what data to paginate (<span class="var">data: fishList</span>) and how many items per page (<span class="var">size: 2</span>). The following <em>for loop</em> iterates through the resulting <span class="var">pagination</span> items.
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 title: Fish Paged
 pagination:
@@ -167,13 +169,13 @@ pagination:
     {% endfor -%}
 &lt;/ul&gt;
 {% include _foot.html %}
-				</pre>
+			</pre>
 
 			<p>
 				You should now find a <span class="path">_site/fishpaged</span> folder, containing an <span class="path">index.html</span> and folders numbered 1 to 6, each containing an <span class="path">index.html</span>. The <span class="path">_site/fishpaged/index.html</span> should contain :
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -189,21 +191,21 @@ pagination:
 &lt;p>Footer text&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-				</pre>
+			</pre>
+
 			<p>
 				Each subfolder's index file (e.g. <span class="path">_site/fishpaged/1/index.html</span>) should have two more of the fish from the JSON file, with the 6th one only having &quot;guppy&quot;. Again, the idea is to result in a clean URL structure, e.g. <span class="path">http://localhost/eleventy/eleventy-test/_site/fishpaged/1/</span>, then <span class="path">http://localhost/eleventy/eleventy-test/_site/fishpaged/2/</span>, etc.
 			</p>
+		</section>
 
-
-		</article>
-		<article>
+		<section class="chapter">
 			<h3 id="paginationjsonobject">Pagination of JSON object</h3>
 			<p>
 				Pagination of a JSON object is only slightly different.
 				Edit <span class="path">_site/fishList.json</span> to contain :
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 {
     "fish":
     [
@@ -222,25 +224,25 @@ pagination:
         "guppy"
     ]
 }
-				</pre>
+			</pre>
 
 			<p>
 				Edit <span class="path">fishpaged.html</span> so the front matter is :
 			</p>
 
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 title: Fish Paged
 pagination:
     data: fishList.fish
     size: 2
 ---
-			</pre>
+		</pre>
 
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="paginationobject">Pagination Object</h3>
 			<p>
 				It's helpful to look at the actual organization of the data in the <em>Pagination</em> object, to see how it can be used in a template.
@@ -267,12 +269,12 @@ pagination:
     }
 }
 			</pre>
-		<p>
-			In <span class="path">fishpaged.html</span>, there is a loop that cycles through the <span class="var">pagination.items</span> array, and displays the content in a list. The other values in this object can be inserted into the template for creating navigation links or showing the page number. These values can also be used for modifying the page permalinks.
-		</p>
-		</article>
+			<p>
+				In <span class="path">fishpaged.html</span>, there is a loop that cycles through the <span class="var">pagination.items</span> array, and displays the content in a list. The other values in this object can be inserted into the template for creating navigation links or showing the page number. These values can also be used for modifying the page permalinks.
+			</p>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="customizingpermalinks">Customizing the Permalinks</h3>
 			<p>
 				The Eleventy default for the pagination folder structure can be overriden in the front matter. The syntax uses template tags, the only time they can be used in front matter.
@@ -281,7 +283,7 @@ pagination:
 				Delete the <span class="path">_site</span> folder, then edit <span class="path">fishpaged.html</span> so the front matter is :
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 title: Fish Paged
 pagination:
@@ -300,7 +302,7 @@ permalink: "fishes/page-{{ pagination.pageNumber }}/index.html"
 				To have the folders start with <span class="path">page-1</span>, change the <span class="var">permalink</span> value to :
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 permalink: "fishes/page-{{ pagination.pageNumber | plus: 1 }}/index.html"
 			</pre>
 
@@ -308,40 +310,45 @@ permalink: "fishes/page-{{ pagination.pageNumber | plus: 1 }}/index.html"
 				As previously seen, by default, Eleventy structured the pagination so that we got :
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 _site/fishpaged/index.html
 _site/fishpaged/1/index.html
 _site/fishpaged/2/index.html
 ...
-				</pre>
+			</pre>
 			<p>
 				Then we were able to customize it to be structured as :
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 _site/fishes/page-1/index.html
 _site/fishes/page-2/index.html
 _site/fishes/page-3/index.html
 ...
-				</pre>
+			</pre>
+			<p>
 				With no <span class="path">fishes/index.html</span>.
+			</p>
+
 			<p>
 				But what might be preferred is a main page with no number, then the second page is numbered &quot;2&quot; :
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 _site/fishes/index.html
 _site/fishes/page-2/index.html
 _site/fishes/page-3/index.html
 ...
-				</pre>
+			</pre>
+
 			<p>
 				This way the URL for the first <span class="path">fishes</span> page is a little cleaner. This can be done by adding a conditional to the permalink front matter:
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber | plus: 1 }}{% endif %}/index.html"
-				</pre>
+			</pre>
+
 			<p>
 				In all cases, it uses the <span class="var">fishes/</span> folder. It then checks if the page number is above 0, and if true, creates <span class="var">page-*/index.html</span> (adding 1 to the page number). For page 0 it just creates the <span class="var">index.html</span>.
 			</p>
@@ -350,9 +357,9 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
 				This is the Liquid syntax, Nunjucks will be different. A lot of things can be done with pagination, <a href="https://www.11ty.io/docs/pagination/" target="_blank">refer to the Eleventy documentation</a> for more details.
 			</p>
 
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="pagenavigation">Page Navigation</h3>
 			<p>
 				With the pagination object, the <span class="var">pagination.href.previous</span> and <span class="var">pagination.href.next</span> values can be used to create Previous and Next links, and with added conditionals to decide if links should be created on a particular page.
@@ -364,7 +371,7 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
 				Edit <span class="path">fishpaged.html</span> to add the needed tags :
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 ---
 title: Fish Paged
 pagination:
@@ -386,7 +393,7 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
     &lt;li&gt;{% if pagination.href.next %}&lt;a href="{{ pagination.href.next }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
 &lt;/ul>
 {% include _foot.html %}
-				</pre>
+			</pre>
 
 			<p>
 				Load the first page in your browser, <span class="path">/fishes/</span> and there should be list items for <em>Previous</em> and <em>Next</em>. <em>Next</em> should be a link. Navigation across the paginated content with these list items should be possible.
@@ -396,7 +403,7 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
 			</p>
 
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;ul&gt;
     &lt;li&gt;&lt;a href="{{ pagination.href.first }}"&gt;First&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;{% if pagination.href.previous %}&lt;a href="{{ pagination.href.previous }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
@@ -411,7 +418,7 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
 				To add a page number to the navigation area, insert <span class="var">pagination.pageNumber</span> into the HTML. Because pageNumber starts at &quot;0&quot;, add &quot;1&quot; to display standard page numbering. Edit <span class="path">fishpaged.html</span> to add the needed tag :
 			</p>
 
-				<pre class="codeexample">
+			<pre class="codeexample">
 &lt;ul&gt;
     &lt;li&gt;&lt;a href="{{ pagination.href.first }}"&gt;First&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;{% if pagination.href.previous %}&lt;a href="{{ pagination.href.previous }}"&gt;Previous&lt;/a&gt;{% else %}Previous{% endif %}&lt;/li&gt;
@@ -423,19 +430,18 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
     &lt;li&gt;{% if pagination.href.next %}&lt;a href="{{ pagination.href.next }}">Next&lt;/a&gt;{% else %}Next{% endif %}&lt;/li&gt;
     &lt;li&gt;&lt;a href="{{ pagination.href.last }}"&gt;Last&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-				</pre>
+			</pre>
 			<p>
 				Load the first page in your browser, <span class="path">/fishes/</span> and there should now be a <em>Page 1</em> in between the <em>Previous</em> and <em>Next</em> list items. Navigating through the pages should be reflected in that number's value.
 			</p>
-		</article>
-	</section>
+		</section>
+	</article>
 	<nav class="next">
 		<a href="template-languages.html">Eleventy and Template Languages &gt;&gt;</a>
 	</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -465,9 +471,8 @@ permalink: "fishes/{% if pagination.pageNumber>0 %}page-{{ pagination.pageNumber
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>

@@ -118,18 +118,20 @@
 
 		</ul>
 	</nav><!-- .toc end -->
-	<section class="content">
+	
+	<main class="content">
 		
 
-	<section>
+	<article>
 		<h2>Shortcodes</h2>
-		<article>
+		<section class="chapter">
 			<h3 id="shortcodeseleventy">Shortcodes in Eleventy</h3>
 			<p>
 				<em>Shortcodes</em> have some similarities to filters, but can provide some extra flexibility. Filters allow piping a variable into a function, which then returns a modified form of that variable. Shortcodes are called with multiple parameters in a very function-like manner. The idea then being that the variables are used to assemble content to be returned. A type of automated layout. There are also <em>Paired Shortcodes</em> which include <em>end</em> tags. Between the beginning and end tags there can be content which the shortcode can also process. That content can contain variables and shortcodes.
 			</p>
-		</article>
-		<article>
+		</section>
+
+		<section class="chapter">
 			<h3 id="shortcode">Shortcode</h3>
 			<p>
 				Edit <span class="path">src/index.njk</span> to add some new front matter and a tag for a shortcode called <span class="tag">shorttest</span>. As can be seen, there is no pipe, and there are two variables being supplied (set in the front matter) :
@@ -171,9 +173,9 @@ eleventyConfig.addShortcode("shorttest", function(subtitle, greeting){
 &lt;h1&gt;Eleventy Title from Data&lt;/h1&gt;
 &lt;h2&gt;&lt;em&gt;Eleventy subtitle&lt;/em&gt;, Welcome&lt;/h2&gt;
 			</pre>
-		</article>
+		</section>
 
-		<article>
+		<section class="chapter">
 			<h3 id="pairedshortcode">Paired Shortcode</h3>
 			<p>
 				Edit <span class="path">src/index.njk</span> again to add a tag for a paired shortcode called <span class="tag">pairedtest</span>. Note both the <span class="tag">{% pairedtest %}</span> and the <span class="tag">{% endpairedtest %}</span> tags, and note there is text between them :
@@ -219,16 +221,15 @@ eleventyConfig.addPairedShortcode("pairedtest", function(data, subtitle, greetin
 &lt;h3&gt;Eleventy subtitle&lt;/h3&gt;&lt;h4&gt;Welcome&lt;/h4&gt;&lt;p&gt;&lt;em&gt;Paired Shortcode Content&lt;em&gt;&lt;/p&gt;
 			</pre>
 
-		</article>
+		</section>
 
-	</section>
+	</article>
 	<nav class="next">
 		<a href="gulp.html">Gulp with Eleventy as a Task &gt;&gt;</a>
 	</nav>
 
 
-		<section class="references">
-			<article>
+		<nav class="references">
 				<h2>Handy References</h2>
 				<ul>
 
@@ -258,9 +259,8 @@ eleventyConfig.addPairedShortcode("pairedtest", function(data, subtitle, greetin
 
 
 				</ul>
-			</article>
-		</section>
-	</section><!-- .content end -->
+		</nav>
+	</main><!-- .content end -->
 </div><!-- .main end -->
 </body>
 </html>
