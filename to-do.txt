@@ -22,7 +22,7 @@ markdown file as a template **
 addcollection templateContent **
 shortcode examples fix **
 
-
+{{ content }} in HTML and NJK templates
 collection from json - hack?
 
 data contained in collections and objects
