@@ -1,7 +1,7 @@
 :root {
 	--clrlink: #336611;
 	--clrh2: #336611;
-	--clrh2bg: #ccffbb;
+	--clrh2bg: #cceebb;
 	--clrh3: #000000;
 	--clrh3bg: #f0f0f0;
 	--clrcode: #333333;
@@ -79,7 +79,25 @@ code, pre {
 
 .main {
 	display: grid;
+}
+.main__inner {
+	display: grid;
 	grid-template-columns: 30% 70%;
+}
+
+.page__header {
+	padding: .5em 1em;
+	border-bottom: solid 6px var(--clrh2bg);
+}
+
+.page__header h1 {
+	margin: 0;
+}
+
+.page__header a {
+	text-decoration: none;
+	display: block;
+	color: #000000;
 }
 
 .tableofcontents {

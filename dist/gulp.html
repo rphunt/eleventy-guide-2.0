@@ -6,121 +6,115 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-<div class="main">
+	<div class="main">
 
-	<nav class="tableofcontents">
-		<h1><a href=".">Eleventy Walk Through</a></h1>
-		<ul>
-			<li class="pagename"><a href="intro.html">Intros to Eleventy and This Guide</a>
-				<ul>
-					<li><a href="intro.html#introeleventy">Intro to Eleventy</a></li>
-					<li><a href="intro.html#introguide">Intro to This Guide</a></li>
-				</ul>
-			</li>
- 			<li class="pagename"><a href="start.html">Start</a></li>
-			<li class="pagename"><a href="local-server.html">Local Server</a>
-			</li>
-			<li class="pagename"><a href="basic-data-and-templating-using-liquid.html">Basic Data and Templating Using Liquid</a>
-				<ul>
-					<li><a href="basic-data-and-templating-using-liquid.html#whitespace">Whitespace (Line Breaks)</a></li>
-				</ul>
-			</li>
-			<li class="pagename"><a href="template-files.html">Template Files</a>
-				<ul>
-					<li><a href="template-files.html#markdown">Markdown</a></li>
-					<li><a href="template-files.html#layouts">Layouts</a></li>
-					<li><a href="template-files.html#folderstructure">Folder Structure</a></li>
-					<li><a href="template-files.html#layoutsmarkdownfrontmatter">Layouts and Markdown With Front Matter</a></li>
-					<li><a href="template-files.html#collections">Collections</a></li>
-					<li><a href="template-files.html#linkingcollectionitem">Linking to a Collection Item</a></li>
-					<li><a href="template-files.html#collectionsandmarkdowncontent">Collections and Markdown Content</a></li>
-					<li><a href="template-files.html#eleventydates">Eleventy and Date Values</a></li>
-				</ul>
-			</li>
-			<li class="pagename"><a href="partials-and-include.html">Partials and Include</a>
-				<ul>
-					<li><a href="partials-and-include.html#usinginclude">Using Include</a></li>
-					<li><a href="partials-and-include.html#frontmatterpartials">Using Front Matter With Partials</a></li>
-				</ul>
-			</li>
-			<li class="pagename"><a href="global-data-files.html">Global Data Files</a>
-				<ul>
-					<li><a href="global-data-files.html#globaldatainpage">Using Global Data in a Page</a></li>
-					<li><a href="global-data-files.html#globaldatasubfolder">Global Data in a Subfolder</a></li>
-					<li><a href="global-data-files.html#accessingnormaljsondata">Accessing normal JSON data</a></li>
-					<li><a href="global-data-files.html#htmlinjson">HTML in JSON</a></li>
-				</ul>
-			</li>
-			<li class="pagename"><a href="pagination.html">Pagination</a>
-				<ul>
-					<li><a href="pagination.html#basicpaginationjsonarray">Basic Pagination of JSON Array</a></li>
-					<li><a href="pagination.html#paginationjsonobject">Pagination of JSON object</a></li>
-					<li><a href="pagination.html#customizingpermalinks">Customizing the Permalinks</a></li>
-					<li><a href="pagination.html#pagenavigation">Page Navigation</a></li>
-				</ul>
-			</li>
-			<li class="pagename"><a href="template-languages.html">Template Languages</a>
-				<ul>
-					<li><a href="template-languages.html#fileextensions">File Extensions</a></li>
-					<li><a href="template-languages.html#nunjucksjavascript">Nunjucks and Javascript</a></li>
-					<li><a href="template-languages.html#nunjucksjavascriptpagination">Nunjucks and JavaScript and Pagination</a></li>
-				</ul>
-			</li>
-			<li class="pagename"><a href="custom-configuration.html">Custom Configuration</a>
-				<ul>
-					<li><a href="custom-configuration.html#outputpath">Output Path</a></li>
-					<li><a href="custom-configuration.html#sourcepath">Source Path</a></li>
-					<li><a href="custom-configuration.html#globaldatapath">Global Data Path</a></li>
-					<li><a href="custom-configuration.html#includespath">Includes Path</a></li>
-					<li><a href="custom-configuration.html#templateformats">Template Formats</a></li>
-					<li><a href="custom-configuration.html#includingfuctionsinconfiguration">Including Functions in the Configuration</a></li>
-					<li><a href="custom-configuration.html#passthroughfilecopying">Passthrough File Copying</a></li>
-				</ul>
-			</li>
-			<li class="pagename"><a href="filters.html">Filters</a>
-				<ul>
-					<li><a href="filters.html#filterseleventy">Filters in Eleventy</a></li>
-					<li><a href="filters.html#createfilter">Create a Filter</a></li>
-					<li><a href="filters.html#formatdate">Format a Date</a></li>
-				</ul>
-			</li>
-			<li class="pagename"><a href="shortcodes.html">Shortcodes</a>
-				<ul>
-					<li><a href="shortcodes.html#shortcodeseleventy">Shortcodes in Eleventy</a></li>
-					<li><a href="shortcodes.html#shortcode">Shortcode</a></li>
-					<li><a href="shortcodes.html#pairedshortcode">Paired Shortcode</a></li>
-				</ul>
-			</li>
-			<li class="pagename"><a href="gulp.html">Gulp with Eleventy as a Task</a>
-				<ul>
-					<li><a href="gulp.html#usinggulp">Using Gulp</a></li>
-					<li><a href="gulp.html#eleventyothergulptasks">Eleventy and other Gulp tasks</a></li>
-				</ul>
-			</li>
+		<header class="page__header">
+			<h1><a href=".">Eleventy Walk Through</a></h1>
+		</header>
 
-			<li class="pagename"><a href="adding-collections-with-javascript.html">Adding Collections With JavaScript</a>
+		<div class="main__inner">
+			<nav class="tableofcontents">
 				<ul>
-					<li><a href="adding-collections-with-javascript.html#collectioncrreation">Collection Creation</a></li>
-					<li><a href="adding-collections-with-javascript.html#newcollectionfrommarkdownfiles">New Collection from Tags in Markdown Files</a></li>
-
-					<li><a href="adding-collections-with-javascript.html#newcollectionfrompaginatontemplates">New Collection from Pagination in Templates</a></li>
-
-					<li><a href="adding-collections-with-javascript.html#newcollectionfromtagsintemplates">New Collection from Tags in Templates</a></li>
-
-					<li><a href="adding-collections-with-javascript.html#newcollectionfromdataintemplates">New Collection from Data in Templates</a></li>
-
-
-
+					<li class="pagename"><a href="intro.html">Intros to Eleventy and This Guide</a>
+						<ul>
+							<li><a href="intro.html#introeleventy">Intro to Eleventy</a></li>
+							<li><a href="intro.html#introguide">Intro to This Guide</a></li>
+						</ul>
+					</li>
+		 			<li class="pagename"><a href="start.html">Start</a></li>
+					<li class="pagename"><a href="local-server.html">Local Server</a>
+					</li>
+					<li class="pagename"><a href="basic-data-and-templating-using-liquid.html">Basic Data and Templating Using Liquid</a>
+						<ul>
+							<li><a href="basic-data-and-templating-using-liquid.html#whitespace">Whitespace (Line Breaks)</a></li>
+						</ul>
+					</li>
+					<li class="pagename"><a href="template-files.html">Template Files</a>
+						<ul>
+							<li><a href="template-files.html#markdown">Markdown</a></li>
+							<li><a href="template-files.html#layouts">Layouts</a></li>
+							<li><a href="template-files.html#folderstructure">Folder Structure</a></li>
+							<li><a href="template-files.html#layoutsmarkdownfrontmatter">Layouts and Markdown With Front Matter</a></li>
+							<li><a href="template-files.html#collections">Collections</a></li>
+							<li><a href="template-files.html#linkingcollectionitem">Linking to a Collection Item</a></li>
+							<li><a href="template-files.html#collectionsandmarkdowncontent">Collections and Markdown Content</a></li>
+							<li><a href="template-files.html#eleventydates">Eleventy and Date Values</a></li>
+						</ul>
+					</li>
+					<li class="pagename"><a href="partials-and-include.html">Partials and Include</a>
+						<ul>
+							<li><a href="partials-and-include.html#usinginclude">Using Include</a></li>
+							<li><a href="partials-and-include.html#frontmatterpartials">Using Front Matter With Partials</a></li>
+						</ul>
+					</li>
+					<li class="pagename"><a href="global-data-files.html">Global Data Files</a>
+						<ul>
+							<li><a href="global-data-files.html#globaldatainpage">Using Global Data in a Page</a></li>
+							<li><a href="global-data-files.html#globaldatasubfolder">Global Data in a Subfolder</a></li>
+							<li><a href="global-data-files.html#accessingnormaljsondata">Accessing normal JSON data</a></li>
+							<li><a href="global-data-files.html#htmlinjson">HTML in JSON</a></li>
+						</ul>
+					</li>
+					<li class="pagename"><a href="pagination.html">Pagination</a>
+						<ul>
+							<li><a href="pagination.html#basicpaginationjsonarray">Basic Pagination of JSON Array</a></li>
+							<li><a href="pagination.html#paginationjsonobject">Pagination of JSON object</a></li>
+							<li><a href="pagination.html#customizingpermalinks">Customizing the Permalinks</a></li>
+							<li><a href="pagination.html#pagenavigation">Page Navigation</a></li>
+						</ul>
+					</li>
+					<li class="pagename"><a href="template-languages.html">Template Languages</a>
+						<ul>
+							<li><a href="template-languages.html#fileextensions">File Extensions</a></li>
+							<li><a href="template-languages.html#nunjucksjavascript">Nunjucks and Javascript</a></li>
+							<li><a href="template-languages.html#nunjucksjavascriptpagination">Nunjucks and JavaScript and Pagination</a></li>
+						</ul>
+					</li>
+					<li class="pagename"><a href="custom-configuration.html">Custom Configuration</a>
+						<ul>
+							<li><a href="custom-configuration.html#outputpath">Output Path</a></li>
+							<li><a href="custom-configuration.html#sourcepath">Source Path</a></li>
+							<li><a href="custom-configuration.html#globaldatapath">Global Data Path</a></li>
+							<li><a href="custom-configuration.html#includespath">Includes Path</a></li>
+							<li><a href="custom-configuration.html#templateformats">Template Formats</a></li>
+							<li><a href="custom-configuration.html#includingfuctionsinconfiguration">Including Functions in the Configuration</a></li>
+							<li><a href="custom-configuration.html#passthroughfilecopying">Passthrough File Copying</a></li>
+						</ul>
+					</li>
+					<li class="pagename"><a href="filters.html">Filters</a>
+						<ul>
+							<li><a href="filters.html#filterseleventy">Filters in Eleventy</a></li>
+							<li><a href="filters.html#createfilter">Create a Filter</a></li>
+							<li><a href="filters.html#formatdate">Format a Date</a></li>
+						</ul>
+					</li>
+					<li class="pagename"><a href="shortcodes.html">Shortcodes</a>
+						<ul>
+							<li><a href="shortcodes.html#shortcodeseleventy">Shortcodes in Eleventy</a></li>
+							<li><a href="shortcodes.html#shortcode">Shortcode</a></li>
+							<li><a href="shortcodes.html#pairedshortcode">Paired Shortcode</a></li>
+						</ul>
+					</li>
+					<li class="pagename"><a href="gulp.html">Gulp with Eleventy as a Task</a>
+						<ul>
+							<li><a href="gulp.html#usinggulp">Using Gulp</a></li>
+							<li><a href="gulp.html#eleventyothergulptasks">Eleventy and other Gulp tasks</a></li>
+						</ul>
+					</li>
+					<li class="pagename"><a href="adding-collections-with-javascript.html">Adding Collections With JavaScript</a>
+						<ul>
+							<li><a href="adding-collections-with-javascript.html#collectioncrreation">Collection Creation</a></li>
+							<li><a href="adding-collections-with-javascript.html#newcollectionfrommarkdownfiles">New Collection from Tags in Markdown Files</a></li>
+							<li><a href="adding-collections-with-javascript.html#newcollectionfrompaginatontemplates">New Collection from Pagination in Templates</a></li>
+							<li><a href="adding-collections-with-javascript.html#newcollectionfromtagsintemplates">New Collection from Tags in Templates</a></li>
+							<li><a href="adding-collections-with-javascript.html#newcollectionfromdataintemplates">New Collection from Data in Templates</a></li>
+						</ul>
+					</li>
 				</ul>
-			</li>
+			</nav><!-- .toc end -->
 
-
-
-		</ul>
-	</nav><!-- .toc end -->
-
-	<main class="content">
-		
+			<main class="content">
+				
 
 	<article>
 		<h2>Gulp with Eleventy as a Task</h2>
@@ -198,39 +192,40 @@ npx http-server
 	</nav>
 
 
-		<nav class="references">
-				<h2>Handy References</h2>
-				<ul>
+				<nav class="references">
+						<h2>Handy References</h2>
+						<ul>
 
-					<li><a href="https://www.11ty.io/docs/" target="_blank">Eleventy Documentation</a></li>
+							<li><a href="https://www.11ty.io/docs/" target="_blank">Eleventy Documentation</a></li>
 
-					<li><a href="https://www.zachleat.com/web/eleventy-tutorial-level-1/" target="_blank">Making a
-					Simple Web Site with the Simplest Static Site Generator, Level 1</a></li>
+							<li><a href="https://www.zachleat.com/web/eleventy-tutorial-level-1/" target="_blank">Making a
+							Simple Web Site with the Simplest Static Site Generator, Level 1</a></li>
 
-					<li><a href="https://www.filamentgroup.com/lab/build-a-blog/" target="_blank">Build your own Blog from Scratch using Eleventy</a></li>
+							<li><a href="https://www.filamentgroup.com/lab/build-a-blog/" target="_blank">Build your own Blog from Scratch using Eleventy</a></li>
 
-					<li><a href="https://keepinguptodate.com/pages/2019/06/creating-blog-with-eleventy/" target="_blank">Creating A Blog With Eleventy</a></li>
+							<li><a href="https://keepinguptodate.com/pages/2019/06/creating-blog-with-eleventy/" target="_blank">Creating A Blog With Eleventy</a></li>
 
-					<li><a href="https://learnxinyminutes.com/docs/yaml/" target="_blank">Learn YAML in Y minutes</a></li>
+							<li><a href="https://learnxinyminutes.com/docs/yaml/" target="_blank">Learn YAML in Y minutes</a></li>
 
-					<li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Basic Syntax</a></li>
+							<li><a href="https://www.markdownguide.org/basic-syntax/" target="_blank">Markdown Basic Syntax</a></li>
 
-					<li><a href="https://shopify.github.io/liquid/basics/introduction/" target="_blank">Liquid Syntax</a></li>
+							<li><a href="https://shopify.github.io/liquid/basics/introduction/" target="_blank">Liquid Syntax</a></li>
 
-					<li><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks Overview</a></li>
+							<li><a href="https://mozilla.github.io/nunjucks/templating.html" target="_blank">Nunjucks Overview</a></li>
 
-					<li><a href="https://www.w3schools.com/whatis/whatis_json.asp" target="_blank">What is JSON?</a></li>
+							<li><a href="https://www.w3schools.com/whatis/whatis_json.asp" target="_blank">What is JSON?</a></li>
 
-					<li><a href="https://ejs.co/" target="_blank">Embedded JavaScript</a></li>
+							<li><a href="https://ejs.co/" target="_blank">Embedded JavaScript</a></li>
+						</ul>
+				</nav>
+			</main><!-- .content end -->
+		</div><!-- .main__inner -->
+
+		<footer class="page__footer">
+			<p>&copy2020 Reg Hunt</p>
+		</footer>
 
 
-
-
-
-
-				</ul>
-		</nav>
-	</main><!-- .content end -->
-</div><!-- .main end -->
+	</div><!-- .main end -->
 </body>
 </html>
