@@ -10,18 +10,18 @@
 /* TODO: test this */
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('fonts/Roboto-Regular.ttf') format('truetype'),
-       url('fonts/Roboto-Italic.ttf') format('truetype'),
-       url('fonts/Roboto-BoldItalic.ttf') format('truetype'),
-       url('fonts/Roboto-Bold.ttf') format('truetype')
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Regular.ttf') format('truetype'),
+       url('../fonts/Poppins-Italic.ttf') format('truetype'),
+       url('../fonts/Poppins-BoldItalic.ttf') format('truetype'),
+       url('../fonts/Poppins-Bold.ttf') format('truetype')
 }
 
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Poppins', sans-serif;
 	color: #333;
 }
 
