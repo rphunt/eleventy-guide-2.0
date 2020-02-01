@@ -74,16 +74,18 @@ code, pre {
 }
 
 .main {
+	display: grid;
+	grid-template-columns: 30% 70%;
 }
 
 .tableofcontents {
 	padding: 1.5em;
-	position: fixed;
+	/* position: fixed;
 	top: 0;
 	left: 0;
-	width: 25%;
-	height: 100vh;
-	overflow-y: scroll;
+	width: 25%; */
+	/* height: 100vh;
+	overflow-y: scroll; */
 }
 
 .tableofcontents ul li {
@@ -100,12 +102,12 @@ code, pre {
 
 .content {
 	padding: 1.5em;
-	position: fixed;
+	/* position: fixed;
 	top: 0;
-	right: 0;
+	right: 0; */
 	width: 75%;
-	height: 100vh;
-	overflow-y: scroll;
+	/* height: 100vh;
+	overflow-y: scroll; */
 }
 
 .codeexample {
