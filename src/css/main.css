@@ -1,10 +1,14 @@
 :root {
-	--clrlink: #0060a0;
-	--clrh2: #cceeff;
+	--clrlink: #336611;
+	--clrh2: ;
+	--clrh2bg: #ccffbb;
 	--clrh3: ;
-	--clrh3bg: #dfdfdf;
+	--clrh3bg: #f0f0f0;
 	--clrcode: #333333;
-	--clrcodebg: #eeeeee;
+	--clrcodebg: #f0f0f0;
+	--clrsidebarbg: #558833;
+	--clrsidebartext: #ffffff;
+	--clrsidebartexthover: #0000000;
 }
 
 /* TODO: test this */
@@ -53,6 +57,7 @@ h1, h2, h3, h4 {
 
 h1 {
 	color: var(--clrlink);
+	font-size: 2em;
 }
 
 h1 a {
@@ -61,7 +66,8 @@ h1 a {
 
 h2 {
 	padding: .3em;
-	background-color: var(--clrh2);
+	background-color: var(--clrh2bg);
+	font-size: 1.7em;
 }
 
 h3 {
@@ -79,6 +85,8 @@ code, pre {
 }
 
 .tableofcontents {
+	background-color: var(--clrsidebarbg);
+	color: var(--clrsidebartext);
 	padding: 1.5em;
 	/* position: fixed;
 	top: 0;
@@ -88,16 +96,39 @@ code, pre {
 	overflow-y: scroll; */
 }
 
+.tableofcontents a {
+	text-decoration: none;
+	color: var(--clrsidebartext);
+}
+
+.tableofcontents a:hover {
+	color: var(--clrsidebartexthover);
+}
+
 .tableofcontents ul li {
-	margin-bottom: .5em;
+	margin-bottom: 1em;
+	list-style: none;
 }
 
 .tableofcontents ul li ul {
-	margin-bottom: .5em;
+	margin-bottom: 1em;
 }
 
 .tableofcontents ul li ul li {
-	margin-bottom: 0;
+	margin-bottom: .5em;
+}
+
+.tableofcontents .pagename > a {
+	font-size: 1.2em;
+}
+
+.references {
+
+}
+
+.references ul {
+	list-style: none;
+
 }
 
 .content {
@@ -105,9 +136,13 @@ code, pre {
 	/* position: fixed;
 	top: 0;
 	right: 0; */
-	width: 75%;
+	/* width: 75%; */
 	/* height: 100vh;
 	overflow-y: scroll; */
+}
+
+.chapter {
+	margin-bottom: 3em;
 }
 
 .codeexample {
@@ -117,7 +152,7 @@ code, pre {
 	background: var(--clrcodebg);
 	margin: 1em 0;
 	font-size: 1.3em;
-	border-radius: 10px;
+	/* border-radius: 10px; */
 	overflow-x: scroll;
 
 }
