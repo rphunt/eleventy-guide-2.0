@@ -1,14 +1,14 @@
 :root {
 	--clrlink: #336611;
-	--clrh2: ;
+	--clrh2: #336611;
 	--clrh2bg: #ccffbb;
-	--clrh3: ;
+	--clrh3: #000000;
 	--clrh3bg: #f0f0f0;
 	--clrcode: #333333;
 	--clrcodebg: #f0f0f0;
 	--clrsidebarbg: #558833;
 	--clrsidebartext: #ffffff;
-	--clrsidebartexthover: #0000000;
+	--clrsidebartexthover: #225500;
 }
 
 /* TODO: test this */
@@ -60,12 +60,9 @@ h1 {
 	font-size: 2em;
 }
 
-h1 a {
-	text-decoration: none;
-}
-
 h2 {
 	padding: .3em;
+	color: var(--clrh2);
 	background-color: var(--clrh2bg);
 	font-size: 1.7em;
 }
@@ -73,6 +70,7 @@ h2 {
 h3 {
 	padding: .3em;
 	background-color: var(--clrh3bg);
+	color: var(--clrh3);
 }
 
 code, pre {
@@ -99,6 +97,8 @@ code, pre {
 .tableofcontents a {
 	text-decoration: none;
 	color: var(--clrsidebartext);
+	display: block;
+	margin-bottom: .5em;
 }
 
 .tableofcontents a:hover {
@@ -106,29 +106,20 @@ code, pre {
 }
 
 .tableofcontents ul li {
-	margin-bottom: 1em;
 	list-style: none;
-}
-
-.tableofcontents ul li ul {
-	margin-bottom: 1em;
-}
-
-.tableofcontents ul li ul li {
-	margin-bottom: .5em;
 }
 
 .tableofcontents .pagename > a {
 	font-size: 1.2em;
 }
 
-.references {
-
-}
-
 .references ul {
 	list-style: none;
+}
 
+.references ul li {
+	padding: 0;
+	margin: 0;
 }
 
 .content {
