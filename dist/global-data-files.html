@@ -9,11 +9,22 @@
 	<div class="main">
 
 		<header class="page__header">
-			<h1><a href=".">Eleventy Walk Through</a></h1>
+			<h1 class="header__title"><a href=".">Eleventy Walk Through</a></h1>
+			<button class="header__hamburger" id="hamburger__openbtn">
+					<span></span>
+					<span></span>
+					<span></span>
+			</button>
 		</header>
 
 		<div class="main__inner">
-			<nav class="tableofcontents">
+			<nav class="tableofcontents tableofcontents--closed" id="tableofcontents">
+				<div class="tableofcontents__close">
+					<button id="menu__closebtn">
+							<span></span>
+							<span></span>
+					</button>
+			</div>
 				<ul>
 					<li class="pagename"><a href="intro.html">Intros to Eleventy and This Guide</a>
 						<ul>
@@ -143,7 +154,7 @@
 				Create the file <span class="path">animals.html</span> in the project root. The data contained in <span class="path">_data/animalList.json</span> will automatically be made available by Eleventy as <span class="var">animalList</span> (matching the data file name).
 			</p>
 
-			<code class="codeexample">
+			<pre class="codeexample">
 ---
 title: Animals
 ---
@@ -155,12 +166,12 @@ title: Animals
     {% endfor -%}
 &lt;/ul&gt;
 {% include _foot.html %}
-			</code>
+			</pre>
 			<p>
 				A new folder <span class="path">_site/animals</span> should appear, with an <span class="path">index.html file</span>. Inside the body tag should be seen :
 			</p>
 
-			<code class="codeexample">
+			<pre class="codeexample">
 &lt;h1&gt;Animals&lt;/h1&gt;
 &lt;ul&gt;
     &lt;li&gt;lion&lt;/li&gt;
@@ -172,7 +183,7 @@ title: Animals
     &lt;li&gt;tapir&lt;/li&gt;
     &lt;/ul&gt;
 &lt;p&gt;Footer text&lt;/p&gt;
-			</code>
+			</pre>
 		</section>
 
 		<section class="chapter">
@@ -183,7 +194,7 @@ title: Animals
 				Create the folder <span class="path">_data/mammals</span>. Move <span class="path">_data/animalList.json</span> into this folder. This data will now be available as <span class="var">mammals.animalList</span>.
 			</p>
 
-			<code class="codeexample">
+			<pre class="codeexample">
 ---
 title: Animals
 ---
@@ -196,7 +207,7 @@ title: Animals
     {% endfor -%}
 &lt;/ul&gt;
 {% include _foot.html %}
-			</code>
+			</pre>
 			<p>
 				After the site is rebuilt, the <span class="path">_site/animals/index.html</span> file shoud still contain the same animal list.
 			</p>
@@ -211,7 +222,7 @@ title: Animals
 				Edit the file <span class="path">_data/mammals/animalList.json</span> :
 			</p>
 
-			<code class="codeexample">
+			<pre class="codeexample">
 {
     "big": [
         "lion",
@@ -227,13 +238,13 @@ title: Animals
         "mouse"
     ]
 }
-			</code>
+			</pre>
 
 			<p>
 				Edit the <span class="path">animals.html file</span> to add a new list, and to drill down into the data a little more :
 			</p>
 
-			<code class="codeexample">
+			<pre class="codeexample">
 ---
 title: Animals
 ---
@@ -251,12 +262,12 @@ title: Animals
     {% endfor -%}
 &lt;/ul&gt;
 {% include _foot.html %}
-			</code>
+			</pre>
 
 			<p>
 				Inside <span class="path">_site/animals/index.html</span>, inside the body tag should now be seen:
 
-				<code class="codeexample">
+				<pre class="codeexample">
 &lt;h1&gt;Animals&lt;/h1&gt;
 &lt;h2&gt;Big&lt;/h2&gt;
 &lt;ul&gt;
@@ -274,7 +285,7 @@ title: Animals
     &lt;li&gt;mouse&lt;/li&gt;
     &lt;/ul&gt;
 &lt;p&gt;Footer text&lt;/p&gt;
-				</code>
+				</pre>
 
 		</section>
 
@@ -287,30 +298,30 @@ title: Animals
 			<p>
 				Create <em class="path">_data/intro.json</em> :
 			</p>
-			<code class="codeexample">
+			<pre class="codeexample">
 [
     "&lt;h2 class=\"title\"&gt;Welcome to our &lt;em&gt;Animals&lt;/em&gt; site.&lt;/h2&gt;\n&lt;p&gt;\n&lt;a href=\"https://www.google.com/?q=animals\" target=\"_blank\"&gt;Use Google to learn even more about animals&lt;/a&gt;.\n&lt;/p&gt;",
     "&lt;h3 class=\"subtitle\"&gt;Animal types&lt;/h3&gt;\n&lt;p&gt;This site is &lt;em&gt;somewhat&lt;/em&gt; organized by animal type.&lt;/p&gt;"
 ]
-			</code>
+			</pre>
 
 			<p>
 				Create <em class="path">_src/intro.html</em>
 			</p>
-			<code class="codeexample">
+			<pre class="codeexample">
 {% include _head.html %}
 &lt;h1&gt;Intro&lt;/h1&gt;
 {% for item in intro -%}
 {{ item | safe }}
 {% endfor -%}
 {% include _foot.html %}
-			</code>
+			</pre>
 
 			<p>
 			The resulting <em class="path">_site/intro/index.html</em> should include this :
 			</p>
 
-			<code class="codeexample">
+			<pre class="codeexample">
 &lt;h1&gt;Intro&lt;/h1&gt;
 &lt;h2 class="title"&gt;Welcome to our &lt;em&gt;Animals&lt;/em&gt; site.&lt;/h2&gt;
 &lt;p&gt;
@@ -318,7 +329,7 @@ title: Animals
 &lt;/p&gt;
 &lt;h3 class="subtitle"&gt;Animal types&lt;/h3&gt;
 &lt;p&gt;This site is &lt;em&gt;somewhat&lt;/em&gt; organized by animal type.&lt;/p&gt;
-				</code>
+				</pre>
 			</section>
 
 	</article>
@@ -362,5 +373,6 @@ title: Animals
 
 
 	</div><!-- .main end -->
+	<script src="js/main.js"></script>
 </body>
 </html>

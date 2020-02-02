@@ -9,11 +9,22 @@
 	<div class="main">
 
 		<header class="page__header">
-			<h1><a href=".">Eleventy Walk Through</a></h1>
+			<h1 class="header__title"><a href=".">Eleventy Walk Through</a></h1>
+			<button class="header__hamburger" id="hamburger__openbtn">
+					<span></span>
+					<span></span>
+					<span></span>
+			</button>
 		</header>
 
 		<div class="main__inner">
-			<nav class="tableofcontents">
+			<nav class="tableofcontents tableofcontents--closed" id="tableofcontents">
+				<div class="tableofcontents__close">
+					<button id="menu__closebtn">
+							<span></span>
+							<span></span>
+					</button>
+			</div>
 				<ul>
 					<li class="pagename"><a href="intro.html">Intros to Eleventy and This Guide</a>
 						<ul>
@@ -166,5 +177,6 @@
 
 
 	</div><!-- .main end -->
+	<script src="js/main.js"></script>
 </body>
 </html>
