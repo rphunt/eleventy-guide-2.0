@@ -169,7 +169,6 @@ code, pre {
 	position: absolute;
 	top: 0;
 	width: 100vw;
-	transition: left .5s;
 }
 
 .tableofcontents--closed {
