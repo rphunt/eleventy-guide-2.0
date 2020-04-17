@@ -125,12 +125,13 @@ title: Animals
 ---
 {% include _head.html %}
 &lt;h1&gt;{{ title }}&lt;/h1&gt;
-&lt;h2&gt;Mammals&lt;/h2&gt;
+&lt;h2&gt;Big&lt;/h2&gt;
 &lt;ul&gt;
     {% for animal in mammals.animalList.big -%}
     &lt;li&gt;{{ animal }}&lt;/li&gt;
     {% endfor -%}
 &lt;/ul&gt;
+&lt;h2&gt;Small&lt;/h2&gt;
 &lt;ul&gt;
     {% for animal in mammals.animalList.small -%}
     &lt;li&gt;{{ animal }}&lt;/li&gt;
