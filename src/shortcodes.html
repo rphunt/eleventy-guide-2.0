@@ -35,7 +35,7 @@ birds:
         &lt;li&gt;{{ bird }}&lt;/li&gt;
         {% endfor -%}
     &lt;/ul&gt;
-{% include "_foot.njk %}
+{% include "_foot.njk" %}
 			</pre class="codeexample">
 
 			<p>
@@ -43,7 +43,7 @@ birds:
 			</p>
 			<pre class="codeexample">
 eleventyConfig.addShortcode("shorttest", function(subtitle, greeting){
-    return "&lt;h2&gt;&lt;em&gt;"+subtitle+">&lt;/em>, "+greeting+"&gt;&lt;/h2&gt;
+    return "&lt;h2&gt;&lt;em&gt;"+subtitle+">&lt;/em>, "+greeting+"&gt;&lt;/h2&gt";
 });
 			</pre>
 			<p>
